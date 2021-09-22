@@ -1,0 +1,22 @@
+:PROPERTIES:
+:ID:       9394118f-dd21-4fa0-abcc-896485551af1
+:END:
+#+title: Geodaetic solution to an initial values problem
+
+This project is the result of a small project for the german lecture on [[https://itp.uni-frankfurt.de/~hanauske/VARTC/][general relativity theory]] by [[https://itp.uni-frankfurt.de/~hanauske/][Dr. Matthias Hanauske]].
+
+It can solve the geodaetic equations of a single body moving around a black hole.
+
+* Example
+#+HTML: <video width="87%" controls>
+#+HTML:  <source src="https://gitlab.com/ganymede/general-relativity/-/jobs/645314694/artifacts/raw/geodaetic_solution.mp4" type="video/mp4">
+#+HTML:   Your browser does not support this video.
+#+HTML:</video>
+
+#+caption: Geodaetic solution to an initial values problem
+https://gitlab.com/ganymede/general-relativity/-/jobs/645314694/artifacts/raw/geodaetic_solution.png
+
+* Code
+
+The source code for the general relativity project is available in the following GitLab repository:
+https://gitlab.com/ganymede/general-relativity

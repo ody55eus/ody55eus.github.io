@@ -1,0 +1,9 @@
+:PROPERTIES:
+:ID:       1f0b2596-d7fd-4365-b9e8-0d7226215d95
+:ROAM_REFS: cite:goble_fair_2020
+:END:
+#+title: FAIR Computational Workflows
+#+ROAM_KEY: goble_fair_2020
+#+PROPERTY: type article
+#+FILETAGS: FAIR
+#+AUTHOR: Goble, C., Cohen-Boulakia, S., Soiland-Reyes, S., Garijo, D., Gil, Y., Crusoe, M. R., Peters, K., …

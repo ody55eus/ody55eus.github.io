@@ -1,0 +1,8 @@
+:PROPERTIES:
+:ID:       47b34235-2518-425f-81ff-da683530dafb
+:END:
+#+title: Literature Notes
+
+- [[id:1f0b2596-d7fd-4365-b9e8-0d7226215d95][FAIR Computational Workflows]]
+
+See also other [[id:86c5af77-1283-427e-a8be-6fed138bed88][Linklists]].
