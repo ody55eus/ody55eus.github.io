@@ -21,7 +21,6 @@
 ;;; Code:
 
 (require 'ox-publish)
-(require 'org-roam)
 
 (add-to-list 'load-path "emacs-webfeeder")
 (if (require 'webfeeder nil 'noerror)
@@ -236,6 +235,7 @@ See `org-publish-sitemap-default-entry'."
        (list "site" :components '("site-org"))))
 
 (defun jp/publish-html ()
+  (org-id-update-id-locations)
   (org-publish-all)
   )
 
