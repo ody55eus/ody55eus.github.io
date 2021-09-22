@@ -1,11 +1,9 @@
 image: silex/emacs
 
-before_script:
-  - make install
 
 pages:
   script:
-    - make all
+    - emacs --quick --script publish.el --funcall=jp/publish-html
   artifacts:
     paths:
       - public

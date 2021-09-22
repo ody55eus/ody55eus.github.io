@@ -4,8 +4,9 @@ This is my personal Webpage.
 
 I created this page using Emacs Org Mode. To learn more about [[https://orgmode.org/][Org Mode]] and [[https://orgmode.org/manual/Publishing.html#Publishing][publishing org files]], see respective links to the original documentation.
 
-* Variables
+* About Me
 This code block imports the variables from the [[file:INFO][INFO]] file.
+
 #+name:gvar
 #+begin_src sh :var variable="version"
 cat ./INFO | grep -i $variable | cut --delimiter="|" -f3
@@ -17,12 +18,10 @@ This configuration loads the docker image [[https://hub.docker.com/r/silex/emacs
 #+begin_src yaml :tangle ./.gitlab-ci.yml
 image: silex/emacs
 
-before_script:
-  - make install
 
 pages:
   script:
-    - make all
+    - emacs --quick --script publish.el --funcall=jp/publish-html
   artifacts:
     paths:
       - public
@@ -54,40 +53,6 @@ html:
 # end
 #+end_src
 
-* Writing
-** Init.el
-#+begin_src emacs-lisp :tangle ./init.el :noweb yes
-;;; init.el --- Org Roam Website Blog -*- lexical-binding: t; -*-
-;;
-;; Copyright (C) 2021 Jonathan Pieper
-;;
-;; Author: Jonathan Pieper <https://gitlab.com/ody55eus>
-;; Maintainer: Jonathan Pieper <ody55eus@mailbox.org>
-;; Created: September 22, 2021
-;; Modified: September 22, 2021
-;; Version: <<gvar("version")>>
-;; Keywords: <<gvar("keywords")>>
-;; Homepage: <<gvar("homepage")>>
-;; Package-Requires: ((emacs "27.2"))
-;;
-;; This file is not part of GNU Emacs.
-;;
-;;; Commentary:
-;;  These are my personal emacs tweaks to edit my
-;;  webpage with org roam.
-;;
-;;
-;;; Code:
-
-(defun jp/init-webpage ()
-    (setq org-roam-directory (concat
-                              (locate-dominating-file buffer-file-name "INFO")
-                              "source/")))
-
-(provide 'init)
-;;; init.el ends here
-#+end_src
-
 ** Publish.el
 :Source:
 Inspired from https://gitlab.com/ambrevar/ambrevar.gitlab.io
@@ -116,6 +81,7 @@ Inspired from https://gitlab.com/ambrevar/ambrevar.gitlab.io
 ;;; Code:
 
 (require 'ox-publish)
+(require 'org-roam)
 
 (add-to-list 'load-path "emacs-webfeeder")
 (if (require 'webfeeder nil 'noerror)
@@ -165,8 +131,8 @@ Inspired from https://gitlab.com/ambrevar/ambrevar.gitlab.io
 <p class=\"date\">Date: %u</p>
 <p class=\"creator\">Made with %c</p>
 <p class=\"license\">
-  <a rel=\"license\" href=\"https://www.gnu.org/licenses/gpl-3.0.en.html\"><img alt=\"GNU General Public License\" style=\"border-width:0\" src=\"https://www.gnu.org/graphics/gplv3-127x51.png\" /></a>
-  <a rel=\"license\" href=\"http://creativecommons.org/licenses/by-sa/4.0/\"><img alt=\"Creative Commons License\" style=\"border-width:0\" src=\"https://mirrors.creativecommons.org/presskit/buttons/88x31/png/by-sa.png\" /></a>
+  <a rel=\"license\" href=\"https://www.gnu.org/licenses/gpl-3.0.en.html\"><img alt=\"GNU General Public License\" width=\"50px\" style=\"border-width:0\" src=\"https://www.gnu.org/graphics/gplv3-127x51.png\" /></a>
+  <a rel=\"license\" href=\"http://creativecommons.org/licenses/by-sa/4.0/\"><img alt=\"Creative Commons License\" width=\"50px\" style=\"border-width:0\" src=\"https://mirrors.creativecommons.org/presskit/buttons/88x31/png/by-sa.png\" /></a>
 </p>")))
  ;; Use custom preamble function to compute relative links.
  org-html-preamble #'jp/preamble
@@ -258,15 +224,15 @@ system timestamp and return nil instead."
     (or (org-publish-cache-get-file-property file :date nil t)
 	(org-publish-cache-set-file-property
 	 file :date
-	   (let ((date (org-publish-find-property file :date project)))
-	     ;; DATE is a secondary string.  If it contains
-	     ;; a time-stamp, convert it to internal format.
-	     ;; Otherwise, use FILE modification time.
-             (let ((ts (and (consp date) (assq 'timestamp date))))
-	       (and ts
-		    (let ((value (org-element-interpret-data ts)))
-		      (and (org-string-nw-p value)
-			   (org-time-string-to-time value))))))))))
+	 (let ((date (org-publish-find-property file :date project)))
+	   ;; DATE is a secondary string.  If it contains
+	   ;; a time-stamp, convert it to internal format.
+	   ;; Otherwise, use FILE modification time.
+           (let ((ts (and (consp date) (assq 'timestamp date))))
+	     (and ts
+		  (let ((value (org-element-interpret-data ts)))
+		    (and (org-string-nw-p value)
+			 (org-time-string-to-time value))))))))))
 
 (defun jp/org-publish-sitemap-entry (entry style project)
   "Custom format for site map ENTRY, as a string.
@@ -301,14 +267,14 @@ See `org-publish-sitemap-default-entry'."
              :publishing-function '(org-html-publish-to-html)
              :publishing-directory "./public/" ; TODO: Set dir relative to root so that we can use "C-c C-e P".
              :sitemap-format-entry #'jp/org-publish-sitemap-entry
-             :auto-sitemap t
-             :sitemap-title "Articles"
-             :sitemap-filename "articles.org"
-             ;; :sitemap-file-entry-format "%d *%t*"
-             :sitemap-style 'list
-             :sitemap-function #'jp/org-publish-sitemap
-             ;; :sitemap-ignore-case t
-             :sitemap-sort-files 'anti-chronologically
+             ;; :auto-sitemap t
+             ;; :sitemap-title "Articles"
+             ;; :sitemap-filename "articles.org"
+             ;; ;; :sitemap-file-entry-format "%d *%t*"
+             ;; :sitemap-style 'list
+             ;; :sitemap-function #'jp/org-publish-sitemap
+             ;; ;; :sitemap-ignore-case t
+             ;; :sitemap-sort-files 'anti-chronologically
              :html-head-include-default-style nil
              :html-head-include-scripts nil
              :html-head "<link rel=\"stylesheet\" type=\"text/css\" href=\"../dark.css\">
@@ -337,6 +303,77 @@ See `org-publish-sitemap-default-entry'."
 ;;; publish.el ends here
 #+end_src
 
+* Writing
+** Init.el
+#+begin_src emacs-lisp :tangle ./init.el :noweb yes
+;;; init.el --- Org Roam Website Blog -*- lexical-binding: t; -*-
+;;
+;; Copyright (C) 2021 Jonathan Pieper
+;;
+;; Author: Jonathan Pieper <https://gitlab.com/ody55eus>
+;; Maintainer: Jonathan Pieper <ody55eus@mailbox.org>
+;; Created: September 22, 2021
+;; Modified: September 22, 2021
+;; Version: <<gvar("version")>>
+;; Keywords: <<gvar("keywords")>>
+;; Homepage: <<gvar("homepage")>>
+;; Package-Requires: ((emacs "27.2"))
+;;
+;; This file is not part of GNU Emacs.
+;;
+;;; Commentary:
+;;  These are my personal emacs tweaks to edit my
+;;  webpage with org roam.
+;;
+;;
+;;; Code:
+
+(defun jp/init-webpage ()
+    (setq org-roam-directory (concat
+                              (locate-dominating-file buffer-file-name "INFO")
+                              "source/")
+          org-roam-capture-templates '(("d" "default" plain
+         "%?\n\nSee also %a.\n"
+         :if-new (file+head
+                  "%<%Y%m%d%H%M%S>-${slug}.org"
+                  "#+title: ${title}\n")
+         :unnarrowed t)
+        ("j" "Projects" plain
+         "%?"
+         :if-new (file+head
+                  "Projects/%<%Y%m%d%H%M%S>-${slug}.org"
+                  "#+title: ${title}\n")
+         :clock-in :clock-resume
+         :unnarrowed t
+         )
+        ("l" "Literature")
+        ("ll" "Literature Note" plain
+         "%?\n\nSee also %a.\n* Links\n- %x\n* Notes\n"
+         :if-new (file+head
+                  "Literature/%<%Y%m%d%H%M%S>-${slug}.org"
+                  "#+title: ${title}\n")
+         :unnarrowed t
+         )
+        ("lr" "Bibliography reference" plain
+         "#+ROAM_KEY: %^{citekey}\n#+PROPERTY: type %^{entry-type}\n#+FILETAGS: %^{keywords}\n#+AUTHOR: %^{author}\n%?"
+         :if-new (file+head
+                  "References/${citekey}.org"
+                  "#+title: ${title}\n")
+         :unnarrowed t
+         )
+        ("c" "Code" plain
+         "%?\n\nSee also %a.\n"
+         :if-new (file+head
+                  "Code/%<%Y%m%d%H%M%S>-${slug}.org"
+                  "#+title: ${title}\n#+date: %U")
+         :unnarrowed t
+         )
+        )))
+
+(provide 'init)
+;;; init.el ends here
+#+end_src
+
 ** Mindmap
 #+begin_src plantuml :tangle ./diag/main.puml
 @startmindmap
@@ -358,18 +395,16 @@ See `org-publish-sitemap-default-entry'."
   + Install some Java Runtime (to run PlantUML)
   + Download PlantUML script:
    #+begin_src sh
-   make install
+curl -L http://sourceforge.net/projects/plantuml/files/plantuml.jar/download > ~/plantuml.jar
    #+end_src
 - Just run the following command, to deploy all:
   #+begin_src sh
-  make all
+emacs --quick --script publish.el --funcall=jp/publish-html
   #+end_src
 
 * License
 This content is licensed under the Creative Commons Attribution-ShareAlike 4.0
 International License. To view a copy of this license, visit
-http://creativecommons.org/licenses/by-sa/4.0/
-https://mirrors.creativecommons.org/presskit/buttons/88x31/png/by-sa.png
+[[http://creativecommons.org/licenses/by-sa/4.0/]]
 
 The code creating these pages is licensed under [[https://www.gnu.org/licenses/gpl-3.0.en.html][GNU GPLv3]].
-https://www.gnu.org/graphics/gplv3-127x51.png

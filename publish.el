@@ -21,6 +21,7 @@
 ;;; Code:
 
 (require 'ox-publish)
+(require 'org-roam)
 
 (add-to-list 'load-path "emacs-webfeeder")
 (if (require 'webfeeder nil 'noerror)
@@ -70,8 +71,8 @@
 <p class=\"date\">Date: %u</p>
 <p class=\"creator\">Made with %c</p>
 <p class=\"license\">
-  <a rel=\"license\" href=\"https://www.gnu.org/licenses/gpl-3.0.en.html\"><img alt=\"GNU General Public License\" style=\"border-width:0\" src=\"https://www.gnu.org/graphics/gplv3-127x51.png\" /></a>
-  <a rel=\"license\" href=\"http://creativecommons.org/licenses/by-sa/4.0/\"><img alt=\"Creative Commons License\" style=\"border-width:0\" src=\"https://mirrors.creativecommons.org/presskit/buttons/88x31/png/by-sa.png\" /></a>
+  <a rel=\"license\" href=\"https://www.gnu.org/licenses/gpl-3.0.en.html\"><img alt=\"GNU General Public License\" width=\"50px\" style=\"border-width:0\" src=\"https://www.gnu.org/graphics/gplv3-127x51.png\" /></a>
+  <a rel=\"license\" href=\"http://creativecommons.org/licenses/by-sa/4.0/\"><img alt=\"Creative Commons License\" width=\"50px\" style=\"border-width:0\" src=\"https://mirrors.creativecommons.org/presskit/buttons/88x31/png/by-sa.png\" /></a>
 </p>")))
  ;; Use custom preamble function to compute relative links.
  org-html-preamble #'jp/preamble
@@ -163,15 +164,15 @@ system timestamp and return nil instead."
     (or (org-publish-cache-get-file-property file :date nil t)
 	(org-publish-cache-set-file-property
 	 file :date
-	   (let ((date (org-publish-find-property file :date project)))
-	     ;; DATE is a secondary string.  If it contains
-	     ;; a time-stamp, convert it to internal format.
-	     ;; Otherwise, use FILE modification time.
-             (let ((ts (and (consp date) (assq 'timestamp date))))
-	       (and ts
-		    (let ((value (org-element-interpret-data ts)))
-		      (and (org-string-nw-p value)
-			   (org-time-string-to-time value))))))))))
+	 (let ((date (org-publish-find-property file :date project)))
+	   ;; DATE is a secondary string.  If it contains
+	   ;; a time-stamp, convert it to internal format.
+	   ;; Otherwise, use FILE modification time.
+           (let ((ts (and (consp date) (assq 'timestamp date))))
+	     (and ts
+		  (let ((value (org-element-interpret-data ts)))
+		    (and (org-string-nw-p value)
+			 (org-time-string-to-time value))))))))))
 
 (defun jp/org-publish-sitemap-entry (entry style project)
   "Custom format for site map ENTRY, as a string.
@@ -206,14 +207,14 @@ See `org-publish-sitemap-default-entry'."
              :publishing-function '(org-html-publish-to-html)
              :publishing-directory "./public/" ; TODO: Set dir relative to root so that we can use "C-c C-e P".
              :sitemap-format-entry #'jp/org-publish-sitemap-entry
-             :auto-sitemap t
-             :sitemap-title "Articles"
-             :sitemap-filename "articles.org"
-             ;; :sitemap-file-entry-format "%d *%t*"
-             :sitemap-style 'list
-             :sitemap-function #'jp/org-publish-sitemap
-             ;; :sitemap-ignore-case t
-             :sitemap-sort-files 'anti-chronologically
+             ;; :auto-sitemap t
+             ;; :sitemap-title "Articles"
+             ;; :sitemap-filename "articles.org"
+             ;; ;; :sitemap-file-entry-format "%d *%t*"
+             ;; :sitemap-style 'list
+             ;; :sitemap-function #'jp/org-publish-sitemap
+             ;; ;; :sitemap-ignore-case t
+             ;; :sitemap-sort-files 'anti-chronologically
              :html-head-include-default-style nil
              :html-head-include-scripts nil
              :html-head "<link rel=\"stylesheet\" type=\"text/css\" href=\"../dark.css\">
