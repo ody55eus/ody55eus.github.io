@@ -1,0 +1,6 @@
+:PROPERTIES:
+:ID:       afe3de83-e5b8-4f53-b457-987dd9bd579d
+:END:
+#+title: Org Mode
+
+Org Mode is  a wonderful build-in feature of [[id:7bd0d14c-b748-4f05-8c70-36fbf0a94745][Emacs]]

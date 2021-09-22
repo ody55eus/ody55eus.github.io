@@ -1,0 +1,13 @@
+image: silex/emacs
+
+before_script:
+  - make install
+
+pages:
+  script:
+    - make all
+  artifacts:
+    paths:
+      - public
+  only:
+    - master
