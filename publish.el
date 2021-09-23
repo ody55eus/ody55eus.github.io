@@ -235,6 +235,8 @@ See `org-publish-sitemap-default-entry'."
        (list "site" :components '("site-org"))))
 
 (defun jp/publish-html ()
+  (require 'init-page)
+  (jp/init-webpage)
   (org-id-update-id-locations)
   (org-publish-all)
   )

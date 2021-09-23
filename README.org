@@ -38,7 +38,7 @@ pages:
 all: diag html
 
 init:
-	emacs --quick --script init.el --funcall=jp/init-webpage
+	emacs --quick --script init-page.el --funcall=jp/init-webpage
 
 install:
 	curl -L http://sourceforge.net/projects/plantuml/files/plantuml.jar/download > ~/plantuml.jar
@@ -294,6 +294,8 @@ See `org-publish-sitemap-default-entry'."
        (list "site" :components '("site-org"))))
 
 (defun jp/publish-html ()
+  (require 'init-page)
+  (jp/init-webpage)
   (org-id-update-id-locations)
   (org-publish-all)
   )
@@ -303,9 +305,9 @@ See `org-publish-sitemap-default-entry'."
 #+end_src
 
 * Writing
-** Init.el
-#+begin_src emacs-lisp :tangle ./init.el :noweb yes
-;;; init.el --- Org Roam Website Blog -*- lexical-binding: t; -*-
+** Init-page.el
+#+begin_src emacs-lisp :tangle ./init-page.el :noweb yes
+;;; init-page.el --- Org Roam Website Blog -*- lexical-binding: t; -*-
 ;;
 ;; Copyright (C) 2021 Jonathan Pieper
 ;;
@@ -328,49 +330,52 @@ See `org-publish-sitemap-default-entry'."
 ;;; Code:
 
 (defun jp/init-webpage ()
-    (setq-local org-roam-directory (concat
-                              (locate-dominating-file buffer-file-name "INFO")
-                              "source/")
-          org-roam-capture-templates '(("d" "default" plain
-         "%?\n\nSee also %a.\n"
-         :if-new (file+head
-                  "%<%Y%m%d%H%M%S>-${slug}.org"
-                  "#+title: ${title}\n")
-         :unnarrowed t)
-        ("j" "Projects" plain
-         "%?"
-         :if-new (file+head
-                  "Projects/%<%Y%m%d%H%M%S>-${slug}.org"
-                  "#+title: ${title}\n")
-         :clock-in :clock-resume
-         :unnarrowed t
-         )
-        ("l" "Literature")
-        ("ll" "Literature Note" plain
-         "%?\n\nSee also %a.\n* Links\n- %x\n* Notes\n"
-         :if-new (file+head
-                  "Literature/%<%Y%m%d%H%M%S>-${slug}.org"
-                  "#+title: ${title}\n")
-         :unnarrowed t
-         )
-        ("lr" "Bibliography reference" plain
-         "#+ROAM_KEY: %^{citekey}\n#+PROPERTY: type %^{entry-type}\n#+FILETAGS: %^{keywords}\n#+AUTHOR: %^{author}\n%?"
-         :if-new (file+head
-                  "References/${citekey}.org"
-                  "#+title: ${title}\n")
-         :unnarrowed t
-         )
-        ("c" "Code" plain
-         "%?\n\nSee also %a.\n"
-         :if-new (file+head
-                  "Code/%<%Y%m%d%H%M%S>-${slug}.org"
-                  "#+title: ${title}\n#+date: %U")
-         :unnarrowed t
-         )
-        )))
+  (setq-local org-roam-directory (concat
+                                  (locate-dominating-file buffer-file-name "INFO")
+                                  "source/")
+              org-directory (concat
+                                  (locate-dominating-file buffer-file-name "INFO")
+                                  "source/")
+              org-roam-capture-templates '(("d" "default" plain
+                                            "%?\n\nSee also %a.\n"
+                                            :if-new (file+head
+                                                     "%<%Y%m%d%H%M%S>-${slug}.org"
+                                                     "#+title: ${title}\n")
+                                            :unnarrowed t)
+                                           ("j" "Projects" plain
+                                            "%?"
+                                            :if-new (file+head
+                                                     "Projects/%<%Y%m%d%H%M%S>-${slug}.org"
+                                                     "#+title: ${title}\n")
+                                            :clock-in :clock-resume
+                                            :unnarrowed t
+                                            )
+                                           ("l" "Literature")
+                                           ("ll" "Literature Note" plain
+                                            "%?\n\nSee also %a.\n* Links\n- %x\n* Notes\n"
+                                            :if-new (file+head
+                                                     "Literature/%<%Y%m%d%H%M%S>-${slug}.org"
+                                                     "#+title: ${title}\n")
+                                            :unnarrowed t
+                                            )
+                                           ("lr" "Bibliography reference" plain
+                                            "#+ROAM_KEY: %^{citekey}\n#+PROPERTY: type %^{entry-type}\n#+FILETAGS: %^{keywords}\n#+AUTHOR: %^{author}\n%?"
+                                            :if-new (file+head
+                                                     "References/${citekey}.org"
+                                                     "#+title: ${title}\n")
+                                            :unnarrowed t
+                                            )
+                                           ("c" "Code" plain
+                                            "%?\n\nSee also %a.\n"
+                                            :if-new (file+head
+                                                     "Code/%<%Y%m%d%H%M%S>-${slug}.org"
+                                                     "#+title: ${title}\n#+date: %U")
+                                            :unnarrowed t
+                                            )
+                                           )))
 
-(provide 'init)
-;;; init.el ends here
+(provide 'init-page)
+;;; init-page.el ends here
 #+end_src
 
 ** Mindmap

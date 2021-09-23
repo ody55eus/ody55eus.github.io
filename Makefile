@@ -6,7 +6,7 @@
 all: diag html
 
 init:
-	emacs --quick --script init.el --funcall=jp/init-webpage
+	emacs --quick --script init-page.el --funcall=jp/init-webpage
 
 install:
 	curl -L http://sourceforge.net/projects/plantuml/files/plantuml.jar/download > ~/plantuml.jar
