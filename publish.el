@@ -20,7 +20,25 @@
 ;;
 ;;; Code:
 
+(require 'package)
+
+(package-initialize)
+
+(setq package-archives '(("melpa" . "https://melpa.org/packages/")
+                         ("org" . "http://orgmode.org/elpa/")))
+
+(package-refresh-contents)
+
+(package-install 'htmlize)
+(package-install 'org-roam)
+(package-install 's)
+
 (require 'ox-publish)
+(require 'ox-html)
+(require 'htmlize)
+(require 'org-roam)
+(require 's)
+(require 'find-lisp)
 
 (add-to-list 'load-path "emacs-webfeeder")
 (if (require 'webfeeder nil 'noerror)
@@ -28,9 +46,57 @@
   (call-process "git" nil nil nil "clone" "https://gitlab.com/ambrevar/emacs-webfeeder")
   (require 'webfeeder))
 
-(defvar jp/repository "https://gitlab.com/ody55eus/ody55eus.gitlab.io")
-(defvar jp/root (expand-file-name "."))
+(defun jp/init-webpage ()
+  (defvar jp/url "https://ody5.de")
+  (defvar jp/repository "https://gitlab.com/ody55eus/ody55eus.gitlab.io")
+  (defvar jp/root (expand-file-name "."))
+  (setq org-roam-directory (concat
+                            jp/root
+                            "/source/")
+        org-directory (concat
+                       jp/root
+                       "/source/")
+        org-roam-db-location (concat jp/root "/org-roam.db")
+        org-id-extra-files (find-lisp-find-files org-roam-directory "\.org$")
+        org-roam-capture-templates '(("d" "default" plain
+                                      "%?\n\nSee also %a.\n"
+                                      :if-new (file+head
+                                               "%<%Y%m%d%H%M%S>-${slug}.org"
+                                               "#+title: ${title}\n")
+                                      :unnarrowed t)
+                                     ("j" "Projects" plain
+                                      "%?"
+                                      :if-new (file+head
+                                               "Projects/%<%Y%m%d%H%M%S>-${slug}.org"
+                                               "#+title: ${title}\n")
+                                      :clock-in :clock-resume
+                                      :unnarrowed t
+                                      )
+                                     ("l" "Literature")
+                                     ("ll" "Literature Note" plain
+                                      "%?\n\nSee also %a.\n* Links\n- %x\n* Notes\n"
+                                      :if-new (file+head
+                                               "Literature/%<%Y%m%d%H%M%S>-${slug}.org"
+                                               "#+title: ${title}\n")
+                                      :unnarrowed t
+                                      )
+                                     ("lr" "Bibliography reference" plain
+                                      "#+ROAM_KEY: %^{citekey}\n#+PROPERTY: type %^{entry-type}\n#+FILETAGS: %^{keywords}\n#+AUTHOR: %^{author}\n%?"
+                                      :if-new (file+head
+                                               "References/${citekey}.org"
+                                               "#+title: ${title}\n")
+                                      :unnarrowed t
+                                      )
+                                     ("c" "Code" plain
+                                      "%?\n\nSee also %a.\n"
+                                      :if-new (file+head
+                                               "Code/%<%Y%m%d%H%M%S>-${slug}.org"
+                                               "#+title: ${title}\n#+date: %U")
+                                      :unnarrowed t
+                                      )
+                                     )))
 
+(jp/init-webpage)
 ;; Timestamps can be used to avoid rebuilding everything.
 ;; This is useful locally for testing.
 ;; It won't work on Gitlab when stored in ./: the timestamps file should
@@ -225,18 +291,9 @@ See `org-publish-sitemap-default-entry'."
              :publishing-directory "./public"
              :publishing-function 'org-publish-attachment
              :recursive t)
-       (list "site-cert"
-             :base-directory ".well-known"
-             :exclude "public/"
-             :base-extension 'any
-             :publishing-directory "./public/.well-known"
-             :publishing-function 'org-publish-attachment
-             :recursive t)
        (list "site" :components '("site-org"))))
 
 (defun jp/publish-html ()
-  (require 'init-page)
-  (jp/init-webpage)
   (org-id-update-id-locations)
   (org-publish-all)
   )
