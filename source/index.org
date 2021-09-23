@@ -5,22 +5,16 @@
 
 Dear visitor,
 
-welcome to my private web presence.
-
-* About Me
-I am Jonathan Pieper, a programmer and researcher in physics, data science, and machine learning. I am always interested in new projects.
+welcome to my odyssey through science. This little corner of the web lets you follow me as I stumble across numerous phenomena in very interdisciplnary fields.
 
 This webpage is constantly growing and improving.
 
+* About Me
+I am Jonathan Pieper, a programmer and researcher in physics, data science, and machine learning. I am always interested in new projects.
 * Projects
+To see all my Projects, take a look at the Menu.
 ** [[id:5064b908-04f6-4167-a66c-072073109ef1][Org Roam (Zettelkasten)]]
 During the time after I finished my masters degree, I explored some additional ways to autodidacticaly educate myself. On this journey I discovered [[id:7bd0d14c-b748-4f05-8c70-36fbf0a94745][Emacs]] and the book [[id:f80807b8-91f4-4799-92a3-076d1c1a045a][How to take smart notes]].
-** [[id:8af0d372-1957-45a8-93ed-a7aec02adc91][Flower Project]]
-** [[id:9394118f-dd21-4fa0-abcc-896485551af1][Geodaetic solution to an initial values problem]]
 * This Site
 This site is created using [[id:7bd0d14c-b748-4f05-8c70-36fbf0a94745][Emacs]] and [[id:afe3de83-e5b8-4f53-b457-987dd9bd579d][Org Mode]].
-* Linklists
-:PROPERTIES:
-:ID:       86c5af77-1283-427e-a8be-6fed138bed88
-:END:
-- [[id:47b34235-2518-425f-81ff-da683530dafb][Literature Notes]]
+For more information, please consult the [[id:1e0af5aa-7042-47f2-abb0-01c55b13f25b][Readme.org]].

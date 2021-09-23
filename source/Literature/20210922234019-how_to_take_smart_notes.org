@@ -2,6 +2,8 @@
 :ID:       f80807b8-91f4-4799-92a3-076d1c1a045a
 :END:
 #+title: How to take smart notes
-#+author:  Söhnke
+This is an amazing book and inspired me to take full advantage of my [[id:5064b908-04f6-4167-a66c-072073109ef1][Org Roam (Zettelkasten)]].
 
-* Notes
+* References
+- [[https://takesmartnotes.com/][Write... One Note at a Time]]
+- [[https://www.quora.com/What-is-the-best-way-to-take-notes][Quora - What is the best way to take notes?]]

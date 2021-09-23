@@ -123,7 +123,7 @@
     (format
      "<a href=\"%1$s/index.html\">About</a>
 <a href=\"%1$s/projects.html\">Projects</a>
-<a href=\"%1$s/Literature/index.html\">Projects</a>
+<a href=\"%1$s/Literature/index.html\">Literature</a>
 <a href=\"%1$s/References/index.html\">Links</a>"
      prefix)))
 
