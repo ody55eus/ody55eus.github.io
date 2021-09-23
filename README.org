@@ -17,7 +17,7 @@ cat ./INFO | grep -i $variable | cut --delimiter="|" -f3
 
 * Publish
 ** Gitlab CI
-This configuration loads the docker image [[https://hub.docker.com/r/silex/emacs][silex/emacs]] and executes the [[file:Makefile][Makefile]].
+This configuration loads my docker image [[https://hub.docker.com/r/ody55eus/publish][ody55eus/publish]] and executes the [[*Publish.el][Publish.el]].
 #+begin_src yaml :tangle ./.gitlab-ci.yml
 image: ody55eus/publish
 
@@ -89,7 +89,7 @@ Inspired from [[https://gitlab.com/ambrevar/ambrevar.gitlab.io][ambrevar]] and [
 (setq package-archives '(("melpa" . "https://melpa.org/packages/")
                          ("org" . "http://orgmode.org/elpa/")))
 
-;;(package-refresh-contents)
+(package-refresh-contents)
 
 (package-install 'htmlize)
 (package-install 'org-roam)
@@ -367,7 +367,6 @@ See `org-publish-sitemap-default-entry'."
 #+RESULTS:
 : publish
 
-* Writing
 * Build
 - Install Requirements:
   + Emacs
