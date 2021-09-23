@@ -21,7 +21,7 @@
 ;;; Code:
 
 (defun jp/init-webpage ()
-    (setq org-roam-directory (concat
+    (setq-local org-roam-directory (concat
                               (locate-dominating-file buffer-file-name "INFO")
                               "source/")
           org-roam-capture-templates '(("d" "default" plain

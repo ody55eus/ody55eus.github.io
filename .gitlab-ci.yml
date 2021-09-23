@@ -1,5 +1,4 @@
-image: silex/emacs
-
+image: ody55eus/publish
 
 pages:
   script:

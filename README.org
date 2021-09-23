@@ -16,8 +16,7 @@ cat ./INFO | grep -i $variable | cut --delimiter="|" -f3
 ** Gitlab CI
 This configuration loads the docker image [[https://hub.docker.com/r/silex/emacs][silex/emacs]] and executes the [[file:Makefile][Makefile]].
 #+begin_src yaml :tangle ./.gitlab-ci.yml
-image: silex/emacs
-
+image: ody55eus/publish
 
 pages:
   script:
@@ -329,7 +328,7 @@ See `org-publish-sitemap-default-entry'."
 ;;; Code:
 
 (defun jp/init-webpage ()
-    (setq org-roam-directory (concat
+    (setq-local org-roam-directory (concat
                               (locate-dominating-file buffer-file-name "INFO")
                               "source/")
           org-roam-capture-templates '(("d" "default" plain
