@@ -27,7 +27,7 @@
 (setq package-archives '(("melpa" . "https://melpa.org/packages/")
                          ("org" . "http://orgmode.org/elpa/")))
 
-(package-refresh-contents)
+;;(package-refresh-contents)
 
 (package-install 'htmlize)
 (package-install 'org-roam)
@@ -122,9 +122,9 @@
                                      (file-name-directory file))))
     (format
      "<a href=\"%1$s/index.html\">About</a>
-<a href=\"%1$s/articles.html\">Articles</a>
-<a href=\"%1$s/projects/index.html\">Projects</a>
-<a href=\"%1$s/links/index.html\">Links</a>"
+<a href=\"%1$s/projects.html\">Projects</a>
+<a href=\"%1$s/Literature/index.html\">Projects</a>
+<a href=\"%1$s/References/index.html\">Links</a>"
      prefix)))
 
 (setq ;; org-html-divs '((preamble "header" "top")
@@ -211,7 +211,7 @@ See `org-publish-sitemap-default'. "
   ;; Remove index and non articles.
   (setcdr list (seq-filter
                 (lambda (file)
-                  (string-match "file:[^ ]*/index.org" (car file)))
+                  (string-match "file:[^ ]*Projects/.*.org" (car file)))
                 (cdr list)))
   ;; TODO: Include subtitle?  It may be wiser, at least for projects.
   (concat "#+TITLE: " title "\n"
@@ -272,14 +272,14 @@ See `org-publish-sitemap-default-entry'."
              :publishing-function '(org-html-publish-to-html)
              :publishing-directory "./public/" ; TODO: Set dir relative to root so that we can use "C-c C-e P".
              :sitemap-format-entry #'jp/org-publish-sitemap-entry
-             ;; :auto-sitemap t
-             ;; :sitemap-title "Articles"
-             ;; :sitemap-filename "articles.org"
-             ;; ;; :sitemap-file-entry-format "%d *%t*"
-             ;; :sitemap-style 'list
-             ;; :sitemap-function #'jp/org-publish-sitemap
-             ;; ;; :sitemap-ignore-case t
-             ;; :sitemap-sort-files 'anti-chronologically
+             :auto-sitemap t
+             :sitemap-title "Projects"
+             :sitemap-filename "projects.org"
+             ;; :sitemap-file-entry-format "%d *%t*"
+             :sitemap-style 'list
+             :sitemap-function #'jp/org-publish-sitemap
+             ;; :sitemap-ignore-case t
+             :sitemap-sort-files 'anti-chronologically
              :html-head-include-default-style nil
              :html-head-include-scripts nil
              :html-head "<link rel=\"stylesheet\" type=\"text/css\" href=\"../dark.css\">

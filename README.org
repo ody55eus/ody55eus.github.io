@@ -1,11 +1,14 @@
 #+TITLE: Readme
+#+HTML_HEAD: <link rel="stylesheet" type="text/css" href="source/dark.css">
 
-This is my personal Webpage.
+This code generates my webpage.
 
-I created this page using Emacs Org Mode. To learn more about [[https://orgmode.org/][Org Mode]] and [[https://orgmode.org/manual/Publishing.html#Publishing][publishing org files]], see respective links to the original documentation.
+I created this page using Emacs OrgMode. To learn more about [[https://orgmode.org/][OrgMode]] and [[https://orgmode.org/manual/Publishing.html#Publishing][publishing org files]], see respective links to the original documentation.
 
 * About Me
 This code block imports the variables from the [[file:INFO][INFO]] file.
+
+#+INCLUDE: INFO
 
 #+name:gvar
 #+begin_src sh :var variable="version"
@@ -86,7 +89,7 @@ Inspired from [[https://gitlab.com/ambrevar/ambrevar.gitlab.io][ambrevar]] and [
 (setq package-archives '(("melpa" . "https://melpa.org/packages/")
                          ("org" . "http://orgmode.org/elpa/")))
 
-(package-refresh-contents)
+;;(package-refresh-contents)
 
 (package-install 'htmlize)
 (package-install 'org-roam)
@@ -181,9 +184,9 @@ Inspired from [[https://gitlab.com/ambrevar/ambrevar.gitlab.io][ambrevar]] and [
                                      (file-name-directory file))))
     (format
      "<a href=\"%1$s/index.html\">About</a>
-<a href=\"%1$s/articles.html\">Articles</a>
-<a href=\"%1$s/projects/index.html\">Projects</a>
-<a href=\"%1$s/links/index.html\">Links</a>"
+<a href=\"%1$s/projects.html\">Projects</a>
+<a href=\"%1$s/Literature/index.html\">Projects</a>
+<a href=\"%1$s/References/index.html\">Links</a>"
      prefix)))
 
 (setq ;; org-html-divs '((preamble "header" "top")
@@ -270,7 +273,7 @@ See `org-publish-sitemap-default'. "
   ;; Remove index and non articles.
   (setcdr list (seq-filter
                 (lambda (file)
-                  (string-match "file:[^ ]*/index.org" (car file)))
+                  (string-match "file:[^ ]*Projects/.*.org" (car file)))
                 (cdr list)))
   ;; TODO: Include subtitle?  It may be wiser, at least for projects.
   (concat "#+TITLE: " title "\n"
@@ -331,14 +334,14 @@ See `org-publish-sitemap-default-entry'."
              :publishing-function '(org-html-publish-to-html)
              :publishing-directory "./public/" ; TODO: Set dir relative to root so that we can use "C-c C-e P".
              :sitemap-format-entry #'jp/org-publish-sitemap-entry
-             ;; :auto-sitemap t
-             ;; :sitemap-title "Articles"
-             ;; :sitemap-filename "articles.org"
-             ;; ;; :sitemap-file-entry-format "%d *%t*"
-             ;; :sitemap-style 'list
-             ;; :sitemap-function #'jp/org-publish-sitemap
-             ;; ;; :sitemap-ignore-case t
-             ;; :sitemap-sort-files 'anti-chronologically
+             :auto-sitemap t
+             :sitemap-title "Projects"
+             :sitemap-filename "projects.org"
+             ;; :sitemap-file-entry-format "%d *%t*"
+             :sitemap-style 'list
+             :sitemap-function #'jp/org-publish-sitemap
+             ;; :sitemap-ignore-case t
+             :sitemap-sort-files 'anti-chronologically
              :html-head-include-default-style nil
              :html-head-include-scripts nil
              :html-head "<link rel=\"stylesheet\" type=\"text/css\" href=\"../dark.css\">
@@ -361,30 +364,13 @@ See `org-publish-sitemap-default-entry'."
 ;;; publish.el ends here
 #+end_src
 
-* Writing
-** Mindmap
-#+begin_src plantuml :tangle ./diag/main.puml
-@startmindmap
-* ody55eus
-** Python
-*** Manim
-** Physics
-*** Fourier Transformaton
-** Data Science
-*** FAIR Data
-** Machine Learning
-*** Neural Networks
-@endmindmap
+#+RESULTS:
+: publish
 
-#+end_src
+* Writing
 * Build
 - Install Requirements:
-  + Install Emacs
-  + Install some Java Runtime (to run PlantUML)
-  + Download PlantUML script:
-   #+begin_src sh
-curl -L http://sourceforge.net/projects/plantuml/files/plantuml.jar/download > ~/plantuml.jar
-   #+end_src
+  + Emacs
 - Just run the following command, to deploy all:
   #+begin_src sh
 emacs --quick --script publish.el --funcall=jp/publish-html
@@ -396,3 +382,18 @@ International License. To view a copy of this license, visit
 [[http://creativecommons.org/licenses/by-sa/4.0/]]
 
 The code creating these pages is licensed under [[https://www.gnu.org/licenses/gpl-3.0.en.html][GNU GPLv3]].
+
+Copyright (C) 2021 Jonathan Pieper
+
+This program is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program.  If not, see <http://www.gnu.org/licenses/>.
