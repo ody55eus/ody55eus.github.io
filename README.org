@@ -85,28 +85,20 @@ Inspired from [[https://gitlab.com/ambrevar/ambrevar.gitlab.io][ambrevar]] and [
 (require 'package)
 
 (package-initialize)
-
-(setq package-archives '(("melpa" . "https://melpa.org/packages/")
-                         ("org" . "http://orgmode.org/elpa/")))
-
-(package-refresh-contents)
+(unless package-archive-contents
+  (add-to-list 'package-archives '("org" . "https://orgmode.org/elpa/") t)
+  (add-to-list 'package-archives '("gnu" . "https://elpa.gnu.org/packages/") t)
+  (add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") t)
+  (package-refresh-contents))
 
 (package-install 'htmlize)
 (package-install 'org-roam)
-(package-install 's)
 
 (require 'ox-publish)
 (require 'ox-html)
 (require 'htmlize)
 (require 'org-roam)
-(require 's)
 (require 'find-lisp)
-
-(add-to-list 'load-path "emacs-webfeeder")
-(if (require 'webfeeder nil 'noerror)
-    (call-process "git" nil nil nil "-C" "emacs-webfeeder" "pull")
-  (call-process "git" nil nil nil "clone" "https://gitlab.com/ambrevar/emacs-webfeeder")
-  (require 'webfeeder))
 
 (defun jp/init-webpage ()
   (defvar jp/url "https://ody5.de")
@@ -115,6 +107,7 @@ Inspired from [[https://gitlab.com/ambrevar/ambrevar.gitlab.io][ambrevar]] and [
   (setq org-roam-directory (concat
                             jp/root
                             "/source/")
+        org-roam-v2-ack t
         org-directory (concat
                        jp/root
                        "/source/")
@@ -333,13 +326,13 @@ See `org-publish-sitemap-default-entry'."
              :recursive t
              :publishing-function '(org-html-publish-to-html)
              :publishing-directory "./public/" ; TODO: Set dir relative to root so that we can use "C-c C-e P".
-             :sitemap-format-entry #'jp/org-publish-sitemap-entry
-             :auto-sitemap t
+             ;;:sitemap-format-entry #'jp/org-publish-sitemap-entry
+             ;;:auto-sitemap t
              :sitemap-title "Projects"
              :sitemap-filename "projects.org"
              ;; :sitemap-file-entry-format "%d *%t*"
              :sitemap-style 'list
-             :sitemap-function #'jp/org-publish-sitemap
+             ;; :sitemap-function #'jp/org-publish-sitemap
              ;; :sitemap-ignore-case t
              :sitemap-sort-files 'anti-chronologically
              :html-head-include-default-style nil
@@ -356,6 +349,7 @@ See `org-publish-sitemap-default-entry'."
        (list "site" :components '("site-org"))))
 
 (defun jp/publish-html ()
+  (org-roam-setup)
   (org-id-update-id-locations)
   (org-publish-all)
   )
@@ -364,9 +358,6 @@ See `org-publish-sitemap-default-entry'."
 ;;; publish.el ends here
 #+end_src
 
-#+RESULTS:
-: publish
-
 * Build
 - Install Requirements:
   + Emacs
@@ -374,6 +365,16 @@ See `org-publish-sitemap-default-entry'."
   #+begin_src sh
 emacs --quick --script publish.el --funcall=jp/publish-html
   #+end_src
+
+* Deploy
+#+begin_src sh :tangle deploy.sh
+#!/usr/bin/env zsh
+set -euo pipefail
+
+tar czf public.tar public/
+scp public.tar deploy@ody5.de/var/html/public.tar
+
+#+end_src
 
 * License
 This content is licensed under the Creative Commons Attribution-ShareAlike 4.0

@@ -23,28 +23,20 @@
 (require 'package)
 
 (package-initialize)
-
-(setq package-archives '(("melpa" . "https://melpa.org/packages/")
-                         ("org" . "http://orgmode.org/elpa/")))
-
-(package-refresh-contents)
+(unless package-archive-contents
+  (add-to-list 'package-archives '("org" . "https://orgmode.org/elpa/") t)
+  (add-to-list 'package-archives '("gnu" . "https://elpa.gnu.org/packages/") t)
+  (add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") t)
+  (package-refresh-contents))
 
 (package-install 'htmlize)
 (package-install 'org-roam)
-(package-install 's)
 
 (require 'ox-publish)
 (require 'ox-html)
 (require 'htmlize)
 (require 'org-roam)
-(require 's)
 (require 'find-lisp)
-
-(add-to-list 'load-path "emacs-webfeeder")
-(if (require 'webfeeder nil 'noerror)
-    (call-process "git" nil nil nil "-C" "emacs-webfeeder" "pull")
-  (call-process "git" nil nil nil "clone" "https://gitlab.com/ambrevar/emacs-webfeeder")
-  (require 'webfeeder))
 
 (defun jp/init-webpage ()
   (defvar jp/url "https://ody5.de")
@@ -53,6 +45,7 @@
   (setq org-roam-directory (concat
                             jp/root
                             "/source/")
+        org-roam-v2-ack t
         org-directory (concat
                        jp/root
                        "/source/")
@@ -271,13 +264,13 @@ See `org-publish-sitemap-default-entry'."
              :recursive t
              :publishing-function '(org-html-publish-to-html)
              :publishing-directory "./public/" ; TODO: Set dir relative to root so that we can use "C-c C-e P".
-             :sitemap-format-entry #'jp/org-publish-sitemap-entry
-             :auto-sitemap t
+             ;;:sitemap-format-entry #'jp/org-publish-sitemap-entry
+             ;;:auto-sitemap t
              :sitemap-title "Projects"
              :sitemap-filename "projects.org"
              ;; :sitemap-file-entry-format "%d *%t*"
              :sitemap-style 'list
-             :sitemap-function #'jp/org-publish-sitemap
+             ;; :sitemap-function #'jp/org-publish-sitemap
              ;; :sitemap-ignore-case t
              :sitemap-sort-files 'anti-chronologically
              :html-head-include-default-style nil
@@ -294,6 +287,7 @@ See `org-publish-sitemap-default-entry'."
        (list "site" :components '("site-org"))))
 
 (defun jp/publish-html ()
+  (org-roam-setup)
   (org-id-update-id-locations)
   (org-publish-all)
   )
