@@ -20,17 +20,20 @@
 ;;
 ;;; Code:
 
-(require 'package)
+(defvar bootstrap-version)
+(let ((bootstrap-file
+       (expand-file-name "straight/repos/straight.el/bootstrap.el" user-emacs-directory))
+      (bootstrap-version 5))
+  (unless (file-exists-p bootstrap-file)
+    (with-current-buffer
+        (url-retrieve-synchronously
+         "https://raw.githubusercontent.com/raxod502/straight.el/develop/install.el"
+         'silent 'inhibit-cookies)
+      (goto-char (point-max))
+      (eval-print-last-sexp)))
+  (load bootstrap-file nil 'nomessage))
 
-(package-initialize)
-(unless package-archive-contents
-  (add-to-list 'package-archives '("org" . "https://orgmode.org/elpa/") t)
-  (add-to-list 'package-archives '("gnu" . "https://elpa.gnu.org/packages/") t)
-  (add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") t)
-  (package-refresh-contents))
-
-(package-install 'org-roam)
-
+(straight-use-package 'org-roam)
 (require 'ox-publish)
 (require 'ox-html)
 (require 'org-roam)
@@ -38,12 +41,17 @@
 
 (defun jp/init-webpage ()
   (defvar jp/url "https://ody5.de")
+  (defvar jp/gl-url "https://gitlab.ody5.de")
   (defvar jp/repository "https://gitlab.com/ody55eus/ody55eus.gitlab.io")
   (defvar jp/root (expand-file-name "."))
   (setq-local org-roam-directory (concat
                             jp/root
                             "/source/")
         org-roam-v2-ack t
+        org-link-abbrev-alist '(("gitlab" . "https://gitlab.com/")
+                                ("github" . "https://github.com/")
+                                ("ody5" . (concat jp/gl-url "/"))
+                                )
         org-directory (concat
                        jp/root
                        "/source/")
@@ -88,6 +96,7 @@
                                      )))
 
 (jp/init-webpage)
+
 ;; Timestamps can be used to avoid rebuilding everything.
 ;; This is useful locally for testing.
 ;; It won't work on Gitlab when stored in ./: the timestamps file should

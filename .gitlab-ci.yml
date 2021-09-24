@@ -1,4 +1,4 @@
-image: ody55eus/publish
+image: ody55eus/emacs-straight
 
 pages:
   script:

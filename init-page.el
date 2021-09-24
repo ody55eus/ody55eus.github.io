@@ -24,12 +24,17 @@
 
 (defun jp/init-webpage ()
   (defvar jp/url "https://ody5.de")
+  (defvar jp/gl-url "https://gitlab.ody5.de")
   (defvar jp/repository "https://gitlab.com/ody55eus/ody55eus.gitlab.io")
   (defvar jp/root (expand-file-name "."))
   (setq-local org-roam-directory (concat
                             jp/root
                             "/source/")
         org-roam-v2-ack t
+        org-link-abbrev-alist '(("gitlab" . "https://gitlab.com/")
+                                ("github" . "https://github.com/")
+                                ("ody5" . (concat jp/gl-url "/"))
+                                )
         org-directory (concat
                        jp/root
                        "/source/")
