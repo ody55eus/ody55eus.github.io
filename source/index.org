@@ -1,11 +1,11 @@
 :PROPERTIES:
 :ID:       bed2da3b-5356-4834-9d43-b27d52873e34
 :END:
-#+TITLE: Ody55eus
+#+TITLE: Ody55eus - About Me
 
 Dear visitor,
 
-welcome to my odyssey through science. This little corner of the web lets you follow me as I stumble across numerous phenomena in very interdisciplnary fields.
+welcome to my odyssey through science. This little corner of the web lets you follow me on my way as I stumble across numerous phenomena in interdisciplnary fields.
 
 This webpage is constantly growing and improving.
 

@@ -1,4 +1,4 @@
-;;; init-page.el --- Org Roam Website Blog -*- lexical-binding: t; -*-
+;;; init-page.el --- Ody55eus.gitlab.io Webpage -*- lexical-binding: t; -*-
 ;;
 ;; Copyright (C) 2021 Jonathan Pieper
 ;;
@@ -14,56 +14,64 @@
 ;; This file is not part of GNU Emacs.
 ;;
 ;;; Commentary:
-;;  These are my personal emacs tweaks to edit my
-;;  webpage with org roam.
 ;;
+;;  These are my emacs tweaks to edit this
+;;  webpage using org roam.
 ;;
 ;;; Code:
 
+(require 'find-lisp)
+
 (defun jp/init-webpage ()
+  (defvar jp/url "https://ody5.de")
+  (defvar jp/repository "https://gitlab.com/ody55eus/ody55eus.gitlab.io")
+  (defvar jp/root (expand-file-name "."))
   (setq-local org-roam-directory (concat
-                                  (locate-dominating-file buffer-file-name "INFO")
-                                  "source/")
-              org-directory (concat
-                                  (locate-dominating-file buffer-file-name "INFO")
-                                  "source/")
-              org-roam-capture-templates '(("d" "default" plain
-                                            "%?\n\nSee also %a.\n"
-                                            :if-new (file+head
-                                                     "%<%Y%m%d%H%M%S>-${slug}.org"
-                                                     "#+title: ${title}\n")
-                                            :unnarrowed t)
-                                           ("j" "Projects" plain
-                                            "%?"
-                                            :if-new (file+head
-                                                     "Projects/%<%Y%m%d%H%M%S>-${slug}.org"
-                                                     "#+title: ${title}\n")
-                                            :clock-in :clock-resume
-                                            :unnarrowed t
-                                            )
-                                           ("l" "Literature")
-                                           ("ll" "Literature Note" plain
-                                            "%?\n\nSee also %a.\n* Links\n- %x\n* Notes\n"
-                                            :if-new (file+head
-                                                     "Literature/%<%Y%m%d%H%M%S>-${slug}.org"
-                                                     "#+title: ${title}\n")
-                                            :unnarrowed t
-                                            )
-                                           ("lr" "Bibliography reference" plain
-                                            "#+ROAM_KEY: %^{citekey}\n#+PROPERTY: type %^{entry-type}\n#+FILETAGS: %^{keywords}\n#+AUTHOR: %^{author}\n%?"
-                                            :if-new (file+head
-                                                     "References/${citekey}.org"
-                                                     "#+title: ${title}\n")
-                                            :unnarrowed t
-                                            )
-                                           ("c" "Code" plain
-                                            "%?\n\nSee also %a.\n"
-                                            :if-new (file+head
-                                                     "Code/%<%Y%m%d%H%M%S>-${slug}.org"
-                                                     "#+title: ${title}\n#+date: %U")
-                                            :unnarrowed t
-                                            )
-                                           )))
+                            jp/root
+                            "/source/")
+        org-roam-v2-ack t
+        org-directory (concat
+                       jp/root
+                       "/source/")
+        org-roam-db-location (concat jp/root "/org-roam.db")
+        org-id-extra-files (find-lisp-find-files org-roam-directory "\.org$")
+        org-roam-capture-templates '(("d" "default" plain
+                                      "%?\n\nSee also %a.\n"
+                                      :if-new (file+head
+                                               "%<%Y%m%d%H%M%S>-${slug}.org"
+                                               "#+title: ${title}\n")
+                                      :unnarrowed t)
+                                     ("j" "Projects" plain
+                                      "%?"
+                                      :if-new (file+head
+                                               "Projects/%<%Y%m%d%H%M%S>-${slug}.org"
+                                               "#+title: ${title}\n")
+                                      :clock-in :clock-resume
+                                      :unnarrowed t
+                                      )
+                                     ("l" "Literature")
+                                     ("ll" "Literature Note" plain
+                                      "%?\n\nSee also %a.\n* Links\n- %x\n* Notes\n"
+                                      :if-new (file+head
+                                               "Literature/%<%Y%m%d%H%M%S>-${slug}.org"
+                                               "#+title: ${title}\n")
+                                      :unnarrowed t
+                                      )
+                                     ("lr" "Bibliography reference" plain
+                                      "#+ROAM_KEY: %^{citekey}\n#+PROPERTY: type %^{entry-type}\n#+FILETAGS: %^{keywords}\n#+AUTHOR: %^{author}\n%?"
+                                      :if-new (file+head
+                                               "References/${citekey}.org"
+                                               "#+title: ${title}\n")
+                                      :unnarrowed t
+                                      )
+                                     ("c" "Code" plain
+                                      "%?\n\nSee also %a.\n"
+                                      :if-new (file+head
+                                               "Code/%<%Y%m%d%H%M%S>-${slug}.org"
+                                               "#+title: ${title}\n#+date: %U")
+                                      :unnarrowed t
+                                      )
+                                     )))
 
 (provide 'init-page)
 ;;; init-page.el ends here

@@ -1,18 +1,154 @@
 #+TITLE: Readme
+#+AUTHOR: Jonathan Pieper (ody55eus)
 #+HTML_HEAD: <link rel="stylesheet" type="text/css" href="source/dark.css">
 
 This code generates my webpage.
 
 I created this page using Emacs OrgMode. To learn more about [[https://orgmode.org/][OrgMode]] and [[https://orgmode.org/manual/Publishing.html#Publishing][publishing org files]], see respective links to the original documentation.
 
-* About Me
-This code block imports the variables from the [[file:INFO][INFO]] file.
+* Org Babel Tangle
+This Readme contains the entire configuration needed to export the [[id:5064b908-04f6-4167-a66c-072073109ef1][Org Roam (Zettelkasten)]] directory located in [[file:source/][source/]].
 
-#+INCLUDE: INFO
+The default variables are stored in the [[file:INFO][INFO]] file:
 
-#+name:gvar
-#+begin_src sh :var variable="version"
+#+INCLUDE: ./INFO
+
+To read these variables, Emacs executes the following line in shell whenever ~gvar(variable)~ gets called in this org file:
+#+NAME: gvar
+#+begin_src sh :var variable="version" :exports both
 cat ./INFO | grep -i $variable | cut --delimiter="|" -f3
+#+end_src
+
+#+RESULTS: gvar
+
+For Example, the version is call_gvar().
+
+** Creating Pages
+These code blocks create the header of the [[file:init-page.el][init-page.el]] and [[file:publish.el][publish.el]].
+
+*** Init-pages.el
+#+begin_src emacs-lisp :tangle ./init-page.el :noweb no-export
+;;; init-page.el --- Ody55eus.gitlab.io Webpage -*- lexical-binding: t; -*-
+;;
+;; Copyright (C) 2021 Jonathan Pieper
+;;
+;; Author: Jonathan Pieper <https://gitlab.com/ody55eus>
+;; Maintainer: Jonathan Pieper <ody55eus@mailbox.org>
+;; Created: September 22, 2021
+;; Modified: September 22, 2021
+;; Version: <<gvar("version")>>
+;; Keywords: <<gvar("keywords")>>
+;; Homepage: <<gvar("homepage")>>
+;; Package-Requires: ((emacs "27.2"))
+;;
+;; This file is not part of GNU Emacs.
+;;
+;;; Commentary:
+;;
+;;  These are my emacs tweaks to edit this
+;;  webpage using org roam.
+;;
+;;; Code:
+#+end_src
+*** Publish.el
+#+begin_src emacs-lisp :tangle ./publish.el :noweb no-export
+;;; publish.el --- Ody55eus.gitlab.io Webpage -*- lexical-binding: t; -*-
+;;
+;; Copyright (C) 2021 Jonathan Pieper
+;;
+;; Author: Jonathan Pieper <https://gitlab.com/ody55eus>
+;; Maintainer: Jonathan Pieper <ody55eus@mailbox.org>
+;; Created: September 22, 2021
+;; Modified: September 22, 2021
+;; Version: <<gvar("version")>>
+;; Keywords: <<gvar("keywords")>>
+;; Homepage: <<gvar("homepage")>>
+;; Package-Requires: ((emacs "27.2"))
+;;
+;; This file is not part of GNU Emacs.
+;;
+;;; Commentary:
+;;
+;;  This file configures the export settings of Emacs. It renders the
+;;  html template files and exports all org pages as html.
+;;
+;;; Code:
+#+end_src
+***
+
+* Writing
+This code block lets me set the [[id:5064b908-04f6-4167-a66c-072073109ef1][Org Roam (Zettelkasten)]] directory to the [[file:source/][source/]] folder for the current buffer. Additionally the ~org-roam-capture-templates~ and the ~org-roam-db-location~ are updated to create a new ~org-roam.db~ file and update org capture temlates.
+
+** Init.el
+#+begin_warning
+Be careful, when using this code. Changing your OrgMode directories can break some configurations. For this reason the variables are only changed in the local buffer. You have to execute ~(jp/init-webpage)~ on every buffer. *There should be a better way to do this (maybe something like [[https://github.com/benoitj/dotfiles/blob/main/dot_emacs-profiles.el][this emacs-profiles.el from benoitj]] or [[https://github.com/benoitj/dotfiles/blob/main/dot_config/doom/config.el#L6][config-local-file]]).*
+#+end_warning
+
+*** Requires ~find-lisp~
+You need the package find-lisp installed in your local Emacs config.
+#+begin_src emacs-lisp :tangle ./init-page.el
+(require 'find-lisp)
+#+end_src
+
+*** Initialize local variables
+#+NAME: init-webpage
+#+begin_src emacs-lisp :tangle ./init-page.el
+(defun jp/init-webpage ()
+  (defvar jp/url "https://ody5.de")
+  (defvar jp/repository "https://gitlab.com/ody55eus/ody55eus.gitlab.io")
+  (defvar jp/root (expand-file-name "."))
+  (setq-local org-roam-directory (concat
+                            jp/root
+                            "/source/")
+        org-roam-v2-ack t
+        org-directory (concat
+                       jp/root
+                       "/source/")
+        org-roam-db-location (concat jp/root "/org-roam.db")
+        org-id-extra-files (find-lisp-find-files org-roam-directory "\.org$")
+        org-roam-capture-templates '(("d" "default" plain
+                                      "%?\n\nSee also %a.\n"
+                                      :if-new (file+head
+                                               "%<%Y%m%d%H%M%S>-${slug}.org"
+                                               "#+title: ${title}\n")
+                                      :unnarrowed t)
+                                     ("j" "Projects" plain
+                                      "%?"
+                                      :if-new (file+head
+                                               "Projects/%<%Y%m%d%H%M%S>-${slug}.org"
+                                               "#+title: ${title}\n")
+                                      :clock-in :clock-resume
+                                      :unnarrowed t
+                                      )
+                                     ("l" "Literature")
+                                     ("ll" "Literature Note" plain
+                                      "%?\n\nSee also %a.\n* Links\n- %x\n* Notes\n"
+                                      :if-new (file+head
+                                               "Literature/%<%Y%m%d%H%M%S>-${slug}.org"
+                                               "#+title: ${title}\n")
+                                      :unnarrowed t
+                                      )
+                                     ("lr" "Bibliography reference" plain
+                                      "#+ROAM_KEY: %^{citekey}\n#+PROPERTY: type %^{entry-type}\n#+FILETAGS: %^{keywords}\n#+AUTHOR: %^{author}\n%?"
+                                      :if-new (file+head
+                                               "References/${citekey}.org"
+                                               "#+title: ${title}\n")
+                                      :unnarrowed t
+                                      )
+                                     ("c" "Code" plain
+                                      "%?\n\nSee also %a.\n"
+                                      :if-new (file+head
+                                               "Code/%<%Y%m%d%H%M%S>-${slug}.org"
+                                               "#+title: ${title}\n#+date: %U")
+                                      :unnarrowed t
+                                      )
+                                     )))
+#+end_src
+
+*** End of File (EOF)
+#+begin_src emacs-lisp :tangle ./init-page.el
+(provide 'init-page)
+;;; init-page.el ends here
 #+end_src
 
 * Publish
@@ -60,29 +196,9 @@ html:
 Inspired from [[https://gitlab.com/ambrevar/ambrevar.gitlab.io][ambrevar]] and [[https://gitlab.com/ngm/commonplace][commonplace]].
 :END:
 
+*** Install ~org-roam~
+Unfortunately the [[github:org-roam/org-roam][org-roam]] package is needed to translate the page. This must be installed first:
 #+begin_src emacs-lisp :tangle ./publish.el :noweb no-export
-;;; publish.el --- Ody55eus.gitlab.io Webpage -*- lexical-binding: t; -*-
-;;
-;; Copyright (C) 2021 Jonathan Pieper
-;;
-;; Author: Jonathan Pieper <https://gitlab.com/ody55eus>
-;; Maintainer: Jonathan Pieper <ody55eus@mailbox.org>
-;; Created: September 22, 2021
-;; Modified: September 22, 2021
-;; Version: <<gvar("version")>>
-;; Keywords: <<gvar("keywords")>>
-;; Homepage: <<gvar("homepage")>>
-;; Package-Requires: ((emacs "27.2"))
-;;
-;; This file is not part of GNU Emacs.
-;;
-;;; Commentary:
-;;
-;;  This file configures the export settings of Emacs. It renders the
-;;  html template files and exports all org pages as html.
-;;
-;;; Code:
-
 (require 'package)
 
 (package-initialize)
@@ -98,58 +214,16 @@ Inspired from [[https://gitlab.com/ambrevar/ambrevar.gitlab.io][ambrevar]] and [
 (require 'ox-html)
 (require 'org-roam)
 (require 'find-lisp)
+#+end_src
 
-(defun jp/init-webpage ()
-  (defvar jp/url "https://ody5.de")
-  (defvar jp/repository "https://gitlab.com/ody55eus/ody55eus.gitlab.io")
-  (defvar jp/root (expand-file-name "."))
-  (setq org-roam-directory (concat
-                            jp/root
-                            "/source/")
-        org-roam-v2-ack t
-        org-directory (concat
-                       jp/root
-                       "/source/")
-        org-roam-db-location (concat jp/root "/org-roam.db")
-        org-id-extra-files (find-lisp-find-files org-roam-directory "\.org$")
-        org-roam-capture-templates '(("d" "default" plain
-                                      "%?\n\nSee also %a.\n"
-                                      :if-new (file+head
-                                               "%<%Y%m%d%H%M%S>-${slug}.org"
-                                               "#+title: ${title}\n")
-                                      :unnarrowed t)
-                                     ("j" "Projects" plain
-                                      "%?"
-                                      :if-new (file+head
-                                               "Projects/%<%Y%m%d%H%M%S>-${slug}.org"
-                                               "#+title: ${title}\n")
-                                      :clock-in :clock-resume
-                                      :unnarrowed t
-                                      )
-                                     ("l" "Literature")
-                                     ("ll" "Literature Note" plain
-                                      "%?\n\nSee also %a.\n* Links\n- %x\n* Notes\n"
-                                      :if-new (file+head
-                                               "Literature/%<%Y%m%d%H%M%S>-${slug}.org"
-                                               "#+title: ${title}\n")
-                                      :unnarrowed t
-                                      )
-                                     ("lr" "Bibliography reference" plain
-                                      "#+ROAM_KEY: %^{citekey}\n#+PROPERTY: type %^{entry-type}\n#+FILETAGS: %^{keywords}\n#+AUTHOR: %^{author}\n%?"
-                                      :if-new (file+head
-                                               "References/${citekey}.org"
-                                               "#+title: ${title}\n")
-                                      :unnarrowed t
-                                      )
-                                     ("c" "Code" plain
-                                      "%?\n\nSee also %a.\n"
-                                      :if-new (file+head
-                                               "Code/%<%Y%m%d%H%M%S>-${slug}.org"
-                                               "#+title: ${title}\n#+date: %U")
-                                      :unnarrowed t
-                                      )
-                                     )))
+*** Define ~jp/init-webpage~
+Same as in [[*Initialize local variables][Initialize local variables]]:
+#+begin_src emacs-lisp :tangle ./publish.el :noweb yes
+<<init-webpage>>
+#+end_src
 
+*** Set important export variables
+#+begin_src emacs-lisp :tangle ./publish.el :noweb no-export
 (jp/init-webpage)
 ;; Timestamps can be used to avoid rebuilding everything.
 ;; This is useful locally for testing.
@@ -169,6 +243,10 @@ Inspired from [[https://gitlab.com/ambrevar/ambrevar.gitlab.io][ambrevar]] and [
       org-export-with-tags 'not-in-toc
       org-export-with-toc t)
 
+#+end_src
+
+*** Preamble
+#+begin_src emacs-lisp :tangle ./publish.el :noweb no-export
 (defun jp/preamble (info)
   "Return preamble as a string."
   (let* ((file (plist-get info :input-file))
@@ -181,6 +259,10 @@ Inspired from [[https://gitlab.com/ambrevar/ambrevar.gitlab.io][ambrevar]] and [
 <a href=\"%1$s/References/index.html\">Links</a>"
      prefix)))
 
+#+end_src
+
+*** Postamble
+#+begin_src emacs-lisp :tangle ./publish.el :noweb no-export
 (setq ;; org-html-divs '((preamble "header" "top")
  ;;                 (content "main" "content")
  ;;                 (postamble "footer" "postamble"))
@@ -205,6 +287,11 @@ Inspired from [[https://gitlab.com/ambrevar/ambrevar.gitlab.io][ambrevar]] and [
  org-html-validation-link nil
  org-html-doctype "html5")
 
+#+end_src
+
+*** Define some git and string format helper
+**** Git Helper
+#+begin_src emacs-lisp :tangle ./publish.el :noweb no-export
 ;; Some help functions
 (defun jp/git-creation-date (file)
   "Return the first commit date of FILE.
@@ -259,6 +346,34 @@ date only if they differ."
                        last-update-date))))))
 (advice-add 'org-html-format-spec :override 'jp/org-html-format-spec)
 
+#+end_src
+
+**** Find Date
+~jp/org-publish-find-date~ is just like ~org-publish-find-date~ just uses git instead and does not fall back on file
+system timestamp and returns nil instead.
+#+begin_src emacs-lisp :tangle ./publish.el :noweb no-export
+(defun jp/org-publish-find-date (file project)
+  "Find the date of FILE in PROJECT.
+Just like `org-publish-find-date' but do not fall back on file
+system timestamp and return nil instead."
+  (let ((file (org-publish--expand-file-name file project)))
+    (or (org-publish-cache-get-file-property file :date nil t)
+    (org-publish-cache-set-file-property
+     file :date
+     (let ((date (org-publish-find-property file :date project)))
+       ;; DATE is a secondary string.  If it contains
+       ;; a time-stamp, convert it to internal format.
+       ;; Otherwise, use FILE modification time.
+           (let ((ts (and (consp date) (assq 'timestamp date))))
+         (and ts
+          (let ((value (org-element-interpret-data ts)))
+            (and (org-string-nw-p value)
+             (org-time-string-to-time value))))))))))
+#+end_src
+
+*** Sitemap
+**** Define ~jp/org-publish-sitemap~
+#+begin_src emacs-lisp :tangle ./publish.el :noweb no-export
 (defun jp/org-publish-sitemap (title list)
   "Outputs site map, as a string.
 See `org-publish-sitemap-default'. "
@@ -274,25 +389,10 @@ See `org-publish-sitemap-default'. "
           "#+HTML_HEAD: <link rel=\"icon\" type=\"image/x-icon\" href=\"logo.png\"> "
           "\n"
           (org-list-to-org list)))
+#+end_src
 
-(defun jp/org-publish-find-date (file project)
-  "Find the date of FILE in PROJECT.
-Just like `org-publish-find-date' but do not fall back on file
-system timestamp and return nil instead."
-  (let ((file (org-publish--expand-file-name file project)))
-    (or (org-publish-cache-get-file-property file :date nil t)
-	(org-publish-cache-set-file-property
-	 file :date
-	 (let ((date (org-publish-find-property file :date project)))
-	   ;; DATE is a secondary string.  If it contains
-	   ;; a time-stamp, convert it to internal format.
-	   ;; Otherwise, use FILE modification time.
-           (let ((ts (and (consp date) (assq 'timestamp date))))
-	     (and ts
-		  (let ((value (org-element-interpret-data ts)))
-		    (and (org-string-nw-p value)
-			 (org-time-string-to-time value))))))))))
-
+**** Define ~jp/org-publish-sitemap-entry~
+#+begin_src emacs-lisp :tangle ./publish.el :noweb no-export
 (defun jp/org-publish-sitemap-entry (entry style project)
   "Custom format for site map ENTRY, as a string.
 See `org-publish-sitemap-default-entry'."
@@ -317,7 +417,10 @@ See `org-publish-sitemap-default-entry'."
 	 ;; Return only last subdir.
 	 (capitalize (file-name-nondirectory (directory-file-name entry))))
 	(t entry)))
+#+end_src
 
+*** Setting ~org-publish-project-alist~
+#+begin_src emacs-lisp :tangle ./publish.el :noweb no-export
 (setq org-publish-project-alist
       (list
        (list "site-org"
@@ -346,13 +449,19 @@ See `org-publish-sitemap-default-entry'."
              :publishing-function 'org-publish-attachment
              :recursive t)
        (list "site" :components '("site-org"))))
+#+end_src
 
+*** Define ~jp/publish-html~
+#+begin_src emacs-lisp :tangle ./publish.el :noweb no-export
 (defun jp/publish-html ()
   (org-roam-setup)
   (org-id-update-id-locations)
   (org-publish-all)
   )
+#+end_src
 
+*** End of File (EOF)
+#+begin_src emacs-lisp :tangle ./publish.el :noweb no-export
 (provide 'publish)
 ;;; publish.el ends here
 #+end_src
@@ -366,13 +475,9 @@ emacs --quick --script publish.el --funcall=jp/publish-html
   #+end_src
 
 * Deploy
-#+begin_src sh :tangle deploy.sh
-#!/usr/bin/env zsh
-set -euo pipefail
-
-tar czf public.tar public/
-scp public.tar deploy@ody5.de/var/html/public.tar
-
+Just download the latest archive from gitlab and extract with ~tar~:
+#+begin_src sh :tangle deploy.sh :shebang "#!/usr/bin/env zsh\nset -euo pipefail\n"
+tar xzf public.tar.gz
 #+end_src
 
 * License

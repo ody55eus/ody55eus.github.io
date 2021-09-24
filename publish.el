@@ -40,7 +40,7 @@
   (defvar jp/url "https://ody5.de")
   (defvar jp/repository "https://gitlab.com/ody55eus/ody55eus.gitlab.io")
   (defvar jp/root (expand-file-name "."))
-  (setq org-roam-directory (concat
+  (setq-local org-roam-directory (concat
                             jp/root
                             "/source/")
         org-roam-v2-ack t
@@ -196,6 +196,24 @@ date only if they differ."
                        last-update-date))))))
 (advice-add 'org-html-format-spec :override 'jp/org-html-format-spec)
 
+(defun jp/org-publish-find-date (file project)
+  "Find the date of FILE in PROJECT.
+Just like `org-publish-find-date' but do not fall back on file
+system timestamp and return nil instead."
+  (let ((file (org-publish--expand-file-name file project)))
+    (or (org-publish-cache-get-file-property file :date nil t)
+    (org-publish-cache-set-file-property
+     file :date
+     (let ((date (org-publish-find-property file :date project)))
+       ;; DATE is a secondary string.  If it contains
+       ;; a time-stamp, convert it to internal format.
+       ;; Otherwise, use FILE modification time.
+           (let ((ts (and (consp date) (assq 'timestamp date))))
+         (and ts
+          (let ((value (org-element-interpret-data ts)))
+            (and (org-string-nw-p value)
+             (org-time-string-to-time value))))))))))
+
 (defun jp/org-publish-sitemap (title list)
   "Outputs site map, as a string.
 See `org-publish-sitemap-default'. "
@@ -211,24 +229,6 @@ See `org-publish-sitemap-default'. "
           "#+HTML_HEAD: <link rel=\"icon\" type=\"image/x-icon\" href=\"logo.png\"> "
           "\n"
           (org-list-to-org list)))
-
-(defun jp/org-publish-find-date (file project)
-  "Find the date of FILE in PROJECT.
-Just like `org-publish-find-date' but do not fall back on file
-system timestamp and return nil instead."
-  (let ((file (org-publish--expand-file-name file project)))
-    (or (org-publish-cache-get-file-property file :date nil t)
-	(org-publish-cache-set-file-property
-	 file :date
-	 (let ((date (org-publish-find-property file :date project)))
-	   ;; DATE is a secondary string.  If it contains
-	   ;; a time-stamp, convert it to internal format.
-	   ;; Otherwise, use FILE modification time.
-           (let ((ts (and (consp date) (assq 'timestamp date))))
-	     (and ts
-		  (let ((value (org-element-interpret-data ts)))
-		    (and (org-string-nw-p value)
-			 (org-time-string-to-time value))))))))))
 
 (defun jp/org-publish-sitemap-entry (entry style project)
   "Custom format for site map ENTRY, as a string.
