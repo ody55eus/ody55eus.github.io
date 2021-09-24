@@ -3,3 +3,6 @@
 *.cache
 /source/.orgids
 /emacs-webfeeder/
+/org-roam.db
+/source/projects.org
+/diag/*.png

@@ -262,13 +262,13 @@ See `org-publish-sitemap-default-entry'."
              :recursive t
              :publishing-function '(org-html-publish-to-html)
              :publishing-directory "./public/" ; TODO: Set dir relative to root so that we can use "C-c C-e P".
-             ;;:sitemap-format-entry #'jp/org-publish-sitemap-entry
-             ;;:auto-sitemap t
+             :sitemap-format-entry #'jp/org-publish-sitemap-entry
+             :auto-sitemap t
              :sitemap-title "Projects"
              :sitemap-filename "projects.org"
              ;; :sitemap-file-entry-format "%d *%t*"
              :sitemap-style 'list
-             ;; :sitemap-function #'jp/org-publish-sitemap
+             :sitemap-function #'jp/org-publish-sitemap
              ;; :sitemap-ignore-case t
              :sitemap-sort-files 'anti-chronologically
              :html-head-include-default-style nil

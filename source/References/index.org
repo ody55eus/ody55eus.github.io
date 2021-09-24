@@ -2,3 +2,6 @@
 :ID:       4c0ac69c-1b90-493b-a5d9-032bcafc3b2b
 :END:
 #+TITLE: Links
+
+* Linklists
+- [[id:47b34235-2518-425f-81ff-da683530dafb][Literature Notes]]
