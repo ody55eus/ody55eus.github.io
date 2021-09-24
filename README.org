@@ -22,7 +22,7 @@ This configuration loads my docker image [[https://hub.docker.com/r/ody55eus/pub
 image: ody55eus/publish
 
 pages:
-  before-script:
+  before_script:
     - emacs --quick --script requirements.el
   script:
     - emacs --quick --script publish.el --funcall=jp/publish-html
