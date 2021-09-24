@@ -22,6 +22,8 @@ This configuration loads my docker image [[https://hub.docker.com/r/ody55eus/pub
 image: ody55eus/publish
 
 pages:
+  before-script:
+    - emacs --quick --script requirements.el
   script:
     - emacs --quick --script publish.el --funcall=jp/publish-html
   artifacts:
@@ -38,12 +40,12 @@ pages:
 #
 # @version <<gvar("version")>>
 
-all: diag html
-
-init:
-	emacs --quick --script init-page.el --funcall=jp/init-webpage
+make: html
 
 install:
+	emacs --quick --script requirements.el
+
+download-puml:
 	curl -L http://sourceforge.net/projects/plantuml/files/plantuml.jar/download > ~/plantuml.jar
 
 diag:
@@ -55,10 +57,25 @@ html:
 # end
 #+end_src
 
+** Install Requirements
+#+begin_src emacs-lisp :tangle requirements.el
+(require 'package)
+
+(package-initialize)
+(unless package-archive-contents
+  (add-to-list 'package-archives '("org" . "https://orgmode.org/elpa/") t)
+  (add-to-list 'package-archives '("gnu" . "https://elpa.gnu.org/packages/") t)
+  (add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") t)
+  (package-refresh-contents))
+
+(package-install 'htmlize)
+(package-install 'org-roam)
+#+end_src
 ** Publish.el
 :Source:
 Inspired from [[https://gitlab.com/ambrevar/ambrevar.gitlab.io][ambrevar]] and [[https://gitlab.com/ngm/commonplace][commonplace]].
 :END:
+
 #+begin_src emacs-lisp :tangle ./publish.el :noweb yes
 ;;; publish.el --- Ody55eus.gitlab.io Webpage -*- lexical-binding: t; -*-
 ;;
@@ -81,18 +98,6 @@ Inspired from [[https://gitlab.com/ambrevar/ambrevar.gitlab.io][ambrevar]] and [
 ;;  html template files and exports all org pages as html.
 ;;
 ;;; Code:
-
-(require 'package)
-
-(package-initialize)
-(unless package-archive-contents
-  (add-to-list 'package-archives '("org" . "https://orgmode.org/elpa/") t)
-  (add-to-list 'package-archives '("gnu" . "https://elpa.gnu.org/packages/") t)
-  (add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") t)
-  (package-refresh-contents))
-
-(package-install 'htmlize)
-(package-install 'org-roam)
 
 (require 'ox-publish)
 (require 'ox-html)

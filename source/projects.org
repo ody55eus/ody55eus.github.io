@@ -1,5 +1,0 @@
-#+TITLE: Projects
-#+HTML_HEAD: <link rel="stylesheet" type="text/css" href="dark.css">
-#+HTML_HEAD: <link rel="icon" type="image/x-icon" href="logo.png"> 
-- [[file:Projects/20210922233006-geodaetic-solution.org][Geodaetic solution to an initial values problem]]^{ (2021-09-22)}
-- [[file:Projects/20210922231130-flower_project.org][Flower Project]]^{ (2020-07-14, updated 2021-09-22)}

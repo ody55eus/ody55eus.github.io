@@ -3,12 +3,12 @@
 #
 # @version 0.0.1
 
-all: diag html
-
-init:
-	emacs --quick --script init-page.el --funcall=jp/init-webpage
+make: html
 
 install:
+	emacs --quick --script requirements.el
+
+download-puml:
 	curl -L http://sourceforge.net/projects/plantuml/files/plantuml.jar/download > ~/plantuml.jar
 
 diag:
