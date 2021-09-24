@@ -1,8 +1,6 @@
 image: ody55eus/publish
 
 pages:
-  before_script:
-    - emacs --quick --script requirements.el
   script:
     - emacs --quick --script publish.el --funcall=jp/publish-html
   artifacts:
