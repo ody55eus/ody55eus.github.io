@@ -99,7 +99,7 @@ You need the package find-lisp installed in your local Emacs config.
   (defvar jp/gl-url "https://gitlab.ody5.de")
   (defvar jp/repository "https://gitlab.com/ody55eus/ody55eus.gitlab.io")
   (defvar jp/root (expand-file-name "."))
-  (setq-local org-roam-directory (concat
+  (setq org-roam-directory (concat
                             jp/root
                             "/source/")
         org-roam-v2-ack t
@@ -455,7 +455,7 @@ See `org-publish-sitemap-default-entry'."
              :base-directory "source/"
              :exclude "\\.org\\'"
              :base-extension 'any
-             :publishing-directory "./public"
+             :publishing-directory "./static"
              :publishing-function 'org-publish-attachment
              :recursive t)
        (list "site" :components '("site-org"))))

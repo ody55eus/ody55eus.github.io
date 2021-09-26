@@ -27,7 +27,7 @@
   (defvar jp/gl-url "https://gitlab.ody5.de")
   (defvar jp/repository "https://gitlab.com/ody55eus/ody55eus.gitlab.io")
   (defvar jp/root (expand-file-name "."))
-  (setq-local org-roam-directory (concat
+  (setq org-roam-directory (concat
                             jp/root
                             "/source/")
         org-roam-v2-ack t
