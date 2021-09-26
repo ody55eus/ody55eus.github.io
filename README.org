@@ -452,10 +452,10 @@ See `org-publish-sitemap-default-entry'."
              :html-head "<link rel=\"stylesheet\" type=\"text/css\" href=\"../dark.css\">
 <link rel=\"icon\" type=\"image/x-icon\" href=\"../logo.png\">")
        (list "site-static"
-             :base-directory "source/"
+             :base-directory "static/"
              :exclude "\\.org\\'"
              :base-extension 'any
-             :publishing-directory "./static"
+             :publishing-directory "./public"
              :publishing-function 'org-publish-attachment
              :recursive t)
        (list "site" :components '("site-org"))))
