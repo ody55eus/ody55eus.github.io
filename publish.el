@@ -127,13 +127,25 @@
   "Return preamble as a string."
   (let* ((file (plist-get info :input-file))
          (prefix (file-relative-name (expand-file-name "source" jp/root)
-                                     (file-name-directory file))))
+                                     (file-name-directory file)))
+         (prefix2 (file-relative-name
+                                     (file-name-directory file)
+                                     (expand-file-name "source" jp/root)))
+         (filename (file-name-nondirectory file))
+         (filepath (if (string-equal prefix2 ".")
+                           filename
+                           (concat prefix2 filename))))
     (format
-     "<a href=\"%1$s/index.html\">About</a>
-<a href=\"%1$s/projects.html\">Projects</a>
-<a href=\"%1$s/Literature/index.html\">Literature</a>
-<a href=\"%1$s/References/index.html\">Links</a>"
-     prefix)))
+     (concat
+     "<a href=\"%1$s/index.html\"><i class=\"fa fa-home\"></i> About</a>
+<a href=\"%1$s/projects.html\"><i class=\"fa fa-folder-open\"></i> Projects</a>
+<a href=\"%1$s/Literature/index.html\"><i class=\"fa fa-book\"></i> Literature</a>
+<a href=\"%1$s/community.html\"><i class=\"fa fa-globe\"></i> Community</a>
+<a href=\"%1$s/sitemap.html\"><i class=\"fa fa-sitemap\"></i> Sitemap</a>
+<span class=\"source\"><a href=\"%3$s/-/tree/master/source/%2$s\"><i class=\"fa fa-code\"></i>Source</a></span>
+<img class=\"logo\" src=\"%1$s/logo.png\">
+<span class=\"banner\">Ody55eus</span>")
+     prefix filepath jp/repository)))
 
 (setq ;; org-html-divs '((preamble "header" "top")
  ;;                 (content "main" "content")
@@ -141,11 +153,12 @@
  org-html-postamble t
  org-html-postamble-format `(("en" ,(concat "<p class=\"comments\"><a href=\""
                                             jp/repository "/issues\">Comments</a></p>
+
 <p class=\"date\">Date: %u</p>
 <p class=\"creator\">Made with %c</p>
 <p class=\"license\">
-  <a rel=\"license\" href=\"https://www.gnu.org/licenses/gpl-3.0.en.html\"><img alt=\"GNU General Public License\" width=\"50px\" style=\"border-width:0\" src=\"https://www.gnu.org/graphics/gplv3-127x51.png\" /></a>
-  <a rel=\"license\" href=\"http://creativecommons.org/licenses/by-sa/4.0/\"><img alt=\"Creative Commons License\" width=\"50px\" style=\"border-width:0\" src=\"https://mirrors.creativecommons.org/presskit/buttons/88x31/png/by-sa.png\" /></a>
+  <a rel=\"license\" href=\"https://www.gnu.org/licenses/gpl-3.0.en.html\"><img alt=\"GNU General Public License\" width=\"64px\" style=\"border-width:0\" src=\"https://www.gnu.org/graphics/gplv3-127x51.png\" /></a>
+  <a rel=\"license\" href=\"http://creativecommons.org/licenses/by-sa/4.0/\"><img alt=\"Creative Commons License\" width=\"64px\" style=\"border-width:0\" src=\"https://mirrors.creativecommons.org/presskit/buttons/88x31/png/by-sa.png\" /></a>
 </p>")))
  ;; Use custom preamble function to compute relative links.
  org-html-preamble #'jp/preamble
@@ -421,6 +434,21 @@ See `org-publish-sitemap-default'. "
           "\n"
           (org-list-to-org list)))
 
+(defun jp/org-publish-community-sitemap (title list)
+  "Outputs site map, as a string.
+See `org-publish-sitemap-default'. "
+  ;; Remove index and non articles.
+  (setcdr list (seq-filter
+                (lambda (file)
+                  (string-match "file:[^ ]*References/.*.org" (car file)))
+                (cdr list)))
+  (concat "#+TITLE: " title "\n"
+          "#+HTML_HEAD: <link rel=\"stylesheet\" type=\"text/css\" href=\"dark.css\">"
+          "\n"
+          "#+HTML_HEAD: <link rel=\"icon\" type=\"image/x-icon\" href=\"logo.png\"> "
+          "\n"
+          (org-list-to-org list)))
+
 (defun jp/org-publish-sitemap-entry (entry style project)
   "Custom format for site map ENTRY, as a string.
 See `org-publish-sitemap-default-entry'."
@@ -455,11 +483,11 @@ See `org-publish-sitemap-default-entry'."
              :publishing-directory "./public/"
              :sitemap-format-entry #'jp/org-publish-sitemap-entry
              :auto-sitemap t
-             :sitemap-title "Literature"
-             :sitemap-filename "literature.org"
+             :sitemap-title "Community"
+             :sitemap-filename "community.org"
              ;; :sitemap-file-entry-format "%d *%t*"
              :sitemap-style 'list
-             :sitemap-function #'jp/org-publish-main-sitemap
+             :sitemap-function #'jp/org-publish-community-sitemap
              ;; :sitemap-ignore-case t
              :sitemap-sort-files 'anti-chronologically
              :html-head-include-default-style nil
@@ -473,8 +501,8 @@ See `org-publish-sitemap-default-entry'."
              :publishing-directory "./public/"
              :sitemap-format-entry #'jp/org-publish-sitemap-entry
              :auto-sitemap t
-             :sitemap-title "Literature"
-             :sitemap-filename "literature.org"
+             :sitemap-title "Sitemap"
+             :sitemap-filename "sitemap.org"
              ;; :sitemap-file-entry-format "%d *%t*"
              :sitemap-style 'list
              :sitemap-function #'jp/org-publish-main-sitemap
