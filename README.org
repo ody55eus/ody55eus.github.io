@@ -268,6 +268,8 @@ Same as in [[*Initialize local variables][Initialize local variables]]:
 (defun jp/preamble (info)
   "Return preamble as a string."
   (let* ((file (plist-get info :input-file))
+         (gitlab-url "https://gitlab.com/ody55eus")
+         (github-url "https://github.com/ody55eus")
          (prefix (file-relative-name (expand-file-name "source" jp/root)
                                      (file-name-directory file)))
          (prefix2 (file-relative-name
@@ -280,14 +282,17 @@ Same as in [[*Initialize local variables][Initialize local variables]]:
     (format
      (concat
      "<a href=\"%1$s/index.html\"><i class=\"fa fa-home\"></i> About</a>
-<a href=\"%1$s/projects.html\"><i class=\"fa fa-folder-open\"></i> Projects</a>
+<a href=\"%1$s/Projects/projects.html\"><i class=\"fa fa-folder-open\"></i> Projects</a>
 <a href=\"%1$s/Literature/index.html\"><i class=\"fa fa-book\"></i> Literature</a>
 <a href=\"%1$s/community.html\"><i class=\"fa fa-globe\"></i> Community</a>
 <a href=\"%1$s/sitemap.html\"><i class=\"fa fa-sitemap\"></i> Sitemap</a>
-<span class=\"source\"><a href=\"%3$s/-/tree/master/source/%2$s\"><i class=\"fa fa-code\"></i> Page-Source</a></span>
 <img class=\"logo\" src=\"%1$s/logo.png\">
-<span class=\"banner\">Ody55eus</span>")
-     prefix filepath jp/repository)))
+<span class=\"banner\"><a
+  href=\"%4$s\"><i class=\"fa fa-gitlab\"></i></a><a
+  href=\"%5$s\"><i class=\"fa fa-github\"></i></a>Ody55eus</span>
+<span class=\"source\"><a href=\"%3$s/-/tree/master/source/%2$s\"><i class=\"fa fa-code\"></i> Page-Source</a></span>
+")
+     prefix filepath jp/repository gitlab-url github-url)))
 
 #+end_src
 
@@ -315,7 +320,7 @@ Same as in [[*Initialize local variables][Initialize local variables]]:
 (setq org-html-style-plain org-html-style-default
       org-html-htmlize-output-type 'css)
 #+end_src
-*** Define some git and string format helper
+*** Define some helper functions
 **** Git Helper
 #+begin_src emacs-lisp :tangle ./publish.el
 ;; Some help functions
@@ -396,7 +401,7 @@ system timestamp and return nil instead."
             (and (org-string-nw-p value)
              (org-time-string-to-time value))))))))))
 #+end_src
-*** Collapsable src and example blocks
+**** Collapsable src and example blocks
 :SOURCE:
 From [[https://tecosaur.github.io/emacs-config/config.html][Tecosaur/Emacs-config]].
 :END:
@@ -586,8 +591,8 @@ and a button to copy the content of the block.
 (advice-add 'org-html-property-drawer :around #'org-html-block-collapsable)
 #+end_src
 
-**** Sitemap
-***** Define ~jp/org-publish-sitemap~
+*** Sitemap
+**** Define ~jp/org-publish-sitemap~
 #+begin_src emacs-lisp :tangle ./publish.el :noweb no-export
 (defun jp/org-publish-sitemap (title list)
   "Outputs site map, as a string.
@@ -595,18 +600,18 @@ See `org-publish-sitemap-default'. "
   ;; Remove index and non articles.
   (setcdr list (seq-filter
                 (lambda (file)
-                  (string-match "file:[^ ]*Projects/.*.org" (car file)))
+                  (string-match "file:.*.org" (car file)))
                 (cdr list)))
   ;; TODO: Include subtitle?  It may be wiser, at least for projects.
   (concat "#+TITLE: " title "\n"
-          "#+HTML_HEAD: <link rel=\"stylesheet\" type=\"text/css\" href=\"dark.css\">"
+          "#+HTML_HEAD: <link rel=\"stylesheet\" type=\"text/css\" href=\"../dark.css\">"
           "\n"
-          "#+HTML_HEAD: <link rel=\"icon\" type=\"image/x-icon\" href=\"logo.png\"> "
+          "#+HTML_HEAD: <link rel=\"icon\" type=\"image/x-icon\" href=\"../logo.png\"> "
           "\n"
           (org-list-to-org list)))
 #+end_src
 
-***** Define ~jp/org-publish-main-sitemap~
+**** Define ~jp/org-publish-main-sitemap~
 #+begin_src emacs-lisp :tangle ./publish.el :noweb no-export
 (defun jp/org-publish-main-sitemap (title list)
   "Outputs site map, as a string.
@@ -624,7 +629,7 @@ See `org-publish-sitemap-default'. "
           (org-list-to-org list)))
 #+end_src
 
-***** Define ~jp/org-publish-community-sitemap~
+**** Define ~jp/org-publish-community-sitemap~
 #+begin_src emacs-lisp :tangle ./publish.el :noweb no-export
 (defun jp/org-publish-community-sitemap (title list)
   "Outputs site map, as a string.
@@ -642,7 +647,7 @@ See `org-publish-sitemap-default'. "
           (org-list-to-org list)))
 #+end_src
 
-***** Define ~jp/org-publish-sitemap-entry~
+**** Define ~jp/org-publish-sitemap-entry~
 #+begin_src emacs-lisp :tangle ./publish.el :noweb no-export
 (defun jp/org-publish-sitemap-entry (entry style project)
   "Custom format for site map ENTRY, as a string.
@@ -670,7 +675,7 @@ See `org-publish-sitemap-default-entry'."
 	(t entry)))
 #+end_src
 
-**** Setting ~org-publish-project-alist~
+*** Setting ~org-publish-project-alist~
 #+begin_src emacs-lisp :tangle ./publish.el :noweb no-export
 (setq org-publish-project-alist
       (list
@@ -738,7 +743,7 @@ See `org-publish-sitemap-default-entry'."
        (list "site" :components '("main-site-org" "site-projects-org" "site-static"))))
 #+end_src
 
-**** Define ~jp/publish-html~
+*** Define ~jp/publish-html~
 #+begin_src emacs-lisp :tangle ./publish.el :noweb no-export
 (defun jp/publish-html ()
   (org-roam-setup)
@@ -747,7 +752,7 @@ See `org-publish-sitemap-default-entry'."
   )
 #+end_src
 
-**** End of File (EOF)
+*** End of File (EOF)
 #+begin_src emacs-lisp :tangle ./publish.el :noweb no-export
 (provide 'publish)
 ;;; publish.el ends here

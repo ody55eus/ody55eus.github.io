@@ -126,6 +126,8 @@
 (defun jp/preamble (info)
   "Return preamble as a string."
   (let* ((file (plist-get info :input-file))
+         (gitlab-url "https://gitlab.com/ody55eus")
+         (github-url "https://github.com/ody55eus")
          (prefix (file-relative-name (expand-file-name "source" jp/root)
                                      (file-name-directory file)))
          (prefix2 (file-relative-name
@@ -138,14 +140,17 @@
     (format
      (concat
      "<a href=\"%1$s/index.html\"><i class=\"fa fa-home\"></i> About</a>
-<a href=\"%1$s/projects.html\"><i class=\"fa fa-folder-open\"></i> Projects</a>
+<a href=\"%1$s/Projects/projects.html\"><i class=\"fa fa-folder-open\"></i> Projects</a>
 <a href=\"%1$s/Literature/index.html\"><i class=\"fa fa-book\"></i> Literature</a>
 <a href=\"%1$s/community.html\"><i class=\"fa fa-globe\"></i> Community</a>
 <a href=\"%1$s/sitemap.html\"><i class=\"fa fa-sitemap\"></i> Sitemap</a>
-<span class=\"source\"><a href=\"%3$s/-/tree/master/source/%2$s\"><i class=\"fa fa-code\"></i> Page-Source</a></span>
 <img class=\"logo\" src=\"%1$s/logo.png\">
-<span class=\"banner\">Ody55eus</span>")
-     prefix filepath jp/repository)))
+<span class=\"banner\"><a
+  href=\"%4$s\"><i class=\"fa fa-gitlab\"></i></a><a
+  href=\"%5$s\"><i class=\"fa fa-github\"></i></a>Ody55eus</span>
+<span class=\"source\"><a href=\"%3$s/-/tree/master/source/%2$s\"><i class=\"fa fa-code\"></i> Page-Source</a></span>
+")
+     prefix filepath jp/repository gitlab-url github-url)))
 
 (setq ;; org-html-divs '((preamble "header" "top")
  ;;                 (content "main" "content")
@@ -409,13 +414,13 @@ See `org-publish-sitemap-default'. "
   ;; Remove index and non articles.
   (setcdr list (seq-filter
                 (lambda (file)
-                  (string-match "file:[^ ]*Projects/.*.org" (car file)))
+                  (string-match "file:.*.org" (car file)))
                 (cdr list)))
   ;; TODO: Include subtitle?  It may be wiser, at least for projects.
   (concat "#+TITLE: " title "\n"
-          "#+HTML_HEAD: <link rel=\"stylesheet\" type=\"text/css\" href=\"dark.css\">"
+          "#+HTML_HEAD: <link rel=\"stylesheet\" type=\"text/css\" href=\"../dark.css\">"
           "\n"
-          "#+HTML_HEAD: <link rel=\"icon\" type=\"image/x-icon\" href=\"logo.png\"> "
+          "#+HTML_HEAD: <link rel=\"icon\" type=\"image/x-icon\" href=\"../logo.png\"> "
           "\n"
           (org-list-to-org list)))
 
