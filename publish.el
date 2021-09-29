@@ -34,10 +34,12 @@
   (load bootstrap-file nil 'nomessage))
 
 (straight-use-package 'org-roam)
+(straight-use-package 'htmlize)
 (require 'ox-publish)
 (require 'ox-html)
 (require 'org-roam)
 (require 'find-lisp)
+(require 'htmlize)
 
 (defun jp/init-webpage ()
   (defvar jp/url "https://ody5.de")
@@ -113,7 +115,13 @@
       org-export-with-email t
       org-export-with-date t
       org-export-with-tags 'not-in-toc
-      org-export-with-toc t)
+      org-export-with-toc t
+      org-html-container-element "section"
+      org-html-metadata-timestamp-format "%Y-%m-%d"
+      org-html-checkbox-type 'html
+      org-html-html5-fancy t
+      org-html-validation-link nil
+      org-html-doctype "html5")
 
 (defun jp/preamble (info)
   "Return preamble as a string."
@@ -141,15 +149,10 @@
 </p>")))
  ;; Use custom preamble function to compute relative links.
  org-html-preamble #'jp/preamble
- ;; org-html-container-element "section"
- org-html-metadata-timestamp-format "%Y-%m-%d"
- org-html-checkbox-type 'html
- org-html-html5-fancy t
- ;; Use custom .css.  This removes the dependency on `htmlize', but then we
- ;; don't get colored code snippets.
- org-html-htmlize-output-type nil
- org-html-validation-link nil
- org-html-doctype "html5")
+)
+
+(setq org-html-style-plain org-html-style-default
+      org-html-htmlize-output-type 'css)
 
 ;; Some help functions
 (defun jp/git-creation-date (file)
@@ -403,6 +406,21 @@ See `org-publish-sitemap-default'. "
           "\n"
           (org-list-to-org list)))
 
+(defun jp/org-publish-main-sitemap (title list)
+  "Outputs site map, as a string.
+See `org-publish-sitemap-default'. "
+  ;; Remove index and non articles.
+  (setcdr list (seq-filter
+                (lambda (file)
+                  (string-match "file:.*.org" (car file)))
+                (cdr list)))
+  (concat "#+TITLE: " title "\n"
+          "#+HTML_HEAD: <link rel=\"stylesheet\" type=\"text/css\" href=\"dark.css\">"
+          "\n"
+          "#+HTML_HEAD: <link rel=\"icon\" type=\"image/x-icon\" href=\"logo.png\"> "
+          "\n"
+          (org-list-to-org list)))
+
 (defun jp/org-publish-sitemap-entry (entry style project)
   "Custom format for site map ENTRY, as a string.
 See `org-publish-sitemap-default-entry'."
@@ -430,11 +448,47 @@ See `org-publish-sitemap-default-entry'."
 
 (setq org-publish-project-alist
       (list
-       (list "site-org"
+       (list "all-site-pages-org"
              :base-directory "./source/"
              :recursive t
              :publishing-function '(org-html-publish-to-html)
              :publishing-directory "./public/"
+             :sitemap-format-entry #'jp/org-publish-sitemap-entry
+             :auto-sitemap t
+             :sitemap-title "Literature"
+             :sitemap-filename "literature.org"
+             ;; :sitemap-file-entry-format "%d *%t*"
+             :sitemap-style 'list
+             :sitemap-function #'jp/org-publish-main-sitemap
+             ;; :sitemap-ignore-case t
+             :sitemap-sort-files 'anti-chronologically
+             :html-head-include-default-style nil
+             :html-head-include-scripts nil
+             :html-head "<link rel=\"stylesheet\" type=\"text/css\" href=\"../dark.css\">
+<link rel=\"icon\" type=\"image/x-icon\" href=\"../logo.png\">")
+       (list "main-site-org"
+             :base-directory "./source/"
+             :recursive nil
+             :publishing-function '(org-html-publish-to-html)
+             :publishing-directory "./public/"
+             :sitemap-format-entry #'jp/org-publish-sitemap-entry
+             :auto-sitemap t
+             :sitemap-title "Literature"
+             :sitemap-filename "literature.org"
+             ;; :sitemap-file-entry-format "%d *%t*"
+             :sitemap-style 'list
+             :sitemap-function #'jp/org-publish-main-sitemap
+             ;; :sitemap-ignore-case t
+             :sitemap-sort-files 'anti-chronologically
+             :html-head-include-default-style nil
+             :html-head-include-scripts nil
+             :html-head "<link rel=\"stylesheet\" type=\"text/css\" href=\"dark.css\">
+<link rel=\"icon\" type=\"image/x-icon\" href=\"logo.png\">")
+       (list "site-projects-org"
+             :base-directory "./source/Projects"
+             :recursive t
+             :publishing-function '(org-html-publish-to-html)
+             :publishing-directory "./public/Projects"
              :sitemap-format-entry #'jp/org-publish-sitemap-entry
              :auto-sitemap t
              :sitemap-title "Projects"
@@ -455,7 +509,7 @@ See `org-publish-sitemap-default-entry'."
              :publishing-directory "./public"
              :publishing-function 'org-publish-attachment
              :recursive t)
-       (list "site" :components '("site-org"))))
+       (list "site" :components '("main-site-org" "site-projects-org" "site-static"))))
 
 (defun jp/publish-html ()
   (org-roam-setup)

@@ -198,13 +198,13 @@ html:
 #+end_src
 
 ** Publish.el
-:Source:
+:SOURCE:
 Inspired from [[https://gitlab.com/ambrevar/ambrevar.gitlab.io][ambrevar]] and [[https://gitlab.com/ngm/commonplace][commonplace]].
 :END:
 
-*** Install ~org-roam~
+*** Install ~org-roam~ and ~htmlize~
 Unfortunately the [[github:org-roam/org-roam][org-roam]] package is needed to translate the page. We install this with straight:
-#+begin_src emacs-lisp :tangle ./publish.el :noweb no-export
+#+begin_src emacs-lisp :tangle ./publish.el
 (defvar bootstrap-version)
 (let ((bootstrap-file
        (expand-file-name "straight/repos/straight.el/bootstrap.el" user-emacs-directory))
@@ -219,10 +219,12 @@ Unfortunately the [[github:org-roam/org-roam][org-roam]] package is needed to tr
   (load bootstrap-file nil 'nomessage))
 
 (straight-use-package 'org-roam)
+(straight-use-package 'htmlize)
 (require 'ox-publish)
 (require 'ox-html)
 (require 'org-roam)
 (require 'find-lisp)
+(require 'htmlize)
 #+end_src
 
 *** Define ~jp/init-webpage~
@@ -232,6 +234,7 @@ Same as in [[*Initialize local variables][Initialize local variables]]:
 #+end_src
 
 *** Set important export variables
+**** Org Export Settings
 #+begin_src emacs-lisp :tangle ./publish.el :noweb no-export
 (jp/init-webpage)
 
@@ -251,11 +254,17 @@ Same as in [[*Initialize local variables][Initialize local variables]]:
       org-export-with-email t
       org-export-with-date t
       org-export-with-tags 'not-in-toc
-      org-export-with-toc t)
+      org-export-with-toc t
+      org-html-container-element "section"
+      org-html-metadata-timestamp-format "%Y-%m-%d"
+      org-html-checkbox-type 'html
+      org-html-html5-fancy t
+      org-html-validation-link nil
+      org-html-doctype "html5")
 
 #+end_src
 
-*** Preamble
+**** Preamble
 #+begin_src emacs-lisp :tangle ./publish.el :noweb no-export
 (defun jp/preamble (info)
   "Return preamble as a string."
@@ -271,8 +280,8 @@ Same as in [[*Initialize local variables][Initialize local variables]]:
 
 #+end_src
 
-*** Postamble
-#+begin_src emacs-lisp :tangle ./publish.el :noweb no-export
+**** Postamble
+#+begin_src emacs-lisp :tangle ./publish.el
 (setq ;; org-html-divs '((preamble "header" "top")
  ;;                 (content "main" "content")
  ;;                 (postamble "footer" "postamble"))
@@ -287,21 +296,22 @@ Same as in [[*Initialize local variables][Initialize local variables]]:
 </p>")))
  ;; Use custom preamble function to compute relative links.
  org-html-preamble #'jp/preamble
- ;; org-html-container-element "section"
- org-html-metadata-timestamp-format "%Y-%m-%d"
- org-html-checkbox-type 'html
- org-html-html5-fancy t
- ;; Use custom .css.  This removes the dependency on `htmlize', but then we
- ;; don't get colored code snippets.
- org-html-htmlize-output-type nil
- org-html-validation-link nil
- org-html-doctype "html5")
-
+)
+#+end_src
+**** Htmlize
+***** Activate
+#+begin_src emacs-lisp :tangle ./publish.el
+(setq org-html-style-plain org-html-style-default
+      org-html-htmlize-output-type 'css)
+#+end_src
+***** Deactivate if not needed
+#+begin_src emacs-lisp
+(setq org-html-htmlize-output-type nil)
 #+end_src
 
 *** Define some git and string format helper
 **** Git Helper
-#+begin_src emacs-lisp :tangle ./publish.el :noweb no-export
+#+begin_src emacs-lisp :tangle ./publish.el
 ;; Some help functions
 (defun jp/git-creation-date (file)
   "Return the first commit date of FILE.
@@ -406,7 +416,7 @@ side of the src block containing both an anchor referencing the current block,
 and a button to copy the content of the block.
 
 #+name: Src blocks
-#+begin_src emacs-lisp :tangle ./publish.el :noweb no-export
+#+begin_src emacs-lisp :tangle ./publish.el
 (defun org-html-src-block-collapsable
     (orig-fn src-block contents info)
   "Wrap the usual <pre> block in a <details>"
@@ -534,7 +544,7 @@ and a button to copy the content of the block.
 #+end_src
 
 #+name: Example, fixed width, and property blocks
-#+begin_src emacs-lisp :tangle ./publish.el :noweb no-export
+#+begin_src emacs-lisp :tangle ./publish.el
 (defun org-html-block-collapsable (orig-fn block contents info)
   "Wrap the usual block in a <details>"
   (if (or (not org-fancy-html-export-mode) (bound-and-true-p org-msg-export-in-progress))
@@ -570,7 +580,6 @@ and a button to copy the content of the block.
 (advice-add 'org-html-property-drawer :around #'org-html-block-collapsable)
 #+end_src
 
-
 **** Sitemap
 ***** Define ~jp/org-publish-sitemap~
 #+begin_src emacs-lisp :tangle ./publish.el :noweb no-export
@@ -583,6 +592,24 @@ See `org-publish-sitemap-default'. "
                   (string-match "file:[^ ]*Projects/.*.org" (car file)))
                 (cdr list)))
   ;; TODO: Include subtitle?  It may be wiser, at least for projects.
+  (concat "#+TITLE: " title "\n"
+          "#+HTML_HEAD: <link rel=\"stylesheet\" type=\"text/css\" href=\"dark.css\">"
+          "\n"
+          "#+HTML_HEAD: <link rel=\"icon\" type=\"image/x-icon\" href=\"logo.png\"> "
+          "\n"
+          (org-list-to-org list)))
+#+end_src
+
+***** Define ~jp/org-publish-main-sitemap~
+#+begin_src emacs-lisp :tangle ./publish.el :noweb no-export
+(defun jp/org-publish-main-sitemap (title list)
+  "Outputs site map, as a string.
+See `org-publish-sitemap-default'. "
+  ;; Remove index and non articles.
+  (setcdr list (seq-filter
+                (lambda (file)
+                  (string-match "file:.*.org" (car file)))
+                (cdr list)))
   (concat "#+TITLE: " title "\n"
           "#+HTML_HEAD: <link rel=\"stylesheet\" type=\"text/css\" href=\"dark.css\">"
           "\n"
@@ -623,11 +650,47 @@ See `org-publish-sitemap-default-entry'."
 #+begin_src emacs-lisp :tangle ./publish.el :noweb no-export
 (setq org-publish-project-alist
       (list
-       (list "site-org"
+       (list "all-site-pages-org"
              :base-directory "./source/"
              :recursive t
              :publishing-function '(org-html-publish-to-html)
              :publishing-directory "./public/"
+             :sitemap-format-entry #'jp/org-publish-sitemap-entry
+             :auto-sitemap t
+             :sitemap-title "Literature"
+             :sitemap-filename "literature.org"
+             ;; :sitemap-file-entry-format "%d *%t*"
+             :sitemap-style 'list
+             :sitemap-function #'jp/org-publish-main-sitemap
+             ;; :sitemap-ignore-case t
+             :sitemap-sort-files 'anti-chronologically
+             :html-head-include-default-style nil
+             :html-head-include-scripts nil
+             :html-head "<link rel=\"stylesheet\" type=\"text/css\" href=\"../dark.css\">
+<link rel=\"icon\" type=\"image/x-icon\" href=\"../logo.png\">")
+       (list "main-site-org"
+             :base-directory "./source/"
+             :recursive nil
+             :publishing-function '(org-html-publish-to-html)
+             :publishing-directory "./public/"
+             :sitemap-format-entry #'jp/org-publish-sitemap-entry
+             :auto-sitemap t
+             :sitemap-title "Literature"
+             :sitemap-filename "literature.org"
+             ;; :sitemap-file-entry-format "%d *%t*"
+             :sitemap-style 'list
+             :sitemap-function #'jp/org-publish-main-sitemap
+             ;; :sitemap-ignore-case t
+             :sitemap-sort-files 'anti-chronologically
+             :html-head-include-default-style nil
+             :html-head-include-scripts nil
+             :html-head "<link rel=\"stylesheet\" type=\"text/css\" href=\"dark.css\">
+<link rel=\"icon\" type=\"image/x-icon\" href=\"logo.png\">")
+       (list "site-projects-org"
+             :base-directory "./source/Projects"
+             :recursive t
+             :publishing-function '(org-html-publish-to-html)
+             :publishing-directory "./public/Projects"
              :sitemap-format-entry #'jp/org-publish-sitemap-entry
              :auto-sitemap t
              :sitemap-title "Projects"
@@ -648,7 +711,7 @@ See `org-publish-sitemap-default-entry'."
              :publishing-directory "./public"
              :publishing-function 'org-publish-attachment
              :recursive t)
-       (list "site" :components '("site-org"))))
+       (list "site" :components '("main-site-org" "site-projects-org" "site-static"))))
 #+end_src
 
 **** Define ~jp/publish-html~

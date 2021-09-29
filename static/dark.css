@@ -3,14 +3,17 @@
 @import url('https://fonts.googleapis.com/css2?family=Overpass&display=swap');
 
 * {
-	--bg-color: #000033;
+	--bg-color: #005b5b;
 	--text-color: #ddd;
 	--link-color: #0066CC;
-	--link-color-2: #CC0099;
-	--code-color: #660033;
-	--first-color: #330000;
-	--second-color: #330066;
-	--third-color: #003300;
+	--link-color-2: #006699;
+	--code-color: #333;
+	--code-text-color: #bff;
+	--first-color: #00005b;
+	--second-color: #004b00;
+	--third-color: #ab6b00;
+	--fourth-color: #8b8b00;
+	--hl-color: #cbcb00;
 }
 a {
 	color: var(--link-color);
@@ -38,25 +41,25 @@ body {
 	line-height: 1.5em;
 	margin: 20px auto; /* "auto" for centering */
 	padding: 0;
-	max-width: 640px;
+	max-width: 960px;
 }
 
 code {
 	background-color: var(--code-color);
 	border-radius: 10px 10px;
-	font-family: monospace;
+	font-family: 'IBM Plex Mono', monospace;
 	/* font-size: 12px; */
 	padding: 0 5px;
 }
 
 img {
-	background-color: var(--bg-color);
+	background-color: var(--second-color);
 	padding: 4px;
 	border-radius: 4px;
 }
 
 figure {
-	background-color: var(--bg-color);
+	background-color: var(--second-color);
 	padding: 4px;
 	border-radius: 4px;
 }
@@ -69,6 +72,7 @@ pre {
 	background-color: var(--code-color);
 	border-radius: 10px 10px;
 	display: inline-block;
+	text-align: left;
 	font-family: 'IBM Plex Mono', monospace;
 	font-size: 12px;
 	line-height: 1.2em;
@@ -76,6 +80,17 @@ pre {
 	min-width: calc(100% - 20px); /* -20px for padding */
 	padding: 10px;
 	vertical-align: middle;
+}
+
+.org-src-container pre {
+	color: var(--code-text-color);
+	border-left: 1px var(--text-color);
+	max-width: calc(100% - 20px); /* -20px for padding */
+	inline-size:  calc(100% - 20px); /* -20px for padding */
+	overflow-x: visible;
+	box-shadow: none;
+	white-space: pre-wrap;
+	box-sizing: border-box;
 }
 
 pre code {
@@ -105,7 +120,7 @@ h1 {
 }
 
 .title p {
-	margin-top: -20px;
+	margin-top: -10px;
 	padding: 5px 0;
 }
 
@@ -120,6 +135,7 @@ nav {
 	right: 0;
 	top: 0;
 	text-align: right;
+
 }
 
 /*
@@ -156,13 +172,13 @@ nav ul li ul li ul li ul li  {
 }
 
 nav a {
-	color: var(--link-color);
+	color: var(--text-color);
 	text-decoration: none;
 	white-space: nowrap;
 }
 
 nav a:hover {
-	color: var(--text-color);
+	color: var(--third-color);
 }
 
 /* Org uses a <h2> for "Table of Contents". */
@@ -185,14 +201,14 @@ nav h2 {
 }
 
 #preamble a {
-	color: var(--link-color);
+	color: var(--text-color);
 	text-decoration: none;
 	white-space: nowrap;
 	margin: 0 10px 0 0;
 }
 
 #preamble a:hover {
-	color: var(--text-color);
+	color: var(--fourth-color);
 }
 
 footer {
@@ -229,3 +245,65 @@ footer p {
 	font-size: 12px;
 	padding: 2px;
 }
+
+#content {
+	background-color: var(--second-color);
+	border-radius: 20px;
+	margin: 20px 0px;
+	padding: 5px 10px 10px 10px;
+	text-align: left;
+	vertical-align: middle;
+}
+
+#content h2 {
+	border-bottom: 2px dotted gray;
+}
+
+#content h3 {
+	border-bottom: 2px dashed black;
+}
+
+/* Syntax Highlighting */
+.org-doc {
+	color: var(--text-color);
+	font-style: italic;
+	font-weight: light;
+}
+.org-comment {
+	color: var(--text-color);
+	font-style: italic;
+	font-weight: light;
+}
+.org-comment-delimiter {
+	color: var(--text-color);
+	font-style: italic;
+	font-weight: light;
+}
+.org-string {
+	color: var(--text-color);
+	font-weight: bold;
+}
+
+.org-constant {
+	color: var(--third-color);
+	font-style: italic;
+}
+.org-builtin {
+	color: var(--hl-color);
+}
+.org-keyword {
+	color: var(--third-color);
+	font-style: italic;
+}
+
+.org-function-name {
+	color: var(--fourth-color);
+	font-weight: bold;
+}
+
+.org-variable-name {
+	color: var(--fourth-color);
+	text-decoration: underline;
+	font-weight: bold;
+}
+
