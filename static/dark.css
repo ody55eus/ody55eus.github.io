@@ -1,14 +1,27 @@
 /******************************************************************************/
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Overpass&display=swap');
+
+* {
+	--bg-color: #003366;
+	--text-color: #ddd;
+	--link-color: #0066CC;
+	--link-color-2: #993399;
+	--code-color: #660033;
+	--first-color: #006633;
+	--second-color: #330066;
+	--third-color: #336600;
+}
 a {
-		color: #08C;
+		color: var(--link-color);
 }
 
 a:visited {
-		color: #B566FF;
+		color: var(--link-color-2);
 }
 
 blockquote {
-		background: #444444;
+		background: var(--second-color);
 		font-style: italic;
 		margin: 0;
 		padding: 10px 10px;
@@ -19,9 +32,9 @@ blockquote p {
 }
 
 body {
-		background: #111111;
-		color: #dddddd;
-		font-family: "Deja Vu Sans", Sans-Serif;
+		background: var(--bg-color);
+		color: var(--text-color);
+		font-family: "Overpass", sans-serif;
 		line-height: 1.5em;
 		margin: 20px auto; /* "auto" for centering */
 		padding: 0;
@@ -29,7 +42,7 @@ body {
 }
 
 code {
-		background: #444444;
+		background-color: var(--code-color);
 		border-radius: 10px 10px;
 		font-family: monospace;
 		/* font-size: 12px; */
@@ -37,13 +50,13 @@ code {
 }
 
 img {
-		background: #DDDDDD;
+		background-color: var(--bg-color);
 		padding: 4px;
 		border-radius: 4px;
 }
 
 figure {
-		background: #DDDDDD;
+		background-color: var(--bg-color);
 		padding: 4px;
 		border-radius: 4px;
 }
@@ -53,10 +66,10 @@ p {
 }
 
 pre {
-		background: #444444;
+		background-color: var(--code-color);
 		border-radius: 10px 10px;
 		display: inline-block;
-		font-family: monospace;
+		font-family: 'IBM Plex Mono', monospace;
 		font-size: 12px;
 		line-height: 1.2em;
 		margin: 10px 20px 10px 0;
@@ -75,7 +88,7 @@ h1 {
 
 /******************************************************************************/
 .title {
-		background-color: #222222;
+		background-color: var(--first-color);
 		border-radius: 10px 10px;
 		padding: 10px 20px;
 }
@@ -98,7 +111,7 @@ h1 {
 
 /******************************************************************************/
 nav {
-		background-color:#222222;
+		background-color: var(--second-color);
 		border-radius: 5px 20px 5px 20px;
 		border: 3px solid gray;
 		font-weight: bold;
@@ -143,13 +156,14 @@ nav ul li ul li ul li ul li  {
 }
 
 nav a {
-		color: #08C;
+		color: var(--link-color);
 		text-decoration: none;
 		white-space: nowrap;
 }
 
 nav a:hover {
 		color: #dddddd;
+		color: var(--text-color);
 }
 
 /* Org uses a <h2> for "Table of Contents". */
@@ -160,7 +174,7 @@ nav h2 {
 
 /******************************************************************************/
 #preamble {
-		background-color:#222222;
+		background-color: var(--first-color);
 		border-radius: 5px 20px 5px 20px;
 		border: 3px solid gray;
 		font-weight: bold;
@@ -179,11 +193,11 @@ nav h2 {
 }
 
 #preamble a:hover {
-		color: #dddddd;
+		color: var(--text-color);
 }
 
 footer {
-		background: #222222;
+		background-color: var(--third-color);
 		border-radius: 10px 10px;
 		padding: 5px 0 10px 0;
 		text-align: center;
@@ -196,7 +210,7 @@ footer p {
 }
 
 #postamble {
-		background: #222222;
+		background-color: var(--third-color);
 		border-radius: 10px 10px;
 		padding: 5px 0 10px 0;
 		text-align: center;
@@ -210,7 +224,7 @@ footer p {
 
 /******************************************************************************/
 .tag {
-		background: #444444;
+		background-color: var(--second-color);
 		border-radius: 10px 10px;
 		font-family: bold;
 		font-size: 12px;

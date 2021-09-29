@@ -223,6 +223,170 @@ system timestamp and return nil instead."
             (and (org-string-nw-p value)
              (org-time-string-to-time value))))))))))
 
+(defvar org-html-export-collapsed nil)
+(eval '(cl-pushnew '(:collapsed "COLLAPSED" "collapsed" org-html-export-collapsed t)
+                   (org-export-backend-options (org-export-get-backend 'html))))
+(add-to-list 'org-default-properties "EXPORT_COLLAPSED")
+
+(defun org-html-src-block-collapsable
+    (orig-fn src-block contents info)
+  "Wrap the usual <pre> block in a <details>"
+  (if
+      (or
+       (not org-fancy-html-export-mode)
+       (bound-and-true-p org-msg-export-in-progress))
+      (funcall orig-fn src-block contents info)
+    (let*
+        ((properties
+          (cadr src-block))
+         (lang
+          (mode-name-to-lang-name
+           (plist-get properties :language)))
+         (name
+          (plist-get properties :name))
+         (ref
+          (org-export-get-reference src-block info))
+         (collapsed-p
+          (member
+           (or
+            (org-export-read-attribute :attr_html src-block :collapsed)
+            (plist-get info :collapsed))
+           '("y" "yes" "t" t "true" "all"))))
+      (format "<details id='%s' class='code'%s>\n<summary%s>%s</summary>\n<div class='gutter'><a href='#%s'>#</a>\n<button title='Copy to clipboard' onclick='copyPreToClipbord(this)'>⎘</button></div>\n%s\n\n</details>" ref
+              (if collapsed-p "" " open")
+              (if name " class='named'" "")
+              (concat
+               (when name
+                 (concat "<span class=\"name\">" name "</span>"))
+               "<span class=\"lang\">" lang "</span>")
+              ref
+              (if name
+                  (replace-regexp-in-string
+                   (format "<pre\\( class=\"[^\"]+\"\\)? id=\"%s\">" ref)
+                   "<pre\\1>"
+                   (funcall orig-fn src-block contents info))
+                (funcall orig-fn src-block contents info))))))
+(advice-add 'org-html-src-block-collapsable :around #'org-html-src-block)
+
+(defun mode-name-to-lang-name (mode)
+  (or (cadr (assoc mode
+                   '(("asymptote" "Asymptote")
+                     ("awk" "Awk")
+                     ("C" "C")
+                     ("clojure" "Clojure")
+                     ("css" "CSS")
+                     ("D" "D")
+                     ("ditaa" "ditaa")
+                     ("dot" "Graphviz")
+                     ("calc" "Emacs Calc")
+                     ("emacs-lisp" "Emacs Lisp")
+                     ("fortran" "Fortran")
+                     ("gnuplot" "gnuplot")
+                     ("haskell" "Haskell")
+                     ("hledger" "hledger")
+                     ("java" "Java")
+                     ("js" "Javascript")
+                     ("latex" "LaTeX")
+                     ("ledger" "Ledger")
+                     ("lisp" "Lisp")
+                     ("lilypond" "Lilypond")
+                     ("lua" "Lua")
+                     ("matlab" "MATLAB")
+                     ("mscgen" "Mscgen")
+                     ("ocaml" "Objective Caml")
+                     ("octave" "Octave")
+                     ("org" "Org mode")
+                     ("oz" "OZ")
+                     ("plantuml" "Plantuml")
+                     ("processing" "Processing.js")
+                     ("python" "Python")
+                     ("R" "R")
+                     ("ruby" "Ruby")
+                     ("sass" "Sass")
+                     ("scheme" "Scheme")
+                     ("screen" "Gnu Screen")
+                     ("sed" "Sed")
+                     ("sh" "shell")
+                     ("sql" "SQL")
+                     ("sqlite" "SQLite")
+                     ("forth" "Forth")
+                     ("io" "IO")
+                     ("J" "J")
+                     ("makefile" "Makefile")
+                     ("maxima" "Maxima")
+                     ("perl" "Perl")
+                     ("picolisp" "Pico Lisp")
+                     ("scala" "Scala")
+                     ("shell" "Shell Script")
+                     ("ebnf2ps" "ebfn2ps")
+                     ("cpp" "C++")
+                     ("abc" "ABC")
+                     ("coq" "Coq")
+                     ("groovy" "Groovy")
+                     ("bash" "bash")
+                     ("csh" "csh")
+                     ("ash" "ash")
+                     ("dash" "dash")
+                     ("ksh" "ksh")
+                     ("mksh" "mksh")
+                     ("posh" "posh")
+                     ("ada" "Ada")
+                     ("asm" "Assembler")
+                     ("caml" "Caml")
+                     ("delphi" "Delphi")
+                     ("html" "HTML")
+                     ("idl" "IDL")
+                     ("mercury" "Mercury")
+                     ("metapost" "MetaPost")
+                     ("modula-2" "Modula-2")
+                     ("pascal" "Pascal")
+                     ("ps" "PostScript")
+                     ("prolog" "Prolog")
+                     ("simula" "Simula")
+                     ("tcl" "tcl")
+                     ("tex" "LaTeX")
+                     ("plain-tex" "TeX")
+                     ("verilog" "Verilog")
+                     ("vhdl" "VHDL")
+                     ("xml" "XML")
+                     ("nxml" "XML")
+                     ("conf" "Configuration File"))))
+      mode))
+
+(defun org-html-block-collapsable (orig-fn block contents info)
+  "Wrap the usual block in a <details>"
+  (if (or (not org-fancy-html-export-mode) (bound-and-true-p org-msg-export-in-progress))
+      (funcall orig-fn block contents info)
+    (let ((ref (org-export-get-reference block info))
+          (type (pcase (car block)
+                  ('property-drawer "Properties")))
+          (collapsed-default (pcase (car block)
+                               ('property-drawer t)
+                               (_ nil)))
+          (collapsed-value (org-export-read-attribute :attr_html block :collapsed))
+          (collapsed-p (or (member (org-export-read-attribute :attr_html block :collapsed)
+                                   '("y" "yes" "t" t "true"))
+                           (member (plist-get info :collapsed) '("all")))))
+      (format
+       "<details id='%s' class='code'%s>
+<summary%s>%s</summary>
+<div class='gutter'>\
+<a href='#%s'>#</a>
+<button title='Copy to clipboard' onclick='copyPreToClipbord(this)'>⎘</button>\
+</div>
+%s\n
+</details>"
+       ref
+       (if (or collapsed-p collapsed-default) "" " open")
+       (if type " class='named'" "")
+       (if type (format "<span class='type'>%s</span>" type) "")
+       ref
+       (funcall orig-fn block contents info)))))
+
+(advice-add 'org-html-example-block   :around #'org-html-block-collapsable)
+(advice-add 'org-html-fixed-width     :around #'org-html-block-collapsable)
+(advice-add 'org-html-property-drawer :around #'org-html-block-collapsable)
+
 (defun jp/org-publish-sitemap (title list)
   "Outputs site map, as a string.
 See `org-publish-sitemap-default'. "
@@ -270,7 +434,7 @@ See `org-publish-sitemap-default-entry'."
              :base-directory "./source/"
              :recursive t
              :publishing-function '(org-html-publish-to-html)
-             :publishing-directory "./public/" ; TODO: Set dir relative to root so that we can use "C-c C-e P".
+             :publishing-directory "./public/"
              :sitemap-format-entry #'jp/org-publish-sitemap-entry
              :auto-sitemap t
              :sitemap-title "Projects"
