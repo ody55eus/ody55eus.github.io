@@ -13,7 +13,7 @@ This webpage is constantly growing and improving.
 I am Jonathan Pieper, a programmer and researcher in physics, data science, and machine learning. I am always interested in new projects.
 * Projects
 To see all my Projects, take a look at the Menu.
-** [[id:5064b908-04f6-4167-a66c-072073109ef1][Org Roam (Zettelkasten)]]
+** [[id:5064b908-04f6-4167-a66c-072073109ef1][Org Roam (Zettelkasten)]] :Flagged:
 During the time after I finished my masters degree, I explored some additional ways to autodidacticaly educate myself. On this journey I discovered [[id:7bd0d14c-b748-4f05-8c70-36fbf0a94745][Emacs]] and the book [[id:f80807b8-91f4-4799-92a3-076d1c1a045a][How to take smart notes]].
 * This Site
 This site is created using [[id:7bd0d14c-b748-4f05-8c70-36fbf0a94745][Emacs]] and [[id:afe3de83-e5b8-4f53-b457-987dd9bd579d][Org Mode]].

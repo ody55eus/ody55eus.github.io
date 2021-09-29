@@ -284,7 +284,7 @@ Same as in [[*Initialize local variables][Initialize local variables]]:
 <a href=\"%1$s/Literature/index.html\"><i class=\"fa fa-book\"></i> Literature</a>
 <a href=\"%1$s/community.html\"><i class=\"fa fa-globe\"></i> Community</a>
 <a href=\"%1$s/sitemap.html\"><i class=\"fa fa-sitemap\"></i> Sitemap</a>
-<span class=\"source\"><a href=\"%3$s/-/tree/master/source/%2$s\"><i class=\"fa fa-code\"></i>Source</a></span>
+<span class=\"source\"><a href=\"%3$s/-/tree/master/source/%2$s\"><i class=\"fa fa-code\"></i> Page-Source</a></span>
 <img class=\"logo\" src=\"%1$s/logo.png\">
 <span class=\"banner\">Ody55eus</span>")
      prefix filepath jp/repository)))

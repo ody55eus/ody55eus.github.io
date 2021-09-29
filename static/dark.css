@@ -4,25 +4,29 @@
 @import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css');
 
 * {
-	--bg-color: #220022;
+	--body-color: #111;
+	--bg-color: #222;
 	--text-color: #ddd;
 	--link-color: #0066CC;
 	--link-color-2: #006699;
 	--code-color: #333;
 	--code-text-color: #bff;
-	--first-color: #003300;
-	--second-color: #000033;
-	--third-color: #008b8b;
-	--fourth-color: #8b8b00;
-	--hl-color: #cbcb00;
-	--hl-color2: #005b5b;
+	--first-color: #003;
+	--second-color: #033;
+	--third-color: #099;
+	--fourth-color: #990;
+	--hl-color: #cc0;
+	--hl-color2: #c0c;
+	--hl-color3: #0cc;
+	--hl-color4: #aff;
 }
 a {
 	color: var(--link-color);
+	text-decoration: none;
 }
 
-a:visited {
-	color: var(--link-color-2);
+a:hover {
+	color: var(--hl-color);
 }
 
 blockquote {
@@ -37,7 +41,7 @@ blockquote p {
 }
 
 body {
-	background: var(--bg-color);
+	background-color: var(--body-color);
 	color: var(--text-color);
 	font-family: "Overpass", sans-serif;
 	line-height: 1.5em;
@@ -57,13 +61,27 @@ code {
 img {
 	background-color: var(--first-color);
 	padding: 4px;
-	border-radius: 4px;
+	border-radius: 0px;
+	max-width: calc(100% - 20px);
 }
 
 figure {
 	background-color: var(--first-color);
 	padding: 4px;
-	border-radius: 4px;
+	border-radius: 10px;
+}
+
+figcaption {
+	font-weight: bold;
+}
+
+figcaption .figure-number {
+	font-style: italic;
+	text-decoration: underline;
+}
+
+video {
+	max-width: calc(100% - 20px);
 }
 
 p {
@@ -118,15 +136,15 @@ h1 {
 
 /******************************************************************************/
 nav {
+	position: fixed;
+	right: 0;
+	top: 0;
+	text-align: right;
 	background-color: var(--second-color);
 	border-radius: 5px 20px 5px 20px;
 	border: 3px solid gray;
 	font-weight: bold;
 	padding: 0 10px;
-	position: fixed;
-	right: 0;
-	top: 0;
-	text-align: right;
 
 }
 
@@ -170,7 +188,7 @@ nav a {
 }
 
 nav a:hover {
-	color: var(--third-color);
+	color: var(--hl-color4);
 }
 
 /* Org uses a <h2> for "Table of Contents". */
@@ -185,9 +203,11 @@ nav h2 {
 	border-radius: 5px 20px 5px 20px;
 	border: 3px solid gray;
 	font-weight: bold;
-	padding: 10px;
-	/* position: fixed; */
-	right: 0;
+	overflow: hidden;
+	padding: 0;
+	width: calc(100% - 180px);
+	position: fixed;
+	left: 0;
 	top: 0;
 	/* text-align: right; */
 }
@@ -196,24 +216,36 @@ nav h2 {
 	color: var(--text-color);
 	text-decoration: none;
 	white-space: nowrap;
-	margin: 0 10px 0 0;
+	padding: 14px 16px;
+	margin: 0;
 }
 
 #preamble a:hover {
-	color: var(--fourth-color);
+	background-color: var(--third-color);
+	color: var(--hl-color);
 }
 
 #preamble .banner {
+	color: var(--hl-color);
 	padding: 0;
 	float: inline-end;
 	vertical-align: top;
 }
 
 #preamble .source {
+	margin: 0;
 	padding: 0 10px;
-	float: inline-block;
+	float: inline-end;
 	vertical-align: top;
+}
 
+#preamble .source a {
+	color: var(--third-color);
+}
+
+#preamble .source a:hover {
+	background-color: var(--third-color);
+	color: var(--hl-color);
 }
 #preamble img {
 	margin: 0;
@@ -250,29 +282,77 @@ footer p {
 }
 
 /******************************************************************************/
-.tag {
+/*.tag {
 	background-color: var(--third-color);
+	border: 2px groove aqua;
 	border-radius: 10px 10px;
 	font-family: bold;
-	font-size: 12px;
-	padding: 2px;
+	font-size: 16px;
+	padding: 0px 3px;
+	float: right;
+}*/
+
+.tag {
+	border: 0;
+	padding: 0px 2px;
+	float: inline-end;
+}
+
+.Flagged {
+	color: crimson;
+	background-color: var(--hl-color);
+	border: 1px groove;
+	border-radius: 10px 10px;
+	font-family: bold;
+	font-size: 16px;
+	padding: 0px 2px;
+}
+.Flagged::before {
+	font-family: "Font Awesome 5 Free";
+	content: "\f024"; /* fa-flag: 🚩 */
+	display: inline-block;
+	padding-right: 4px;
+	vertical-align: middle;
+	font-weight: 900;
+}
+.Star {
+	color: var(--hl-color);
+	background-color: var(--third-color);
+	border: 1px groove;
+	border-radius: 10px 10px;
+	font-family: bold;
+	font-size: 16px;
+	padding: 0px 3px;
+}
+.Star::before {
+	font-family: "Font Awesome 5 Free";
+	content: "\f005"; /* fa-star: ⭐ */
+	display: inline-block;
+	padding-right: 4px;
+	vertical-align: middle;
+	font-weight: 900;
 }
 
 #content {
+	background-color: var(--bg-color);
 	border-radius: 20px;
-	margin: 20px 0px;
+	margin: 50px 0px;
 	padding: 5px 10px 10px 10px;
 	text-align: left;
 	vertical-align: middle;
 }
 
 #content h2 {
-	text-align: right;
+	text-align: center;
 	border-bottom: 2px dotted #333;
 }
 
 #content h3 {
 	border-bottom: 2px dashed #666;
+}
+
+#content h4 {
+	text-align: center;
 }
 
 /* Syntax Highlighting */
