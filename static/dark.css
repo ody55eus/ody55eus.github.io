@@ -3,123 +3,123 @@
 @import url('https://fonts.googleapis.com/css2?family=Overpass&display=swap');
 
 * {
-	--bg-color: #003366;
+	--bg-color: #000033;
 	--text-color: #ddd;
 	--link-color: #0066CC;
-	--link-color-2: #993399;
+	--link-color-2: #CC0099;
 	--code-color: #660033;
-	--first-color: #006633;
+	--first-color: #330000;
 	--second-color: #330066;
-	--third-color: #336600;
+	--third-color: #003300;
 }
 a {
-		color: var(--link-color);
+	color: var(--link-color);
 }
 
 a:visited {
-		color: var(--link-color-2);
+	color: var(--link-color-2);
 }
 
 blockquote {
-		background: var(--second-color);
-		font-style: italic;
-		margin: 0;
-		padding: 10px 10px;
+	background: var(--second-color);
+	font-style: italic;
+	margin: 0;
+	padding: 10px 10px;
 }
 
 blockquote p {
-		margin: 0;
+	margin: 0;
 }
 
 body {
-		background: var(--bg-color);
-		color: var(--text-color);
-		font-family: "Overpass", sans-serif;
-		line-height: 1.5em;
-		margin: 20px auto; /* "auto" for centering */
-		padding: 0;
-		max-width: 640px;
+	background: var(--bg-color);
+	color: var(--text-color);
+	font-family: "Overpass", sans-serif;
+	line-height: 1.5em;
+	margin: 20px auto; /* "auto" for centering */
+	padding: 0;
+	max-width: 640px;
 }
 
 code {
-		background-color: var(--code-color);
-		border-radius: 10px 10px;
-		font-family: monospace;
-		/* font-size: 12px; */
-		padding: 0 5px;
+	background-color: var(--code-color);
+	border-radius: 10px 10px;
+	font-family: monospace;
+	/* font-size: 12px; */
+	padding: 0 5px;
 }
 
 img {
-		background-color: var(--bg-color);
-		padding: 4px;
-		border-radius: 4px;
+	background-color: var(--bg-color);
+	padding: 4px;
+	border-radius: 4px;
 }
 
 figure {
-		background-color: var(--bg-color);
-		padding: 4px;
-		border-radius: 4px;
+	background-color: var(--bg-color);
+	padding: 4px;
+	border-radius: 4px;
 }
 
 p {
-		text-align: justify;
+	text-align: justify;
 }
 
 pre {
-		background-color: var(--code-color);
-		border-radius: 10px 10px;
-		display: inline-block;
-		font-family: 'IBM Plex Mono', monospace;
-		font-size: 12px;
-		line-height: 1.2em;
-		margin: 10px 20px 10px 0;
-		min-width: calc(100% - 20px); /* -20px for padding */
-		padding: 10px;
-		vertical-align: middle;
+	background-color: var(--code-color);
+	border-radius: 10px 10px;
+	display: inline-block;
+	font-family: 'IBM Plex Mono', monospace;
+	font-size: 12px;
+	line-height: 1.2em;
+	margin: 10px 20px 10px 0;
+	min-width: calc(100% - 20px); /* -20px for padding */
+	padding: 10px;
+	vertical-align: middle;
 }
 
 pre code {
-		padding: 0 0px;
+	padding: 0 0px;
 }
 
 h1 {
-		line-height: 40px;
+	line-height: 40px;
 }
 
 /******************************************************************************/
 .title {
-		background-color: var(--first-color);
-		border-radius: 10px 10px;
-		padding: 10px 20px;
+	background-color: var(--first-color);
+	border-radius: 10px 10px;
+	padding: 10px 20px;
 }
 
 .title h1 {
-		line-height: 40px;
-		padding: 10px 0;
+	line-height: 40px;
+	padding: 10px 0;
 }
 
 .subtitle {
-		font-weight: bold;
-		font-style: italic;
-		text-align: center;
+	font-weight: bold;
+	font-style: italic;
+	text-align: center;
 }
 
 .title p {
-		margin-top: -20px;
-		padding: 5px 0;
+	margin-top: -20px;
+	padding: 5px 0;
 }
 
 /******************************************************************************/
 nav {
-		background-color: var(--second-color);
-		border-radius: 5px 20px 5px 20px;
-		border: 3px solid gray;
-		font-weight: bold;
-		padding: 0 10px;
-		position: fixed;
-		right: 0;
-		top: 0;
-		text-align: right;
+	background-color: var(--second-color);
+	border-radius: 5px 20px 5px 20px;
+	border: 3px solid gray;
+	font-weight: bold;
+	padding: 0 10px;
+	position: fixed;
+	right: 0;
+	top: 0;
+	text-align: right;
 }
 
 /*
@@ -130,103 +130,102 @@ nav:before {
 
 /* Toggle TOC when hovered. */
 nav ul {
-		display: none;
+	display: none;
 }
 nav:hover ul {
-		display: block;
+	display: block;
 }
 
 /* Indent sublists. */
 nav ul   {
-		text-align: left;
-		padding: 0;
+	text-align: left;
+	padding: 0;
 }
 nav ul li ul   {
-		padding: 0 0 0 2em;
+	padding: 0 0 0 2em;
 }
 
 /* Remove list dot. */
 nav ul li  {
-		display: block;
+	display: block;
 }
 
 /* Remove deeply nested TOC, mostly for power-apps */
 nav ul li ul li ul li ul li  {
-		display: none;
+	display: none;
 }
 
 nav a {
-		color: var(--link-color);
-		text-decoration: none;
-		white-space: nowrap;
+	color: var(--link-color);
+	text-decoration: none;
+	white-space: nowrap;
 }
 
 nav a:hover {
-		color: #dddddd;
-		color: var(--text-color);
+	color: var(--text-color);
 }
 
 /* Org uses a <h2> for "Table of Contents". */
 nav h2 {
-		font-size: 16px;
-		margin: 0;
+	font-size: 16px;
+	margin: 0;
 }
 
 /******************************************************************************/
 #preamble {
-		background-color: var(--first-color);
-		border-radius: 5px 20px 5px 20px;
-		border: 3px solid gray;
-		font-weight: bold;
-		padding: 0 10px;
-		/* position: fixed; */
-		right: 0;
-		top: 0;
-		/* text-align: right; */
+	background-color: var(--first-color);
+	border-radius: 5px 20px 5px 20px;
+	border: 3px solid gray;
+	font-weight: bold;
+	padding: 0 10px;
+	/* position: fixed; */
+	right: 0;
+	top: 0;
+	/* text-align: right; */
 }
 
 #preamble a {
-		color: #08C;
-		text-decoration: none;
-		white-space: nowrap;
-		margin: 0 10px 0 0;
+	color: var(--link-color);
+	text-decoration: none;
+	white-space: nowrap;
+	margin: 0 10px 0 0;
 }
 
 #preamble a:hover {
-		color: var(--text-color);
+	color: var(--text-color);
 }
 
 footer {
-		background-color: var(--third-color);
-		border-radius: 10px 10px;
-		padding: 5px 0 10px 0;
-		text-align: center;
-		vertical-align: middle;
+	background-color: var(--first-color);
+	border-radius: 10px 10px;
+	padding: 5px 0 10px 0;
+	text-align: center;
+	vertical-align: middle;
 }
 
 footer p {
-		margin: 0px;
-		text-align: center;
+	margin: 0px;
+	text-align: center;
 }
 
 #postamble {
-		background-color: var(--third-color);
-		border-radius: 10px 10px;
-		padding: 5px 0 10px 0;
-		text-align: center;
-		vertical-align: middle;
+	background-color: var(--first-color);
+	border-radius: 10px 10px;
+	padding: 5px 0 10px 0;
+	text-align: center;
+	vertical-align: middle;
 }
 
 #postamble p {
-		margin: 0px;
-		text-align: center;
+	margin: 0px;
+	text-align: center;
 }
 
 /******************************************************************************/
 .tag {
-		background-color: var(--second-color);
-		border-radius: 10px 10px;
-		font-family: bold;
-		font-size: 12px;
-		padding: 2px;
+	background-color: var(--third-color);
+	border-radius: 10px 10px;
+	font-family: bold;
+	font-size: 12px;
+	padding: 2px;
 }
