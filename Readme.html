@@ -1,0 +1,1221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- 2021-10-14 -->
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Ody55eus.gitlab.io - Readme</title>
+<meta name="author" content="Jonathan Pieper (ody55eus)" />
+<meta name="generator" content="Org Mode" />
+<link rel="stylesheet" type="text/css" href="dark.css">
+<link rel="stylesheet" type="text/css" href="source/dark.css">
+</head>
+<body>
+<div id="preamble" class="status">
+<a href="./index.html"><i class="fa fa-home"></i> About</a>
+<a href="./Projects/projects.html"><i class="fa fa-folder-open"></i> Projects</a>
+<a href="./Literature/index.html"><i class="fa fa-book"></i> Literature</a>
+<a href="./community.html"><i class="fa fa-globe"></i> Community</a>
+<a href="./sitemap.html"><i class="fa fa-sitemap"></i> Sitemap</a>
+<img class="logo" src="./logo.png">
+<span class="banner"><a
+  href="https://gitlab.com/ody55eus"><i class="fa fa-gitlab"></i></a><a
+  href="https://github.com/ody55eus"><i class="fa fa-github"></i></a>Ody55eus</span>
+<span class="source"><a href="https://gitlab.com/ody55eus/ody55eus.gitlab.io/-/tree/master/source/./Readme.org"><i class="fa fa-code"></i> Page-Source</a></span>
+</div>
+<div id="content" class="content">
+<header>
+<h1 class="title">Ody55eus.gitlab.io - Readme</h1>
+</header><nav id="table-of-contents" role="doc-toc">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents" role="doc-toc">
+<ul>
+<li><a href="#orgaeecafe">Org Babel Tangle</a>
+<ul>
+<li><a href="#orgf05a303">Creating Pages</a>
+<ul>
+<li><a href="#org7917c87">Init-pages.el</a></li>
+<li><a href="#org77501d1">Publish.el</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#org9821064">Writing</a>
+<ul>
+<li><a href="#org99e8e6d">Init.el</a>
+<ul>
+<li><a href="#org88e71a2">Requires <code>find-lisp</code></a></li>
+<li><a href="#org13405e6">Initialize local variables</a></li>
+<li><a href="#org56570c5">End of File (EOF)</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#org6935c76">Publish</a>
+<ul>
+<li><a href="#org4258fc6">Gitlab CI</a></li>
+<li><a href="#orga698a7e">GitHub Actions</a></li>
+<li><a href="#org13e0950">Makefile</a></li>
+<li><a href="#orgb1b2b71">Publish.el</a>
+<ul>
+<li><a href="#org874f051">Install <code>org-roam</code> and <code>htmlize</code></a></li>
+<li><a href="#org6fe839a">Define <code>jp/init-webpage</code></a></li>
+<li><a href="#org8a7aead">Set important export variables</a></li>
+<li><a href="#org347bb5c">Define some helper functions</a></li>
+<li><a href="#org0ade5c2">Sitemap</a></li>
+<li><a href="#orgb2c191b">Setting <code>org-publish-project-alist</code></a></li>
+<li><a href="#org76fe624">Define <code>jp/publish-html</code></a></li>
+<li><a href="#org13a8fe9">End of File (EOF)</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#org92c0cb8">Build</a></li>
+<li><a href="#org83a7f13">Deploy</a></li>
+<li><a href="#org57a7251">License</a></li>
+</ul>
+</div>
+</nav>
+<p>
+This code generates my webpage.
+</p>
+
+<p>
+I created this page using Emacs OrgMode. To learn more about <a href="https://orgmode.org/">OrgMode</a> and <a href="https://orgmode.org/manual/Publishing.html#Publishing">publishing org files</a>, see respective links to the original documentation.
+</p>
+
+<section id="outline-container-orgaeecafe" class="outline-2">
+<h2 id="orgaeecafe">Org Babel Tangle</h2>
+<div class="outline-text-2" id="text-orgaeecafe">
+<p>
+This Readme contains the entire configuration needed to export the <a href="20210922202617-org_roam_zettelkasten.html#ID-5064b908-04f6-4167-a66c-072073109ef1">Org Roam (Zettelkasten)</a> directory located in <a href="./">source/</a>.
+</p>
+
+<p>
+The default variables are stored in the <a href="../INFO">INFO</a> file:
+</p>
+
+<table>
+
+
+<colgroup>
+<col  class="org-left">
+
+<col  class="org-left">
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Variable</th>
+<th scope="col" class="org-left">Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">Author</td>
+<td class="org-left">Jonathan Pieper (ody55eus)</td>
+</tr>
+
+<tr>
+<td class="org-left">Version</td>
+<td class="org-left">0.0.1</td>
+</tr>
+
+<tr>
+<td class="org-left">Keywords</td>
+<td class="org-left">org roam publish html css</td>
+</tr>
+
+<tr>
+<td class="org-left">Homepage</td>
+<td class="org-left"><a href="https://github.com/ody55eus/ody55eus.gitlab.io/">https://github.com/ody55eus/ody55eus.gitlab.io/</a></td>
+</tr>
+</tbody>
+</table>
+
+<p>
+To read these variables, Emacs executes the following line in shell whenever <code>gvar(variable)</code> gets called in this org file:
+</p>
+<div class="org-src-container">
+<pre class="src src-sh" id="org34154f6">cat ./INFO | grep -i $<span class="org-variable-name">variable</span> | cut --delimiter=<span class="org-string">"|"</span> -f3
+</pre>
+</div>
+
+<p>
+For Example, the version is .
+</p>
+</div>
+
+<div id="outline-container-orgf05a303" class="outline-3">
+<h3 id="orgf05a303">Creating Pages</h3>
+<div class="outline-text-3" id="text-orgf05a303">
+<p>
+These code blocks create the header of the <a href="../init-page.el">init-page.el</a> and <a href="../publish.el">publish.el</a>.
+</p>
+</div>
+
+<div id="outline-container-org7917c87" class="outline-4">
+<h4 id="org7917c87">Init-pages.el</h4>
+<div class="outline-text-4" id="text-org7917c87">
+<div class="org-src-container">
+<pre class="src src-emacs-lisp"><span class="org-comment-delimiter">;;; </span><span class="org-comment">init-page.el --- Ody55eus.gitlab.io Webpage -*- lexical-binding: t; -*-</span>
+<span class="org-comment-delimiter">;;</span>
+<span class="org-comment-delimiter">;; </span><span class="org-comment">Copyright (C) 2021 Jonathan Pieper</span>
+<span class="org-comment-delimiter">;;</span>
+<span class="org-comment-delimiter">;; </span><span class="org-comment">Author: Jonathan Pieper <a href="https://gitlab.com/ody55eus">&lt;https://gitlab.com/ody55eus&gt;</a></span>
+<span class="org-comment-delimiter">;; </span><span class="org-comment">Maintainer: Jonathan Pieper <a href="mailto:ody55eus%40mailbox.org">&lt;ody55eus@mailbox.org&gt;</a></span>
+<span class="org-comment-delimiter">;; </span><span class="org-comment">Created: September 22, 2021</span>
+<span class="org-comment-delimiter">;; </span><span class="org-comment">Modified: September 22, 2021</span>
+<span class="org-comment-delimiter">;; </span><span class="org-comment">Version: &lt;&lt;gvar("version")&gt;&gt;</span>
+<span class="org-comment-delimiter">;; </span><span class="org-comment">Keywords: &lt;&lt;gvar("keywords")&gt;&gt;</span>
+<span class="org-comment-delimiter">;; </span><span class="org-comment">Homepage: &lt;&lt;gvar("homepage")&gt;&gt;</span>
+<span class="org-comment-delimiter">;; </span><span class="org-comment">Package-Requires: ((emacs "27.2"))</span>
+<span class="org-comment-delimiter">;;</span>
+<span class="org-comment-delimiter">;; </span><span class="org-comment">This file is not part of GNU Emacs.</span>
+<span class="org-comment-delimiter">;;</span>
+<span class="org-comment-delimiter">;;; </span><span class="org-comment">Commentary:</span>
+<span class="org-comment-delimiter">;;</span>
+<span class="org-comment-delimiter">;;  </span><span class="org-comment">These are my emacs tweaks to edit this</span>
+<span class="org-comment-delimiter">;;  </span><span class="org-comment">webpage using org roam.</span>
+<span class="org-comment-delimiter">;;</span>
+<span class="org-comment-delimiter">;;; </span><span class="org-comment">Code:</span>
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-org77501d1" class="outline-4">
+<h4 id="org77501d1">Publish.el</h4>
+<div class="outline-text-4" id="text-org77501d1">
+<div class="org-src-container">
+<pre class="src src-emacs-lisp"><span class="org-comment-delimiter">;;; </span><span class="org-comment">publish.el --- Ody55eus.gitlab.io Webpage -*- lexical-binding: t; -*-</span>
+<span class="org-comment-delimiter">;;</span>
+<span class="org-comment-delimiter">;; </span><span class="org-comment">Copyright (C) 2021 Jonathan Pieper</span>
+<span class="org-comment-delimiter">;;</span>
+<span class="org-comment-delimiter">;; </span><span class="org-comment">Author: Jonathan Pieper <a href="https://gitlab.com/ody55eus">&lt;https://gitlab.com/ody55eus&gt;</a></span>
+<span class="org-comment-delimiter">;; </span><span class="org-comment">Maintainer: Jonathan Pieper <a href="mailto:ody55eus%40mailbox.org">&lt;ody55eus@mailbox.org&gt;</a></span>
+<span class="org-comment-delimiter">;; </span><span class="org-comment">Created: September 22, 2021</span>
+<span class="org-comment-delimiter">;; </span><span class="org-comment">Modified: September 22, 2021</span>
+<span class="org-comment-delimiter">;; </span><span class="org-comment">Version: &lt;&lt;gvar("version")&gt;&gt;</span>
+<span class="org-comment-delimiter">;; </span><span class="org-comment">Keywords: &lt;&lt;gvar("keywords")&gt;&gt;</span>
+<span class="org-comment-delimiter">;; </span><span class="org-comment">Homepage: &lt;&lt;gvar("homepage")&gt;&gt;</span>
+<span class="org-comment-delimiter">;; </span><span class="org-comment">Package-Requires: ((emacs "27.2"))</span>
+<span class="org-comment-delimiter">;;</span>
+<span class="org-comment-delimiter">;; </span><span class="org-comment">This file is not part of GNU Emacs.</span>
+<span class="org-comment-delimiter">;;</span>
+<span class="org-comment-delimiter">;;; </span><span class="org-comment">Commentary:</span>
+<span class="org-comment-delimiter">;;</span>
+<span class="org-comment-delimiter">;;  </span><span class="org-comment">This file configures the export settings of Emacs. It renders the</span>
+<span class="org-comment-delimiter">;;  </span><span class="org-comment">html template files and exports all org pages as html.</span>
+<span class="org-comment-delimiter">;;</span>
+<span class="org-comment-delimiter">;;; </span><span class="org-comment">Code:</span>
+</pre>
+</div>
+<p>
+<b>*</b>
+</p>
+</div>
+</div>
+</div>
+</section>
+
+<section id="outline-container-org9821064" class="outline-2">
+<h2 id="org9821064">Writing</h2>
+<div class="outline-text-2" id="text-org9821064">
+<p>
+This code block lets me set the <a href="20210922202617-org_roam_zettelkasten.html#ID-5064b908-04f6-4167-a66c-072073109ef1">Org Roam (Zettelkasten)</a> directory to the <a href="./">source/</a> folder for the current buffer. Additionally the <code>org-roam-capture-templates</code> and the <code>org-roam-db-location</code> are updated to create a new <code>org-roam.db</code> file and update org capture temlates.
+</p>
+</div>
+
+<div id="outline-container-org99e8e6d" class="outline-3">
+<h3 id="org99e8e6d">Init.el</h3>
+<div class="outline-text-3" id="text-org99e8e6d">
+<div class="warning" id="org82b1e1a">
+<p>
+Be careful, when using this code. Changing your OrgMode directories can break some configurations. For this reason the variables are only changed in the local buffer. You have to execute <code>(jp/init-webpage)</code> on every buffer. <b>There should be a better way to do this (maybe something like <a href="https://github.com/benoitj/dotfiles/blob/main/dot_emacs-profiles.el">this emacs-profiles.el from benoitj</a> or <a href="https://github.com/benoitj/dotfiles/blob/main/dot_config/doom/config.el#L6">config-local-file</a>).</b>
+</p>
+
+</div>
+</div>
+
+<div id="outline-container-org88e71a2" class="outline-4">
+<h4 id="org88e71a2">Requires <code>find-lisp</code></h4>
+<div class="outline-text-4" id="text-org88e71a2">
+<p>
+You need the package find-lisp installed in your local Emacs config.
+</p>
+<div class="org-src-container">
+<pre class="src src-emacs-lisp">(<span class="org-keyword">require</span> '<span class="org-constant">find-lisp</span>)
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org13405e6" class="outline-4">
+<h4 id="org13405e6">Initialize local variables</h4>
+<div class="outline-text-4" id="text-org13405e6">
+<div class="org-src-container">
+<pre class="src src-emacs-lisp" id="org6847a15">(<span class="org-keyword">defun</span> <span class="org-function-name">jp/init-webpage</span> ()
+  (<span class="org-keyword">defvar</span> <span class="org-variable-name">jp/url</span> <span class="org-string">"https://ody5.de"</span>)
+  (<span class="org-keyword">defvar</span> <span class="org-variable-name">jp/gl-url</span> <span class="org-string">"https://gitlab.ody5.de"</span>)
+  (<span class="org-keyword">defvar</span> <span class="org-variable-name">jp/repository</span> <span class="org-string">"https://gitlab.com/ody55eus/ody55eus.gitlab.io"</span>)
+  (<span class="org-keyword">defvar</span> <span class="org-variable-name">jp/root</span> (expand-file-name <span class="org-string">"."</span>))
+  (<span class="org-keyword">setq</span> org-roam-directory (concat
+                            jp/root
+                            <span class="org-string">"/source/"</span>)
+        org-roam-v2-ack t
+        org-link-abbrev-alist '((<span class="org-string">"gitlab"</span> . <span class="org-string">"https://gitlab.com/"</span>)
+                                (<span class="org-string">"github"</span> . <span class="org-string">"https://github.com/"</span>)
+                                (<span class="org-string">"ody5"</span> . (concat jp/gl-url <span class="org-string">"/"</span>))
+                                )
+        org-directory (concat
+                       jp/root
+                       <span class="org-string">"/source/"</span>)
+        org-roam-db-location (concat jp/root <span class="org-string">"/org-roam.db"</span>)
+        org-id-extra-files (find-lisp-find-files org-roam-directory <span class="org-string">"</span><span class="org-string"><span class="org-warning">\</span></span><span class="org-string">.org$"</span>)
+        org-roam-capture-templates '((<span class="org-string">"d"</span> <span class="org-string">"default"</span> plain
+                                      <span class="org-string">"%?\n\nSee also %a.\n"</span>
+                                      <span class="org-builtin">:if-new</span> (file+head
+                                               <span class="org-string">"%&lt;%Y%m%d%H%M%S&gt;-${slug}.org"</span>
+                                               <span class="org-string">"#+title: ${title}\n"</span>)
+                                      <span class="org-builtin">:unnarrowed</span> t)
+                                     (<span class="org-string">"j"</span> <span class="org-string">"Projects"</span> plain
+                                      <span class="org-string">"%?"</span>
+                                      <span class="org-builtin">:if-new</span> (file+head
+                                               <span class="org-string">"Projects/%&lt;%Y%m%d%H%M%S&gt;-${slug}.org"</span>
+                                               <span class="org-string">"#+title: ${title}\n"</span>)
+                                      <span class="org-builtin">:clock-in</span> <span class="org-builtin">:clock-resume</span>
+                                      <span class="org-builtin">:unnarrowed</span> t
+                                      )
+                                     (<span class="org-string">"l"</span> <span class="org-string">"Literature"</span>)
+                                     (<span class="org-string">"ll"</span> <span class="org-string">"Literature Note"</span> plain
+                                      <span class="org-string">"%?\n\nSee also %a.\n* Links\n- %x\n* Notes\n"</span>
+                                      <span class="org-builtin">:if-new</span> (file+head
+                                               <span class="org-string">"Literature/%&lt;%Y%m%d%H%M%S&gt;-${slug}.org"</span>
+                                               <span class="org-string">"#+title: ${title}\n"</span>)
+                                      <span class="org-builtin">:unnarrowed</span> t
+                                      )
+                                     (<span class="org-string">"lr"</span> <span class="org-string">"Bibliography reference"</span> plain
+                                      <span class="org-string">"#+ROAM_KEY: %^{citekey}\n#+PROPERTY: type %^{entry-type}\n#+FILETAGS: %^{keywords}\n#+AUTHOR: %^{author}\n%?"</span>
+                                      <span class="org-builtin">:if-new</span> (file+head
+                                               <span class="org-string">"References/${citekey}.org"</span>
+                                               <span class="org-string">"#+title: ${title}\n"</span>)
+                                      <span class="org-builtin">:unnarrowed</span> t
+                                      )
+                                     (<span class="org-string">"c"</span> <span class="org-string">"Code"</span> plain
+                                      <span class="org-string">"%?\n\nSee also %a.\n"</span>
+                                      <span class="org-builtin">:if-new</span> (file+head
+                                               <span class="org-string">"Code/%&lt;%Y%m%d%H%M%S&gt;-${slug}.org"</span>
+                                               <span class="org-string">"#+title: ${title}\n#+date: %U"</span>)
+                                      <span class="org-builtin">:unnarrowed</span> t
+                                      )
+                                     )))
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org56570c5" class="outline-4">
+<h4 id="org56570c5">End of File (EOF)</h4>
+<div class="outline-text-4" id="text-org56570c5">
+<div class="org-src-container">
+<pre class="src src-emacs-lisp">(<span class="org-keyword">provide</span> '<span class="org-constant">init-page</span>)
+<span class="org-comment-delimiter">;;; </span><span class="org-comment">init-page.el ends here</span>
+</pre>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<section id="outline-container-org6935c76" class="outline-2">
+<h2 id="org6935c76">Publish</h2>
+<div class="outline-text-2" id="text-org6935c76">
+</div>
+<div id="outline-container-org4258fc6" class="outline-3">
+<h3 id="org4258fc6">Gitlab CI</h3>
+<div class="outline-text-3" id="text-org4258fc6">
+<p>
+This configuration loads my docker image <a href="https://hub.docker.com/r/ody55eus/emacs-straight">ody55eus/emacs-straight</a> and executes the <a href="#org77501d1">Publish.el</a>.
+</p>
+<div class="org-src-container">
+<pre class="src src-yaml">image: ody55eus/emacs-straight
+
+pages:
+  script:
+    - emacs --quick --script publish.el --funcall=jp/publish-html
+  artifacts:
+    paths:
+      - public
+  only:
+    - master
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orga698a7e" class="outline-3">
+<h3 id="orga698a7e">GitHub Actions</h3>
+<div class="outline-text-3" id="text-orga698a7e">
+<div class="org-src-container">
+<pre class="src src-yaml">name: Publish to GitHub Pages
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out
+	uses: actions/checkout@v1
+
+      - name: Install Emacs
+	run: sudo apt install emacs-nox --yes
+
+      - name: Build the site
+	run: emacs --quick --script publish.el --funcall=jp/publish-html
+
+      - name: Publish generated content to GitHub Pages
+	uses: JamesIves/github-pages-deploy-action@4.1.4
+	with:
+	  branch: gh-pages
+	  folder: public
+
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org13e0950" class="outline-3">
+<h3 id="org13e0950">Makefile</h3>
+<div class="outline-text-3" id="text-org13e0950">
+<div class="org-src-container">
+<pre class="src src-makefile"><span class="org-comment-delimiter">##</span>
+<span class="org-comment-delimiter"># </span><span class="org-comment">Ody55eus.gitlab.io</span>
+<span class="org-comment-delimiter">#</span>
+<span class="org-comment-delimiter"># </span><span class="org-comment">@version &lt;&lt;gvar("version")&gt;&gt;</span>
+
+<span class="org-makefile-targets">make</span>: html
+
+<span class="org-makefile-targets">install</span>:
+        emacs --quick --script requirements.el
+
+<span class="org-makefile-targets">download-puml</span>:
+        <span class="org-makefile-targets">curl -L http</span>://sourceforge.net/projects/plantuml/files/plantuml.jar/download &gt; ~/plantuml.jar
+
+<span class="org-makefile-targets">diag</span>:
+        java -jar ~/plantuml.jar diag/*
+
+<span class="org-makefile-targets">html</span>:
+        emacs --quick --script publish.el --funcall=jp/publish-html
+
+<span class="org-comment-delimiter"># </span><span class="org-comment">end</span>
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgb1b2b71" class="outline-3">
+<h3 id="orgb1b2b71">Publish.el</h3>
+<div class="outline-text-3" id="text-orgb1b2b71">
+<p>
+Inspired from <a href="https://gitlab.com/ambrevar/ambrevar.gitlab.io">ambrevar</a> and <a href="https://gitlab.com/ngm/commonplace">commonplace</a>.
+</p>
+</div>
+
+<div id="outline-container-org874f051" class="outline-4">
+<h4 id="org874f051">Install <code>org-roam</code> and <code>htmlize</code></h4>
+<div class="outline-text-4" id="text-org874f051">
+<p>
+Unfortunately the <a href="https://github.com/org-roam/org-roam">org-roam</a> package is needed to translate the page. We install this with straight:
+</p>
+<div class="org-src-container">
+<pre class="src src-emacs-lisp">(<span class="org-keyword">defvar</span> <span class="org-variable-name">bootstrap-version</span>)
+(<span class="org-keyword">let</span> ((bootstrap-file
+       (expand-file-name <span class="org-string">"straight/repos/straight.el/bootstrap.el"</span> user-emacs-directory))
+      (bootstrap-version 5))
+  (<span class="org-keyword">unless</span> (file-exists-p bootstrap-file)
+    (<span class="org-keyword">with-current-buffer</span>
+        (url-retrieve-synchronously
+         <span class="org-string">"https://raw.githubusercontent.com/raxod502/straight.el/develop/install.el"</span>
+         'silent 'inhibit-cookies)
+      (goto-char (point-max))
+      (eval-print-last-sexp)))
+  (load bootstrap-file nil 'nomessage))
+
+(straight-use-package 'org-roam)
+(straight-use-package 'htmlize)
+(<span class="org-keyword">require</span> '<span class="org-constant">ox-publish</span>)
+(<span class="org-keyword">require</span> '<span class="org-constant">ox-html</span>)
+(<span class="org-keyword">require</span> '<span class="org-constant">org-roam</span>)
+(<span class="org-keyword">require</span> '<span class="org-constant">find-lisp</span>)
+(<span class="org-keyword">require</span> '<span class="org-constant">htmlize</span>)
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org6fe839a" class="outline-4">
+<h4 id="org6fe839a">Define <code>jp/init-webpage</code></h4>
+<div class="outline-text-4" id="text-org6fe839a">
+<p>
+Same as in <a href="#org13405e6">Initialize local variables</a>:
+</p>
+<div class="org-src-container">
+<pre class="src src-emacs-lisp">(<span class="org-keyword">defun</span> <span class="org-function-name">jp/init-webpage</span> ()
+  (<span class="org-keyword">defvar</span> <span class="org-variable-name">jp/url</span> <span class="org-string">"https://ody5.de"</span>)
+  (<span class="org-keyword">defvar</span> <span class="org-variable-name">jp/gl-url</span> <span class="org-string">"https://gitlab.ody5.de"</span>)
+  (<span class="org-keyword">defvar</span> <span class="org-variable-name">jp/repository</span> <span class="org-string">"https://gitlab.com/ody55eus/ody55eus.gitlab.io"</span>)
+  (<span class="org-keyword">defvar</span> <span class="org-variable-name">jp/root</span> (expand-file-name <span class="org-string">"."</span>))
+  (<span class="org-keyword">setq</span> org-roam-directory (concat
+                            jp/root
+                            <span class="org-string">"/source/"</span>)
+        org-roam-v2-ack t
+        org-link-abbrev-alist '((<span class="org-string">"gitlab"</span> . <span class="org-string">"https://gitlab.com/"</span>)
+                                (<span class="org-string">"github"</span> . <span class="org-string">"https://github.com/"</span>)
+                                (<span class="org-string">"ody5"</span> . (concat jp/gl-url <span class="org-string">"/"</span>))
+                                )
+        org-directory (concat
+                       jp/root
+                       <span class="org-string">"/source/"</span>)
+        org-roam-db-location (concat jp/root <span class="org-string">"/org-roam.db"</span>)
+        org-id-extra-files (find-lisp-find-files org-roam-directory <span class="org-string">"</span><span class="org-string"><span class="org-warning">\</span></span><span class="org-string">.org$"</span>)
+        org-roam-capture-templates '((<span class="org-string">"d"</span> <span class="org-string">"default"</span> plain
+                                      <span class="org-string">"%?\n\nSee also %a.\n"</span>
+                                      <span class="org-builtin">:if-new</span> (file+head
+                                               <span class="org-string">"%&lt;%Y%m%d%H%M%S&gt;-${slug}.org"</span>
+                                               <span class="org-string">"#+title: ${title}\n"</span>)
+                                      <span class="org-builtin">:unnarrowed</span> t)
+                                     (<span class="org-string">"j"</span> <span class="org-string">"Projects"</span> plain
+                                      <span class="org-string">"%?"</span>
+                                      <span class="org-builtin">:if-new</span> (file+head
+                                               <span class="org-string">"Projects/%&lt;%Y%m%d%H%M%S&gt;-${slug}.org"</span>
+                                               <span class="org-string">"#+title: ${title}\n"</span>)
+                                      <span class="org-builtin">:clock-in</span> <span class="org-builtin">:clock-resume</span>
+                                      <span class="org-builtin">:unnarrowed</span> t
+                                      )
+                                     (<span class="org-string">"l"</span> <span class="org-string">"Literature"</span>)
+                                     (<span class="org-string">"ll"</span> <span class="org-string">"Literature Note"</span> plain
+                                      <span class="org-string">"%?\n\nSee also %a.\n* Links\n- %x\n* Notes\n"</span>
+                                      <span class="org-builtin">:if-new</span> (file+head
+                                               <span class="org-string">"Literature/%&lt;%Y%m%d%H%M%S&gt;-${slug}.org"</span>
+                                               <span class="org-string">"#+title: ${title}\n"</span>)
+                                      <span class="org-builtin">:unnarrowed</span> t
+                                      )
+                                     (<span class="org-string">"lr"</span> <span class="org-string">"Bibliography reference"</span> plain
+                                      <span class="org-string">"#+ROAM_KEY: %^{citekey}\n#+PROPERTY: type %^{entry-type}\n#+FILETAGS: %^{keywords}\n#+AUTHOR: %^{author}\n%?"</span>
+                                      <span class="org-builtin">:if-new</span> (file+head
+                                               <span class="org-string">"References/${citekey}.org"</span>
+                                               <span class="org-string">"#+title: ${title}\n"</span>)
+                                      <span class="org-builtin">:unnarrowed</span> t
+                                      )
+                                     (<span class="org-string">"c"</span> <span class="org-string">"Code"</span> plain
+                                      <span class="org-string">"%?\n\nSee also %a.\n"</span>
+                                      <span class="org-builtin">:if-new</span> (file+head
+                                               <span class="org-string">"Code/%&lt;%Y%m%d%H%M%S&gt;-${slug}.org"</span>
+                                               <span class="org-string">"#+title: ${title}\n#+date: %U"</span>)
+                                      <span class="org-builtin">:unnarrowed</span> t
+                                      )
+                                     )))
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org8a7aead" class="outline-4">
+<h4 id="org8a7aead">Set important export variables</h4>
+<div class="outline-text-4" id="text-org8a7aead">
+</div>
+<ul class="org-ul">
+<li><a id="orgf8b1401"></a>Org Export Settings<br>
+<div class="outline-text-5" id="text-orgf8b1401">
+<div class="org-src-container">
+<pre class="src src-emacs-lisp">(jp/init-webpage)
+
+<span class="org-comment-delimiter">;; </span><span class="org-comment">Timestamps can be used to avoid rebuilding everything.</span>
+<span class="org-comment-delimiter">;; </span><span class="org-comment">This is useful locally for testing.</span>
+<span class="org-comment-delimiter">;; </span><span class="org-comment">It won't work on Gitlab when stored in ./: the timestamps file should</span>
+<span class="org-comment-delimiter">;; </span><span class="org-comment">probably be put inside the public/ directory.  It's not so useful there</span>
+<span class="org-comment-delimiter">;; </span><span class="org-comment">however since generation is fast enough.</span>
+(<span class="org-keyword">setq</span> org-publish-use-timestamps-flag t
+      org-publish-timestamp-directory <span class="org-string">"./"</span>)
+
+<span class="org-comment-delimiter">;; </span><span class="org-comment">Get rid of index.html~ and the like that pop up during generation.</span>
+(<span class="org-keyword">setq</span> make-backup-files nil)
+
+(<span class="org-keyword">setq</span> org-export-with-section-numbers nil
+      org-export-with-smart-quotes t
+      org-export-with-email t
+      org-export-with-date t
+      org-export-with-tags 'not-in-toc
+      org-export-with-toc t
+      org-html-container-element <span class="org-string">"section"</span>
+      org-html-metadata-timestamp-format <span class="org-string">"%Y-%m-%d"</span>
+      org-html-checkbox-type 'html
+      org-html-html5-fancy t
+      org-html-validation-link nil
+      org-html-doctype <span class="org-string">"html5"</span>)
+</pre>
+</div>
+</div>
+</li>
+
+<li><a id="org5f5fcc7"></a>Preamble<br>
+<div class="outline-text-5" id="text-org5f5fcc7">
+<div class="org-src-container">
+<pre class="src src-emacs-lisp">(<span class="org-keyword">defun</span> <span class="org-function-name">jp/preamble</span> (info)
+  <span class="org-doc">"Return preamble as a string."</span>
+  (<span class="org-keyword">let*</span> ((file (plist-get info <span class="org-builtin">:input-file</span>))
+         (gitlab-url <span class="org-string">"https://gitlab.com/ody55eus"</span>)
+         (github-url <span class="org-string">"https://github.com/ody55eus"</span>)
+         (prefix (file-relative-name (expand-file-name <span class="org-string">"source"</span> jp/root)
+                                     (file-name-directory file)))
+         (prefix2 (file-relative-name
+                                     (file-name-directory file)
+                                     (expand-file-name <span class="org-string">"source"</span> jp/root)))
+         (filename (file-name-nondirectory file))
+         (filepath (<span class="org-keyword">if</span> (string-equal prefix2 <span class="org-string">"."</span>)
+                           filename
+                           (concat prefix2 filename))))
+    (format
+     (concat
+     <span class="org-string">"&lt;a href=\"%1$s/index.html\"&gt;&lt;i class=\"fa fa-home\"&gt;&lt;/i&gt; About&lt;/a&gt;</span>
+<span class="org-string">&lt;a href=\"%1$s/Projects/projects.html\"&gt;&lt;i class=\"fa fa-folder-open\"&gt;&lt;/i&gt; Projects&lt;/a&gt;</span>
+<span class="org-string">&lt;a href=\"%1$s/Literature/index.html\"&gt;&lt;i class=\"fa fa-book\"&gt;&lt;/i&gt; Literature&lt;/a&gt;</span>
+<span class="org-string">&lt;a href=\"%1$s/community.html\"&gt;&lt;i class=\"fa fa-globe\"&gt;&lt;/i&gt; Community&lt;/a&gt;</span>
+<span class="org-string">&lt;a href=\"%1$s/sitemap.html\"&gt;&lt;i class=\"fa fa-sitemap\"&gt;&lt;/i&gt; Sitemap&lt;/a&gt;</span>
+<span class="org-string">&lt;img class=\"logo\" src=\"%1$s/logo.png\"&gt;</span>
+<span class="org-string">&lt;span class=\"banner\"&gt;&lt;a</span>
+<span class="org-string">  href=\"%4$s\"&gt;&lt;i class=\"fa fa-gitlab\"&gt;&lt;/i&gt;&lt;/a&gt;&lt;a</span>
+<span class="org-string">  href=\"%5$s\"&gt;&lt;i class=\"fa fa-github\"&gt;&lt;/i&gt;&lt;/a&gt;Ody55eus&lt;/span&gt;</span>
+<span class="org-string">&lt;span class=\"source\"&gt;&lt;a href=\"%3$s/-/tree/master/source/%2$s\"&gt;&lt;i class=\"fa fa-code\"&gt;&lt;/i&gt; Page-Source&lt;/a&gt;&lt;/span&gt;</span>
+<span class="org-string">"</span>)
+     prefix filepath jp/repository gitlab-url github-url)))
+
+</pre>
+</div>
+</div>
+</li>
+
+<li><a id="org6560f48"></a>Postamble<br>
+<div class="outline-text-5" id="text-org6560f48">
+<div class="org-src-container">
+<pre class="src src-emacs-lisp">(<span class="org-keyword">setq</span> <span class="org-comment-delimiter">;; </span><span class="org-comment">org-html-divs '((preamble "header" "top")</span>
+ <span class="org-comment-delimiter">;;                 </span><span class="org-comment">(content "main" "content")</span>
+ <span class="org-comment-delimiter">;;                 </span><span class="org-comment">(postamble "footer" "postamble"))</span>
+ org-html-postamble t
+ org-html-postamble-format `((<span class="org-string">"en"</span> ,(concat <span class="org-string">"&lt;p class=\"comments\"&gt;&lt;a href=\""</span>
+                                            jp/repository <span class="org-string">"/issues\"&gt;Comments&lt;/a&gt;&lt;/p&gt;</span>
+
+<span class="org-string">&lt;p class=\"date\"&gt;Date: %u&lt;/p&gt;</span>
+<span class="org-string">&lt;p class=\"creator\"&gt;Made with %c&lt;/p&gt;</span>
+<span class="org-string">&lt;p class=\"license\"&gt;</span>
+<span class="org-string">  &lt;a rel=\"license\" href=\"https://www.gnu.org/licenses/gpl-3.0.en.html\"&gt;&lt;img alt=\"GNU General Public License\" width=\"64px\" style=\"border-width:0\" src=\"https://www.gnu.org/graphics/gplv3-127x51.png\" /&gt;&lt;/a&gt;</span>
+<span class="org-string">  &lt;a rel=\"license\" href=\"http://creativecommons.org/licenses/by-sa/4.0/\"&gt;&lt;img alt=\"Creative Commons License\" width=\"64px\" style=\"border-width:0\" src=\"https://mirrors.creativecommons.org/presskit/buttons/88x31/png/by-sa.png\" /&gt;&lt;/a&gt;</span>
+<span class="org-string">&lt;/p&gt;"</span>)))
+ <span class="org-comment-delimiter">;; </span><span class="org-comment">Use custom preamble function to compute relative links.</span>
+ org-html-preamble #'jp/preamble
+)
+</pre>
+</div>
+</div>
+</li>
+<li><a id="org7b93444"></a>Htmlize<br>
+<div class="outline-text-5" id="text-org7b93444">
+<div class="org-src-container">
+<pre class="src src-emacs-lisp">(<span class="org-keyword">setq</span> org-html-style-plain org-html-style-default
+      org-html-htmlize-output-type 'css)
+</pre>
+</div>
+</div>
+</li>
+</ul>
+</div>
+<div id="outline-container-org347bb5c" class="outline-4">
+<h4 id="org347bb5c">Define some helper functions</h4>
+<div class="outline-text-4" id="text-org347bb5c">
+</div>
+<ul class="org-ul">
+<li><a id="org2a1ca5c"></a>Git Helper<br>
+<div class="outline-text-5" id="text-org2a1ca5c">
+<div class="org-src-container">
+<pre class="src src-emacs-lisp"><span class="org-comment-delimiter">;; </span><span class="org-comment">Some help functions</span>
+(<span class="org-keyword">defun</span> <span class="org-function-name">jp/git-creation-date</span> (file)
+  <span class="org-doc">"Return the first commit date of FILE.</span>
+<span class="org-doc">Format is %Y-%m-%d."</span>
+  (<span class="org-keyword">with-temp-buffer</span>
+    (call-process <span class="org-string">"git"</span> nil t nil <span class="org-string">"log"</span> <span class="org-string">"--reverse"</span> <span class="org-string">"--date=short"</span> <span class="org-string">"--pretty=format:%cd"</span> file)
+    (goto-char (point-min))
+    (buffer-substring-no-properties (line-beginning-position) (line-end-position))))
+
+(<span class="org-keyword">defun</span> <span class="org-function-name">jp/git-last-update-date</span> (file)
+  <span class="org-doc">"Return the last commit date of FILE.</span>
+<span class="org-doc">Format is %Y-%m-%d."</span>
+  (<span class="org-keyword">with-output-to-string</span>
+    (<span class="org-keyword">with-current-buffer</span> standard-output
+      (call-process <span class="org-string">"git"</span> nil t nil <span class="org-string">"log"</span> <span class="org-string">"-1"</span> <span class="org-string">"--date=short"</span> <span class="org-string">"--pretty=format:%cd"</span> file))))
+
+(<span class="org-keyword">defun</span> <span class="org-function-name">jp/org-html-format-spec</span> (info)
+  <span class="org-doc">"Return format specification for preamble and postamble.</span>
+<span class="org-doc">INFO is a plist used as a communication channel.</span>
+<span class="org-doc">Just like `</span><span class="org-doc"><span class="org-constant">org-html-format-spec</span></span><span class="org-doc">' but uses git to return creation and last update</span>
+<span class="org-doc">dates.</span>
+<span class="org-doc">The extra `u` specifier displays the creation date along with the last update</span>
+<span class="org-doc">date only if they differ."</span>
+  (<span class="org-keyword">let*</span> ((timestamp-format (plist-get info <span class="org-builtin">:html-metadata-timestamp-format</span>))
+         (file (plist-get info <span class="org-builtin">:input-file</span>))
+         (meta-date (org-export-data (org-export-get-date info timestamp-format)
+                                     info))
+         (creation-date (<span class="org-keyword">if</span> (string= <span class="org-string">""</span> meta-date)
+                            (jp/git-creation-date file)
+                          <span class="org-comment-delimiter">;; </span><span class="org-comment">Default to the #+DATE value when specified.  This</span>
+                          <span class="org-comment-delimiter">;; </span><span class="org-comment">can be useful, for instance, when Git gets the file</span>
+                          <span class="org-comment-delimiter">;; </span><span class="org-comment">creation date wrong if the file was renamed.</span>
+                          meta-date))
+         (last-update-date (jp/git-last-update-date file)))
+    `((?t . ,(org-export-data (plist-get info <span class="org-builtin">:title</span>) info))
+      (?s . ,(org-export-data (plist-get info <span class="org-builtin">:subtitle</span>) info))
+      (?d . ,creation-date)
+      (?T . ,(format-time-string timestamp-format))
+      (?a . ,(org-export-data (plist-get info <span class="org-builtin">:author</span>) info))
+      (?e . ,(mapconcat
+              (<span class="org-keyword">lambda</span> (e) (format <span class="org-string">"&lt;a href=\"mailto:%s\"&gt;%s&lt;/a&gt;"</span> e e))
+              (split-string (plist-get info <span class="org-builtin">:email</span>)  <span class="org-string">",+ *"</span>)
+              <span class="org-string">", "</span>))
+      (?c . ,(plist-get info <span class="org-builtin">:creator</span>))
+      (?C . ,last-update-date)
+      (?v . ,(<span class="org-keyword">or</span> (plist-get info <span class="org-builtin">:html-validation-link</span>) <span class="org-string">""</span>))
+      (?u . ,(<span class="org-keyword">if</span> (string= creation-date last-update-date)
+                 creation-date
+               (format <span class="org-string">"%s (&lt;a href=%s&gt;Last update: %s&lt;/a&gt;)"</span>
+                       creation-date
+                       (format <span class="org-string">"%s/commits/master/%s"</span> jp/repository (file-relative-name file jp/root))
+                       last-update-date))))))
+(advice-add 'org-html-format-spec <span class="org-builtin">:override</span> 'jp/org-html-format-spec)
+
+</pre>
+</div>
+</div>
+</li>
+
+<li><a id="org0fcb77c"></a>Find Date<br>
+<div class="outline-text-5" id="text-org0fcb77c">
+<p>
+<code>jp/org-publish-find-date</code> is just like <code>org-publish-find-date</code> just uses git instead and does not fall back on file
+system timestamp and returns nil instead.
+</p>
+<div class="org-src-container">
+<pre class="src src-emacs-lisp">(<span class="org-keyword">defun</span> <span class="org-function-name">jp/org-publish-find-date</span> (file project)
+  <span class="org-doc">"Find the date of FILE in PROJECT.</span>
+<span class="org-doc">Just like `</span><span class="org-doc"><span class="org-constant">org-publish-find-date</span></span><span class="org-doc">' but do not fall back on file</span>
+<span class="org-doc">system timestamp and return nil instead."</span>
+  (<span class="org-keyword">let</span> ((file (org-publish--expand-file-name file project)))
+    (<span class="org-keyword">or</span> (org-publish-cache-get-file-property file <span class="org-builtin">:date</span> nil t)
+    (org-publish-cache-set-file-property
+     file <span class="org-builtin">:date</span>
+     (<span class="org-keyword">let</span> ((date (org-publish-find-property file <span class="org-builtin">:date</span> project)))
+       <span class="org-comment-delimiter">;; </span><span class="org-comment">DATE is a secondary string.  If it contains</span>
+       <span class="org-comment-delimiter">;; </span><span class="org-comment">a time-stamp, convert it to internal format.</span>
+       <span class="org-comment-delimiter">;; </span><span class="org-comment">Otherwise, use FILE modification time.</span>
+           (<span class="org-keyword">let</span> ((ts (<span class="org-keyword">and</span> (consp date) (assq 'timestamp date))))
+         (<span class="org-keyword">and</span> ts
+          (<span class="org-keyword">let</span> ((value (org-element-interpret-data ts)))
+            (<span class="org-keyword">and</span> (org-string-nw-p value)
+             (org-time-string-to-time value))))))))))
+</pre>
+</div>
+</div>
+</li>
+<li><a id="org69b5b82"></a>Collapsable src and example blocks<br>
+<div class="outline-text-5" id="text-org69b5b82">
+<p>
+From <a href="https://tecosaur.github.io/emacs-config/config.html">Tecosaur/Emacs-config</a>.
+</p>
+<p>
+By wrapping the <code>&lt;pre&gt;</code> element in a <code>&lt;details&gt;</code> block, we can obtain collapsable
+blocks with no CSS, though we will toss a little in anyway to have this looking
+somewhat spiffy.
+</p>
+
+<p>
+Since this collapsability seems useful to have on by default for certain chunks
+of code, it would be nice if you could set it with <code>#+attr_html: :collapsed t</code>.
+</p>
+
+<p>
+It would be nice to also have a corresponding global / session-local way of
+setting this, but I haven&rsquo;t quite been able to get that working (yet).
+</p>
+
+<div class="org-src-container">
+<pre class="src src-emacs-lisp">(<span class="org-keyword">defvar</span> <span class="org-variable-name">org-html-export-collapsed</span> nil)
+(eval '(cl-pushnew '(<span class="org-builtin">:collapsed</span> <span class="org-string">"COLLAPSED"</span> <span class="org-string">"collapsed"</span> org-html-export-collapsed t)
+                   (org-export-backend-options (org-export-get-backend 'html))))
+(add-to-list 'org-default-properties <span class="org-string">"EXPORT_COLLAPSED"</span>)
+</pre>
+</div>
+
+<p>
+We can take our src block modification a step further, and add a gutter on the
+side of the src block containing both an anchor referencing the current block,
+and a button to copy the content of the block.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-emacs-lisp" id="org6cc7a76">(<span class="org-keyword">defun</span> <span class="org-function-name">org-html-src-block-collapsable</span>
+    (orig-fn src-block contents info)
+  <span class="org-doc">"Wrap the usual &lt;pre&gt; block in a &lt;details&gt;"</span>
+  (<span class="org-keyword">if</span>
+      (<span class="org-keyword">or</span>
+       (not org-fancy-html-export-mode)
+       (<span class="org-keyword">bound-and-true-p</span> org-msg-export-in-progress))
+      (funcall orig-fn src-block contents info)
+    (<span class="org-keyword">let*</span>
+        ((properties
+          (cadr src-block))
+         (lang
+          (mode-name-to-lang-name
+           (plist-get properties <span class="org-builtin">:language</span>)))
+         (name
+          (plist-get properties <span class="org-builtin">:name</span>))
+         (ref
+          (org-export-get-reference src-block info))
+         (collapsed-p
+          (member
+           (<span class="org-keyword">or</span>
+            (org-export-read-attribute <span class="org-builtin">:attr_html</span> src-block <span class="org-builtin">:collapsed</span>)
+            (plist-get info <span class="org-builtin">:collapsed</span>))
+           '(<span class="org-string">"y"</span> <span class="org-string">"yes"</span> <span class="org-string">"t"</span> t <span class="org-string">"true"</span> <span class="org-string">"all"</span>))))
+      (format <span class="org-string">"&lt;details id='%s' class='code'%s&gt;\n&lt;summary%s&gt;%s&lt;/summary&gt;\n&lt;div class='gutter'&gt;&lt;a href='#%s'&gt;#&lt;/a&gt;\n&lt;button title='Copy to clipboard' onclick='copyPreToClipbord(this)'&gt;&#9112;&lt;/button&gt;&lt;/div&gt;\n%s\n\n&lt;/details&gt;"</span> ref
+              (<span class="org-keyword">if</span> collapsed-p <span class="org-string">""</span> <span class="org-string">" open"</span>)
+              (<span class="org-keyword">if</span> name <span class="org-string">" class='named'"</span> <span class="org-string">""</span>)
+              (concat
+               (<span class="org-keyword">when</span> name
+                 (concat <span class="org-string">"&lt;span class=\"name\"&gt;"</span> name <span class="org-string">"&lt;/span&gt;"</span>))
+               <span class="org-string">"&lt;span class=\"lang\"&gt;"</span> lang <span class="org-string">"&lt;/span&gt;"</span>)
+              ref
+              (<span class="org-keyword">if</span> name
+                  (replace-regexp-in-string
+                   (format <span class="org-string">"&lt;pre</span><span class="org-string"><span class="org-regexp-grouping-backslash">\\</span></span><span class="org-string"><span class="org-regexp-grouping-construct">(</span></span><span class="org-string"> class=\"[</span><span class="org-string"><span class="org-negation-char">^</span></span><span class="org-string">\"]+\"</span><span class="org-string"><span class="org-regexp-grouping-backslash">\\</span></span><span class="org-string"><span class="org-regexp-grouping-construct">)</span></span><span class="org-string">? id=\"%s\"&gt;"</span> ref)
+                   <span class="org-string">"&lt;pre\\1&gt;"</span>
+                   (funcall orig-fn src-block contents info))
+                (funcall orig-fn src-block contents info))))))
+(advice-add 'org-html-src-block-collapsable <span class="org-builtin">:around</span> #'org-html-src-block)
+
+(<span class="org-keyword">defun</span> <span class="org-function-name">mode-name-to-lang-name</span> (mode)
+  (<span class="org-keyword">or</span> (cadr (assoc mode
+                   '((<span class="org-string">"asymptote"</span> <span class="org-string">"Asymptote"</span>)
+                     (<span class="org-string">"awk"</span> <span class="org-string">"Awk"</span>)
+                     (<span class="org-string">"C"</span> <span class="org-string">"C"</span>)
+                     (<span class="org-string">"clojure"</span> <span class="org-string">"Clojure"</span>)
+                     (<span class="org-string">"css"</span> <span class="org-string">"CSS"</span>)
+                     (<span class="org-string">"D"</span> <span class="org-string">"D"</span>)
+                     (<span class="org-string">"ditaa"</span> <span class="org-string">"ditaa"</span>)
+                     (<span class="org-string">"dot"</span> <span class="org-string">"Graphviz"</span>)
+                     (<span class="org-string">"calc"</span> <span class="org-string">"Emacs Calc"</span>)
+                     (<span class="org-string">"emacs-lisp"</span> <span class="org-string">"Emacs Lisp"</span>)
+                     (<span class="org-string">"fortran"</span> <span class="org-string">"Fortran"</span>)
+                     (<span class="org-string">"gnuplot"</span> <span class="org-string">"gnuplot"</span>)
+                     (<span class="org-string">"haskell"</span> <span class="org-string">"Haskell"</span>)
+                     (<span class="org-string">"hledger"</span> <span class="org-string">"hledger"</span>)
+                     (<span class="org-string">"java"</span> <span class="org-string">"Java"</span>)
+                     (<span class="org-string">"js"</span> <span class="org-string">"Javascript"</span>)
+                     (<span class="org-string">"latex"</span> <span class="org-string">"LaTeX"</span>)
+                     (<span class="org-string">"ledger"</span> <span class="org-string">"Ledger"</span>)
+                     (<span class="org-string">"lisp"</span> <span class="org-string">"Lisp"</span>)
+                     (<span class="org-string">"lilypond"</span> <span class="org-string">"Lilypond"</span>)
+                     (<span class="org-string">"lua"</span> <span class="org-string">"Lua"</span>)
+                     (<span class="org-string">"matlab"</span> <span class="org-string">"MATLAB"</span>)
+                     (<span class="org-string">"mscgen"</span> <span class="org-string">"Mscgen"</span>)
+                     (<span class="org-string">"ocaml"</span> <span class="org-string">"Objective Caml"</span>)
+                     (<span class="org-string">"octave"</span> <span class="org-string">"Octave"</span>)
+                     (<span class="org-string">"org"</span> <span class="org-string">"Org mode"</span>)
+                     (<span class="org-string">"oz"</span> <span class="org-string">"OZ"</span>)
+                     (<span class="org-string">"plantuml"</span> <span class="org-string">"Plantuml"</span>)
+                     (<span class="org-string">"processing"</span> <span class="org-string">"Processing.js"</span>)
+                     (<span class="org-string">"python"</span> <span class="org-string">"Python"</span>)
+                     (<span class="org-string">"R"</span> <span class="org-string">"R"</span>)
+                     (<span class="org-string">"ruby"</span> <span class="org-string">"Ruby"</span>)
+                     (<span class="org-string">"sass"</span> <span class="org-string">"Sass"</span>)
+                     (<span class="org-string">"scheme"</span> <span class="org-string">"Scheme"</span>)
+                     (<span class="org-string">"screen"</span> <span class="org-string">"Gnu Screen"</span>)
+                     (<span class="org-string">"sed"</span> <span class="org-string">"Sed"</span>)
+                     (<span class="org-string">"sh"</span> <span class="org-string">"shell"</span>)
+                     (<span class="org-string">"sql"</span> <span class="org-string">"SQL"</span>)
+                     (<span class="org-string">"sqlite"</span> <span class="org-string">"SQLite"</span>)
+                     (<span class="org-string">"forth"</span> <span class="org-string">"Forth"</span>)
+                     (<span class="org-string">"io"</span> <span class="org-string">"IO"</span>)
+                     (<span class="org-string">"J"</span> <span class="org-string">"J"</span>)
+                     (<span class="org-string">"makefile"</span> <span class="org-string">"Makefile"</span>)
+                     (<span class="org-string">"maxima"</span> <span class="org-string">"Maxima"</span>)
+                     (<span class="org-string">"perl"</span> <span class="org-string">"Perl"</span>)
+                     (<span class="org-string">"picolisp"</span> <span class="org-string">"Pico Lisp"</span>)
+                     (<span class="org-string">"scala"</span> <span class="org-string">"Scala"</span>)
+                     (<span class="org-string">"shell"</span> <span class="org-string">"Shell Script"</span>)
+                     (<span class="org-string">"ebnf2ps"</span> <span class="org-string">"ebfn2ps"</span>)
+                     (<span class="org-string">"cpp"</span> <span class="org-string">"C++"</span>)
+                     (<span class="org-string">"abc"</span> <span class="org-string">"ABC"</span>)
+                     (<span class="org-string">"coq"</span> <span class="org-string">"Coq"</span>)
+                     (<span class="org-string">"groovy"</span> <span class="org-string">"Groovy"</span>)
+                     (<span class="org-string">"bash"</span> <span class="org-string">"bash"</span>)
+                     (<span class="org-string">"csh"</span> <span class="org-string">"csh"</span>)
+                     (<span class="org-string">"ash"</span> <span class="org-string">"ash"</span>)
+                     (<span class="org-string">"dash"</span> <span class="org-string">"dash"</span>)
+                     (<span class="org-string">"ksh"</span> <span class="org-string">"ksh"</span>)
+                     (<span class="org-string">"mksh"</span> <span class="org-string">"mksh"</span>)
+                     (<span class="org-string">"posh"</span> <span class="org-string">"posh"</span>)
+                     (<span class="org-string">"ada"</span> <span class="org-string">"Ada"</span>)
+                     (<span class="org-string">"asm"</span> <span class="org-string">"Assembler"</span>)
+                     (<span class="org-string">"caml"</span> <span class="org-string">"Caml"</span>)
+                     (<span class="org-string">"delphi"</span> <span class="org-string">"Delphi"</span>)
+                     (<span class="org-string">"html"</span> <span class="org-string">"HTML"</span>)
+                     (<span class="org-string">"idl"</span> <span class="org-string">"IDL"</span>)
+                     (<span class="org-string">"mercury"</span> <span class="org-string">"Mercury"</span>)
+                     (<span class="org-string">"metapost"</span> <span class="org-string">"MetaPost"</span>)
+                     (<span class="org-string">"modula-2"</span> <span class="org-string">"Modula-2"</span>)
+                     (<span class="org-string">"pascal"</span> <span class="org-string">"Pascal"</span>)
+                     (<span class="org-string">"ps"</span> <span class="org-string">"PostScript"</span>)
+                     (<span class="org-string">"prolog"</span> <span class="org-string">"Prolog"</span>)
+                     (<span class="org-string">"simula"</span> <span class="org-string">"Simula"</span>)
+                     (<span class="org-string">"tcl"</span> <span class="org-string">"tcl"</span>)
+                     (<span class="org-string">"tex"</span> <span class="org-string">"LaTeX"</span>)
+                     (<span class="org-string">"plain-tex"</span> <span class="org-string">"TeX"</span>)
+                     (<span class="org-string">"verilog"</span> <span class="org-string">"Verilog"</span>)
+                     (<span class="org-string">"vhdl"</span> <span class="org-string">"VHDL"</span>)
+                     (<span class="org-string">"xml"</span> <span class="org-string">"XML"</span>)
+                     (<span class="org-string">"nxml"</span> <span class="org-string">"XML"</span>)
+                     (<span class="org-string">"conf"</span> <span class="org-string">"Configuration File"</span>))))
+      mode))
+</pre>
+</div>
+
+<div class="org-src-container">
+<pre class="src src-emacs-lisp" id="org616b944">(<span class="org-keyword">defun</span> <span class="org-function-name">org-html-block-collapsable</span> (orig-fn block contents info)
+  <span class="org-doc">"Wrap the usual block in a &lt;details&gt;"</span>
+  (<span class="org-keyword">if</span> (<span class="org-keyword">or</span> (not org-fancy-html-export-mode) (<span class="org-keyword">bound-and-true-p</span> org-msg-export-in-progress))
+      (funcall orig-fn block contents info)
+    (<span class="org-keyword">let</span> ((ref (org-export-get-reference block info))
+          (type (<span class="org-keyword">pcase</span> (car block)
+                  ('property-drawer <span class="org-string">"Properties"</span>)))
+          (collapsed-default (<span class="org-keyword">pcase</span> (car block)
+                               ('property-drawer t)
+                               (_ nil)))
+          (collapsed-value (org-export-read-attribute <span class="org-builtin">:attr_html</span> block <span class="org-builtin">:collapsed</span>))
+          (collapsed-p (<span class="org-keyword">or</span> (member (org-export-read-attribute <span class="org-builtin">:attr_html</span> block <span class="org-builtin">:collapsed</span>)
+                                   '(<span class="org-string">"y"</span> <span class="org-string">"yes"</span> <span class="org-string">"t"</span> t <span class="org-string">"true"</span>))
+                           (member (plist-get info <span class="org-builtin">:collapsed</span>) '(<span class="org-string">"all"</span>)))))
+      (format
+       <span class="org-string">"&lt;details id='%s' class='code'%s&gt;</span>
+<span class="org-string">&lt;summary%s&gt;%s&lt;/summary&gt;</span>
+<span class="org-string">&lt;div class='gutter'&gt;\</span>
+<span class="org-string">&lt;a href='#%s'&gt;#&lt;/a&gt;</span>
+<span class="org-string">&lt;button title='Copy to clipboard' onclick='copyPreToClipbord(this)'&gt;&#9112;&lt;/button&gt;\</span>
+<span class="org-string">&lt;/div&gt;</span>
+<span class="org-string">%s\n</span>
+<span class="org-string">&lt;/details&gt;"</span>
+       ref
+       (<span class="org-keyword">if</span> (<span class="org-keyword">or</span> collapsed-p collapsed-default) <span class="org-string">""</span> <span class="org-string">" open"</span>)
+       (<span class="org-keyword">if</span> type <span class="org-string">" class='named'"</span> <span class="org-string">""</span>)
+       (<span class="org-keyword">if</span> type (format <span class="org-string">"&lt;span class='type'&gt;%s&lt;/span&gt;"</span> type) <span class="org-string">""</span>)
+       ref
+       (funcall orig-fn block contents info)))))
+
+(advice-add 'org-html-example-block   <span class="org-builtin">:around</span> #'org-html-block-collapsable)
+(advice-add 'org-html-fixed-width     <span class="org-builtin">:around</span> #'org-html-block-collapsable)
+(advice-add 'org-html-property-drawer <span class="org-builtin">:around</span> #'org-html-block-collapsable)
+</pre>
+</div>
+</div>
+</li>
+</ul>
+</div>
+
+<div id="outline-container-org0ade5c2" class="outline-4">
+<h4 id="org0ade5c2">Sitemap</h4>
+<div class="outline-text-4" id="text-org0ade5c2">
+</div>
+<ul class="org-ul">
+<li><a id="orgbbaddc3"></a>Define <code>jp/org-publish-sitemap</code><br>
+<div class="outline-text-5" id="text-orgbbaddc3">
+<div class="org-src-container">
+<pre class="src src-emacs-lisp">(<span class="org-keyword">defun</span> <span class="org-function-name">jp/org-publish-sitemap</span> (title list)
+  <span class="org-doc">"Outputs site map, as a string.</span>
+<span class="org-doc">See `</span><span class="org-doc"><span class="org-constant">org-publish-sitemap-default</span></span><span class="org-doc">'. "</span>
+  <span class="org-comment-delimiter">;; </span><span class="org-comment">Remove index and non articles.</span>
+  (setcdr list (seq-filter
+                (<span class="org-keyword">lambda</span> (file)
+                  (string-match <span class="org-string">"file:.*.org"</span> (car file)))
+                (cdr list)))
+  <span class="org-comment-delimiter">;; </span><span class="org-comment">TODO: Include subtitle?  It may be wiser, at least for projects.</span>
+  (concat <span class="org-string">"#+TITLE: "</span> title <span class="org-string">"\n"</span>
+          <span class="org-string">"#+HTML_HEAD: &lt;link rel=\"stylesheet\" type=\"text/css\" href=\"../dark.css\"&gt;"</span>
+          <span class="org-string">"\n"</span>
+          <span class="org-string">"#+HTML_HEAD: &lt;link rel=\"icon\" type=\"image/x-icon\" href=\"../logo.png\"&gt; "</span>
+          <span class="org-string">"\n"</span>
+          (org-list-to-org list)))
+</pre>
+</div>
+</div>
+</li>
+
+<li><a id="orgf41a6e5"></a>Define <code>jp/org-publish-main-sitemap</code><br>
+<div class="outline-text-5" id="text-orgf41a6e5">
+<div class="org-src-container">
+<pre class="src src-emacs-lisp">(<span class="org-keyword">defun</span> <span class="org-function-name">jp/org-publish-main-sitemap</span> (title list)
+  <span class="org-doc">"Outputs site map, as a string.</span>
+<span class="org-doc">See `</span><span class="org-doc"><span class="org-constant">org-publish-sitemap-default</span></span><span class="org-doc">'. "</span>
+  <span class="org-comment-delimiter">;; </span><span class="org-comment">Remove index and non articles.</span>
+  (setcdr list (seq-filter
+                (<span class="org-keyword">lambda</span> (file)
+                  (string-match <span class="org-string">"file:.*.org"</span> (car file)))
+                (cdr list)))
+  (concat <span class="org-string">"#+TITLE: "</span> title <span class="org-string">"\n"</span>
+          <span class="org-string">"#+HTML_HEAD: &lt;link rel=\"stylesheet\" type=\"text/css\" href=\"dark.css\"&gt;"</span>
+          <span class="org-string">"\n"</span>
+          <span class="org-string">"#+HTML_HEAD: &lt;link rel=\"icon\" type=\"image/x-icon\" href=\"logo.png\"&gt; "</span>
+          <span class="org-string">"\n"</span>
+          (org-list-to-org list)))
+</pre>
+</div>
+</div>
+</li>
+
+<li><a id="org220fdca"></a>Define <code>jp/org-publish-community-sitemap</code><br>
+<div class="outline-text-5" id="text-org220fdca">
+<div class="org-src-container">
+<pre class="src src-emacs-lisp">(<span class="org-keyword">defun</span> <span class="org-function-name">jp/org-publish-community-sitemap</span> (title list)
+  <span class="org-doc">"Outputs site map, as a string.</span>
+<span class="org-doc">See `</span><span class="org-doc"><span class="org-constant">org-publish-sitemap-default</span></span><span class="org-doc">'. "</span>
+  <span class="org-comment-delimiter">;; </span><span class="org-comment">Remove index and non articles.</span>
+  (setcdr list (seq-filter
+                (<span class="org-keyword">lambda</span> (file)
+                  (string-match <span class="org-string">"file:[</span><span class="org-string"><span class="org-negation-char">^</span></span><span class="org-string"> ]*References/.*.org"</span> (car file)))
+                (cdr list)))
+  (concat <span class="org-string">"#+TITLE: "</span> title <span class="org-string">"\n"</span>
+          <span class="org-string">"#+HTML_HEAD: &lt;link rel=\"stylesheet\" type=\"text/css\" href=\"dark.css\"&gt;"</span>
+          <span class="org-string">"\n"</span>
+          <span class="org-string">"#+HTML_HEAD: &lt;link rel=\"icon\" type=\"image/x-icon\" href=\"logo.png\"&gt; "</span>
+          <span class="org-string">"\n"</span>
+          (org-list-to-org list)))
+</pre>
+</div>
+</div>
+</li>
+
+<li><a id="org90245b0"></a>Define <code>jp/org-publish-sitemap-entry</code><br>
+<div class="outline-text-5" id="text-org90245b0">
+<div class="org-src-container">
+<pre class="src src-emacs-lisp">(<span class="org-keyword">defun</span> <span class="org-function-name">jp/org-publish-sitemap-entry</span> (entry style project)
+  <span class="org-doc">"Custom format for site map ENTRY, as a string.</span>
+<span class="org-doc">See `</span><span class="org-doc"><span class="org-constant">org-publish-sitemap-default-entry</span></span><span class="org-doc">'."</span>
+  (<span class="org-keyword">cond</span> ((not (directory-name-p entry))
+         (<span class="org-keyword">let*</span> ((meta-date (jp/org-publish-find-date entry project))
+                (file (expand-file-name entry
+                                        (org-publish-property <span class="org-builtin">:base-directory</span> project)))
+                (creation-date (<span class="org-keyword">if</span> (not meta-date)
+                                   (jp/git-creation-date file)
+                                 <span class="org-comment-delimiter">;; </span><span class="org-comment">Default to the #+DATE value when specified.  This</span>
+                                 <span class="org-comment-delimiter">;; </span><span class="org-comment">can be useful, for instance, when Git gets the file</span>
+                                 <span class="org-comment-delimiter">;; </span><span class="org-comment">creation date wrong if the file was renamed.</span>
+                                 (format-time-string <span class="org-string">"%Y-%m-%d"</span> meta-date)))
+                (last-date (jp/git-last-update-date file)))
+           (format <span class="org-string">"[[file:%s][%s]]^{ (%s)}"</span>
+                   entry
+                   (org-publish-find-title entry project)
+                   (<span class="org-keyword">if</span> (string= creation-date last-date)
+                       creation-date
+                     (format <span class="org-string">"%s, updated %s"</span> creation-date last-date)))))
+        ((eq style 'tree)
+         <span class="org-comment-delimiter">;; </span><span class="org-comment">Return only last subdir.</span>
+         (capitalize (file-name-nondirectory (directory-file-name entry))))
+        (t entry)))
+</pre>
+</div>
+</div>
+</li>
+</ul>
+</div>
+
+<div id="outline-container-orgb2c191b" class="outline-4">
+<h4 id="orgb2c191b">Setting <code>org-publish-project-alist</code></h4>
+<div class="outline-text-4" id="text-orgb2c191b">
+<div class="org-src-container">
+<pre class="src src-emacs-lisp">(<span class="org-keyword">setq</span> org-publish-project-alist
+      (list
+       (list <span class="org-string">"all-site-pages-org"</span>
+             <span class="org-builtin">:base-directory</span> <span class="org-string">"./source/"</span>
+             <span class="org-builtin">:recursive</span> t
+             <span class="org-builtin">:publishing-function</span> '(org-html-publish-to-html)
+             <span class="org-builtin">:publishing-directory</span> <span class="org-string">"./public/"</span>
+             <span class="org-builtin">:sitemap-format-entry</span> #'jp/org-publish-sitemap-entry
+             <span class="org-builtin">:auto-sitemap</span> t
+             <span class="org-builtin">:sitemap-title</span> <span class="org-string">"Community"</span>
+             <span class="org-builtin">:sitemap-filename</span> <span class="org-string">"community.org"</span>
+             <span class="org-comment-delimiter">;; </span><span class="org-comment">:sitemap-file-entry-format "%d *%t*"</span>
+             <span class="org-builtin">:sitemap-style</span> 'list
+             <span class="org-builtin">:sitemap-function</span> #'jp/org-publish-community-sitemap
+             <span class="org-comment-delimiter">;; </span><span class="org-comment">:sitemap-ignore-case t</span>
+             <span class="org-builtin">:sitemap-sort-files</span> 'anti-chronologically
+             <span class="org-builtin">:html-head-include-default-style</span> nil
+             <span class="org-builtin">:html-head-include-scripts</span> nil
+             <span class="org-builtin">:html-head</span> <span class="org-string">"&lt;link rel=\"stylesheet\" type=\"text/css\" href=\"../dark.css\"&gt;</span>
+<span class="org-string">&lt;link rel=\"icon\" type=\"image/x-icon\" href=\"../logo.png\"&gt;"</span>)
+       (list <span class="org-string">"main-site-org"</span>
+             <span class="org-builtin">:base-directory</span> <span class="org-string">"./source/"</span>
+             <span class="org-builtin">:recursive</span> nil
+             <span class="org-builtin">:publishing-function</span> '(org-html-publish-to-html)
+             <span class="org-builtin">:publishing-directory</span> <span class="org-string">"./public/"</span>
+             <span class="org-builtin">:sitemap-format-entry</span> #'jp/org-publish-sitemap-entry
+             <span class="org-builtin">:auto-sitemap</span> t
+             <span class="org-builtin">:sitemap-title</span> <span class="org-string">"Sitemap"</span>
+             <span class="org-builtin">:sitemap-filename</span> <span class="org-string">"sitemap.org"</span>
+             <span class="org-comment-delimiter">;; </span><span class="org-comment">:sitemap-file-entry-format "%d *%t*"</span>
+             <span class="org-builtin">:sitemap-style</span> 'list
+             <span class="org-builtin">:sitemap-function</span> #'jp/org-publish-main-sitemap
+             <span class="org-comment-delimiter">;; </span><span class="org-comment">:sitemap-ignore-case t</span>
+             <span class="org-builtin">:sitemap-sort-files</span> 'anti-chronologically
+             <span class="org-builtin">:html-head-include-default-style</span> nil
+             <span class="org-builtin">:html-head-include-scripts</span> nil
+             <span class="org-builtin">:html-head</span> <span class="org-string">"&lt;link rel=\"stylesheet\" type=\"text/css\" href=\"dark.css\"&gt;</span>
+<span class="org-string">&lt;link rel=\"icon\" type=\"image/x-icon\" href=\"logo.png\"&gt;"</span>)
+       (list <span class="org-string">"site-projects-org"</span>
+             <span class="org-builtin">:base-directory</span> <span class="org-string">"./source/Projects"</span>
+             <span class="org-builtin">:recursive</span> t
+             <span class="org-builtin">:publishing-function</span> '(org-html-publish-to-html)
+             <span class="org-builtin">:publishing-directory</span> <span class="org-string">"./public/Projects"</span>
+             <span class="org-builtin">:sitemap-format-entry</span> #'jp/org-publish-sitemap-entry
+             <span class="org-builtin">:auto-sitemap</span> t
+             <span class="org-builtin">:sitemap-title</span> <span class="org-string">"Projects"</span>
+             <span class="org-builtin">:sitemap-filename</span> <span class="org-string">"projects.org"</span>
+             <span class="org-comment-delimiter">;; </span><span class="org-comment">:sitemap-file-entry-format "%d *%t*"</span>
+             <span class="org-builtin">:sitemap-style</span> 'list
+             <span class="org-builtin">:sitemap-function</span> #'jp/org-publish-sitemap
+             <span class="org-comment-delimiter">;; </span><span class="org-comment">:sitemap-ignore-case t</span>
+             <span class="org-builtin">:sitemap-sort-files</span> 'anti-chronologically
+             <span class="org-builtin">:html-head-include-default-style</span> nil
+             <span class="org-builtin">:html-head-include-scripts</span> nil
+             <span class="org-builtin">:html-head</span> <span class="org-string">"&lt;link rel=\"stylesheet\" type=\"text/css\" href=\"../dark.css\"&gt;</span>
+<span class="org-string">&lt;link rel=\"icon\" type=\"image/x-icon\" href=\"../logo.png\"&gt;"</span>)
+       (list <span class="org-string">"site-static"</span>
+             <span class="org-builtin">:base-directory</span> <span class="org-string">"static/"</span>
+             <span class="org-builtin">:exclude</span> <span class="org-string">"\\.org\\'"</span>
+             <span class="org-builtin">:base-extension</span> 'any
+             <span class="org-builtin">:publishing-directory</span> <span class="org-string">"./public"</span>
+             <span class="org-builtin">:publishing-function</span> 'org-publish-attachment
+             <span class="org-builtin">:recursive</span> t)
+       (list <span class="org-string">"site"</span> <span class="org-builtin">:components</span> '(<span class="org-string">"main-site-org"</span> <span class="org-string">"site-projects-org"</span> <span class="org-string">"site-static"</span>))))
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org76fe624" class="outline-4">
+<h4 id="org76fe624">Define <code>jp/publish-html</code></h4>
+<div class="outline-text-4" id="text-org76fe624">
+<div class="org-src-container">
+<pre class="src src-emacs-lisp">(<span class="org-keyword">defun</span> <span class="org-function-name">jp/publish-html</span> ()
+  (org-roam-setup)
+  (org-id-update-id-locations)
+  (org-publish-all)
+  )
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org13a8fe9" class="outline-4">
+<h4 id="org13a8fe9">End of File (EOF)</h4>
+<div class="outline-text-4" id="text-org13a8fe9">
+<div class="org-src-container">
+<pre class="src src-emacs-lisp">(<span class="org-keyword">provide</span> '<span class="org-constant">publish</span>)
+<span class="org-comment-delimiter">;;; </span><span class="org-comment">publish.el ends here</span>
+</pre>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<section id="outline-container-org92c0cb8" class="outline-2">
+<h2 id="org92c0cb8">Build</h2>
+<div class="outline-text-2" id="text-org92c0cb8">
+<ul class="org-ul">
+<li>Install Requirements:
+<ul class="org-ul">
+<li>Emacs</li>
+</ul></li>
+<li><p>
+Just run the following command, to deploy all:
+</p>
+<div class="org-src-container">
+<pre class="src src-sh">emacs --quick --script publish.el --funcall=jp/publish-html
+</pre>
+</div></li>
+</ul>
+</div>
+</section>
+
+<section id="outline-container-org83a7f13" class="outline-2">
+<h2 id="org83a7f13">Deploy</h2>
+<div class="outline-text-2" id="text-org83a7f13">
+<p>
+Just download the latest archive from gitlab and extract with <code>tar</code>:
+</p>
+<div class="org-src-container">
+<pre class="src src-sh">tar xzf public.tar.gz
+</pre>
+</div>
+</div>
+</section>
+
+<section id="outline-container-org57a7251" class="outline-2">
+<h2 id="org57a7251">License</h2>
+<div class="outline-text-2" id="text-org57a7251">
+<p>
+This content is licensed under the Creative Commons Attribution-ShareAlike 4.0
+International License. To view a copy of this license, visit
+<a href="http://creativecommons.org/licenses/by-sa/4.0/">http://creativecommons.org/licenses/by-sa/4.0/</a>
+</p>
+
+<p>
+The code creating these pages is licensed under <a href="https://www.gnu.org/licenses/gpl-3.0.en.html">GNU GPLv3</a>.
+</p>
+
+<p>
+Copyright (C) 2021 Jonathan Pieper
+</p>
+
+<p>
+This program is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+</p>
+
+<p>
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+</p>
+
+<p>
+You should have received a copy of the GNU General Public License
+along with this program.  If not, see <a href="http://www.gnu.org/licenses/">http://www.gnu.org/licenses/</a>.
+</p>
+</div>
+</section>
+</div>
+<div id="postamble" class="status">
+<p class="comments"><a href="https://gitlab.com/ody55eus/ody55eus.gitlab.io/issues">Comments</a></p>
+
+<p class="date">Date: 2021-09-24</p>
+<p class="creator">Made with <a href="https://www.gnu.org/software/emacs/">Emacs</a> 26.3 (<a href="https://orgmode.org">Org</a> mode 9.5)</p>
+<p class="license">
+  <a rel="license" href="https://www.gnu.org/licenses/gpl-3.0.en.html"><img alt="GNU General Public License" width="64px" style="border-width:0" src="https://www.gnu.org/graphics/gplv3-127x51.png" /></a>
+  <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/"><img alt="Creative Commons License" width="64px" style="border-width:0" src="https://mirrors.creativecommons.org/presskit/buttons/88x31/png/by-sa.png" /></a>
+</p>
+</div>
+</body>
+</html>
