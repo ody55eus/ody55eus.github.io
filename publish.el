@@ -62,13 +62,13 @@
         org-roam-capture-templates '(("d" "default" plain
                                       "%?\n\nSee also %a.\n"
                                       :if-new (file+head
-                                               "%<%Y%m%d%H%M%S>-${slug}.org"
+                                               "${slug}.org"
                                                "#+title: ${title}\n")
                                       :unnarrowed t)
                                      ("j" "Projects" plain
                                       "%?"
                                       :if-new (file+head
-                                               "Projects/%<%Y%m%d%H%M%S>-${slug}.org"
+                                               "Projects/${slug}.org"
                                                "#+title: ${title}\n")
                                       :clock-in :clock-resume
                                       :unnarrowed t
@@ -77,7 +77,7 @@
                                      ("ll" "Literature Note" plain
                                       "%?\n\nSee also %a.\n* Links\n- %x\n* Notes\n"
                                       :if-new (file+head
-                                               "Literature/%<%Y%m%d%H%M%S>-${slug}.org"
+                                               "Literature/${slug}.org"
                                                "#+title: ${title}\n")
                                       :unnarrowed t
                                       )
@@ -91,7 +91,7 @@
                                      ("c" "Code" plain
                                       "%?\n\nSee also %a.\n"
                                       :if-new (file+head
-                                               "Code/%<%Y%m%d%H%M%S>-${slug}.org"
+                                               "Code/${slug}.org"
                                                "#+title: ${title}\n#+date: %U")
                                       :unnarrowed t
                                       )

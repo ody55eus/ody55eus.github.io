@@ -17,10 +17,11 @@ The default variables are stored in the [[file:INFO][INFO]] file:
 To read these variables, Emacs executes the following line in shell whenever ~gvar(variable)~ gets called in this org file:
 #+NAME: gvar
 #+begin_src sh :var variable="version" :exports both
-cat ./INFO | grep -i $variable | cut --delimiter="|" -f3
+cat ./INFO | grep -i $variable | cut -d "|" -f3
 #+end_src
 
 #+RESULTS: gvar
+: 0.0.1
 
 For Example, the version is call_gvar().
 
@@ -82,7 +83,7 @@ This code block lets me set the [[id:5064b908-04f6-4167-a66c-072073109ef1][Org R
 
 ** Init.el
 #+begin_warning
-Be careful, when using this code. Changing your OrgMode directories can break some configurations. For this reason the variables are only changed in the local buffer. You have to execute ~(jp/init-webpage)~ on every buffer. *There should be a better way to do this (maybe something like [[https://github.com/benoitj/dotfiles/blob/main/dot_emacs-profiles.el][this emacs-profiles.el from benoitj]] or [[https://github.com/benoitj/dotfiles/blob/main/dot_config/doom/config.el#L6][config-local-file]]).*
+Be careful, when using this code. Changing your OrgMode directories can break some configurations. When using ~(jp/init-webpage)~ the old Org Roam files are no longer available. *There should be a better way to do this (maybe something like [[https://github.com/benoitj/dotfiles/blob/main/dot_emacs-profiles.el][this emacs-profiles.el from benoitj]] or [[https://github.com/benoitj/dotfiles/blob/main/dot_config/doom/config.el#L6][config-local-file]]).*
 #+end_warning
 
 *** Requires ~find-lisp~
@@ -115,13 +116,13 @@ You need the package find-lisp installed in your local Emacs config.
         org-roam-capture-templates '(("d" "default" plain
                                       "%?\n\nSee also %a.\n"
                                       :if-new (file+head
-                                               "%<%Y%m%d%H%M%S>-${slug}.org"
+                                               "${slug}.org"
                                                "#+title: ${title}\n")
                                       :unnarrowed t)
                                      ("j" "Projects" plain
                                       "%?"
                                       :if-new (file+head
-                                               "Projects/%<%Y%m%d%H%M%S>-${slug}.org"
+                                               "Projects/${slug}.org"
                                                "#+title: ${title}\n")
                                       :clock-in :clock-resume
                                       :unnarrowed t
@@ -130,7 +131,7 @@ You need the package find-lisp installed in your local Emacs config.
                                      ("ll" "Literature Note" plain
                                       "%?\n\nSee also %a.\n* Links\n- %x\n* Notes\n"
                                       :if-new (file+head
-                                               "Literature/%<%Y%m%d%H%M%S>-${slug}.org"
+                                               "Literature/${slug}.org"
                                                "#+title: ${title}\n")
                                       :unnarrowed t
                                       )
@@ -144,14 +145,14 @@ You need the package find-lisp installed in your local Emacs config.
                                      ("c" "Code" plain
                                       "%?\n\nSee also %a.\n"
                                       :if-new (file+head
-                                               "Code/%<%Y%m%d%H%M%S>-${slug}.org"
+                                               "Code/${slug}.org"
                                                "#+title: ${title}\n#+date: %U")
                                       :unnarrowed t
                                       )
                                      )))
 #+end_src
 
-*** End of File (EOF)
+*** End of File (EOF) :noexport:
 #+begin_src emacs-lisp :tangle ./init-page.el
 (provide 'init-page)
 ;;; init-page.el ends here
