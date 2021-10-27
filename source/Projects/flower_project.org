@@ -1,0 +1,40 @@
+:PROPERTIES:
+:ID:       8af0d372-1957-45a8-93ed-a7aec02adc91
+:END:
+#+title: Flower Project
+#+date:  <2020-07-14 Di>
+
+The following project  for the course Data Science by [[https://www.dbis.cs.uni-frankfurt.de/index.php/staff/][Dr. Karsten Tolle]].
+With this project, we want to demonstrate the performance leap between traditional computer vision models and deep neural networks. Please refer to the [[id:a601d721-1d57-4bfe-a562-609559961f8a][Report and Presentation]] for detailed information.
+
+* Goal
+This project uses two different machine learning models to learn and classify images from different flowers. It trains and compares convolutional neural networks (CNN) and support vector machines (SVM) to learn features for five different flower categories:
+- Daisy
+- Dandelion
+- Rose
+- Sunflower
+- Tulip
+
+* Data
+The models trained on the images from the following [[https://www.kaggle.com/][Kaggle]] Datasets:
++ https://www.kaggle.com/mgornergoogle/five-flowers
++ https://www.kaggle.com/ianmoone0617/flower-goggle-tpu-classification
+
+* Training the model
+The training was processed with [[https://colab.research.google.com/drive/1xMJ1Kt4YBeIpqGIzPt1Km8ziwNW5a2Og][Google Colab]] to take advantage of the fast computation with GPU.
+
+* Results
+The following picture displays a small ensemble of the test set (not used to train the models) together with the corresponding classifications.
+#+caption:Different Flowers and predictions
+https://gitlab.com/ganymede/ganymede.gitlab.io/-/raw/master/source/_posts/flowers.png?inline=false
+
+* Availability
+** Source Code
+The source code of the machine learning models is released under the [[https://github.com/mansurova/flowers/blob/master/LICENSE][MIT License]] on GitHub:
+https://github.com/mansurova/flowers
+
+** Report and Presentation
+:PROPERTIES:
+:ID:       a601d721-1d57-4bfe-a562-609559961f8a
+:END:
+The [[https://gitlab.com/ganymede/flowers-report][report]] (submitted: 26.06.2020)  and [[https://gitlab.com/ganymede/flowers-presentation][presentation files]] (presented: 14.07.2020) are also available under CC-BY and MIT License.

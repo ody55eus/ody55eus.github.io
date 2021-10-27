@@ -3,5 +3,4 @@
 :END:
 #+title: Literature Notes
 
-- [[id:1f0b2596-d7fd-4365-b9e8-0d7226215d95][FAIR Computational Workflows]]
 - [[id:f80807b8-91f4-4799-92a3-076d1c1a045a][How to take smart notes]]
