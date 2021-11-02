@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<!-- 2021-10-14 -->
+<!-- 2021-11-02 -->
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Flower Project</title>
@@ -20,7 +20,7 @@
 <span class="banner"><a
   href="https://gitlab.com/ody55eus"><i class="fa fa-gitlab"></i></a><a
   href="https://github.com/ody55eus"><i class="fa fa-github"></i></a>Ody55eus</span>
-<span class="source"><a href="https://gitlab.com/ody55eus/ody55eus.gitlab.io/-/tree/master/source/Projects/20210922231130-flower_project.org"><i class="fa fa-code"></i> Page-Source</a></span>
+<span class="source"><a href="https://gitlab.com/ody55eus/ody55eus.gitlab.io/-/tree/master/source/Projects/flower_project.org"><i class="fa fa-code"></i> Page-Source</a></span>
 </div>
 <div id="content" class="content">
 <header>
@@ -29,24 +29,29 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#orgd1e4ec1">Goal</a></li>
-<li><a href="#org3695c3a">Data</a></li>
-<li><a href="#orgd1a2447">Training the model</a></li>
-<li><a href="#orgecd2df4">Results</a></li>
-<li><a href="#org38db164">Code</a></li>
-<li><a href="#org60029e4">Report and Presentation</a></li>
+<li><a href="#orgff56a71">Goal</a></li>
+<li><a href="#org97c59db">Data</a></li>
+<li><a href="#org1b471ff">Training the model</a></li>
+<li><a href="#org96ceb3b">Results</a></li>
+<li><a href="#org1410ac0">Availability</a>
+<ul>
+<li><a href="#orge56e679">Source Code</a></li>
+<li><a href="#org80e5452">Report and Presentation</a></li>
+</ul>
+</li>
 </ul>
 </div>
 </nav>
 <p>
-I have created the following project for the course Data Science by <a href="https://www.dbis.cs.uni-frankfurt.de/index.php/staff/">Dr. Karsten Tolle</a>.
+The following project  for the course Data Science by <a href="https://www.dbis.cs.uni-frankfurt.de/index.php/staff/">Dr. Karsten Tolle</a>.
+With this project, we want to demonstrate the performance leap between traditional computer vision models and deep neural networks. Please refer to the <a href="#org80e5452">Report and Presentation</a> for detailed information.
 </p>
 
-<section id="outline-container-orgd1e4ec1" class="outline-2">
-<h2 id="orgd1e4ec1">Goal</h2>
-<div class="outline-text-2" id="text-orgd1e4ec1">
+<section id="outline-container-orgff56a71" class="outline-2">
+<h2 id="orgff56a71">Goal</h2>
+<div class="outline-text-2" id="text-orgff56a71">
 <p>
-This code is traning two models to classify an image into one of the following groups:
+This project uses two different machine learning models to learn and classify images from different flowers. It trains and compares convolutional neural networks (CNN) and support vector machines (SVM) to learn features for five different flower categories:
 </p>
 <ul class="org-ul">
 <li>Daisy</li>
@@ -58,11 +63,11 @@ This code is traning two models to classify an image into one of the following g
 </div>
 </section>
 
-<section id="outline-container-org3695c3a" class="outline-2">
-<h2 id="org3695c3a">Data</h2>
-<div class="outline-text-2" id="text-org3695c3a">
+<section id="outline-container-org97c59db" class="outline-2">
+<h2 id="org97c59db">Data</h2>
+<div class="outline-text-2" id="text-org97c59db">
 <p>
-This code is trained on the images from the following Datasets:
+The models trained on the images from the following <a href="https://www.kaggle.com/">Kaggle</a> Datasets:
 </p>
 <ul class="org-ul">
 <li><a href="https://www.kaggle.com/mgornergoogle/five-flowers">https://www.kaggle.com/mgornergoogle/five-flowers</a></li>
@@ -71,20 +76,23 @@ This code is trained on the images from the following Datasets:
 </div>
 </section>
 
-<section id="outline-container-orgd1a2447" class="outline-2">
-<h2 id="orgd1a2447">Training the model</h2>
-<div class="outline-text-2" id="text-orgd1a2447">
+<section id="outline-container-org1b471ff" class="outline-2">
+<h2 id="org1b471ff">Training the model</h2>
+<div class="outline-text-2" id="text-org1b471ff">
 <p>
-The training was processed with [Google Colab](<a href="https://colab.research.google.com/drive/1xMJ1Kt4YBeIpqGIzPt1Km8ziwNW5a2Og">https://colab.research.google.com/drive/1xMJ1Kt4YBeIpqGIzPt1Km8ziwNW5a2Og</a>) to take advantage of the fast computation with GPU.
+The training was processed with <a href="https://colab.research.google.com/drive/1xMJ1Kt4YBeIpqGIzPt1Km8ziwNW5a2Og">Google Colab</a> to take advantage of the fast computation with GPU.
 </p>
 </div>
 </section>
 
-<section id="outline-container-orgecd2df4" class="outline-2">
-<h2 id="orgecd2df4">Results</h2>
-<div class="outline-text-2" id="text-orgecd2df4">
+<section id="outline-container-org96ceb3b" class="outline-2">
+<h2 id="org96ceb3b">Results</h2>
+<div class="outline-text-2" id="text-org96ceb3b">
+<p>
+The following picture displays a small ensemble of the test set (not used to train the models) together with the corresponding classifications.
+</p>
 
-<figure id="org3ecdb5b">
+<figure id="orgb8207e1">
 <img src="https://gitlab.com/ganymede/ganymede.gitlab.io/-/raw/master/source/_posts/flowers.png?inline=false" alt="flowers.png?inline=false">
 
 <figcaption><span class="figure-number">Figure 1: </span>Different Flowers and predictions</figcaption>
@@ -92,29 +100,34 @@ The training was processed with [Google Colab](<a href="https://colab.research.g
 </div>
 </section>
 
-<section id="outline-container-org38db164" class="outline-2">
-<h2 id="org38db164">Code</h2>
-<div class="outline-text-2" id="text-org38db164">
+<section id="outline-container-org1410ac0" class="outline-2">
+<h2 id="org1410ac0">Availability</h2>
+<div class="outline-text-2" id="text-org1410ac0">
+</div>
+<div id="outline-container-orge56e679" class="outline-3">
+<h3 id="orge56e679">Source Code</h3>
+<div class="outline-text-3" id="text-orge56e679">
 <p>
-The source code is released under the <a href="https://github.com/mansurova/flowers/blob/master/LICENSE">MIT License</a> on GitHub:
+The source code of the machine learning models is released under the <a href="https://github.com/mansurova/flowers/blob/master/LICENSE">MIT License</a> on GitHub:
 <a href="https://github.com/mansurova/flowers">https://github.com/mansurova/flowers</a>
 </p>
 </div>
-</section>
+</div>
 
-<section id="outline-container-org60029e4" class="outline-2">
-<h2 id="org60029e4">Report and Presentation</h2>
-<div class="outline-text-2" id="text-org60029e4">
+<div id="outline-container-org80e5452" class="outline-3">
+<h3 id="org80e5452">Report and Presentation</h3>
+<div class="outline-text-3" id="text-org80e5452">
 <p>
 The <a href="https://gitlab.com/ganymede/flowers-report">report</a> (submitted: 26.06.2020)  and <a href="https://gitlab.com/ganymede/flowers-presentation">presentation files</a> (presented: 14.07.2020) are also available under CC-BY and MIT License.
 </p>
+</div>
 </div>
 </section>
 </div>
 <div id="postamble" class="status">
 <p class="comments"><a href="https://gitlab.com/ody55eus/ody55eus.gitlab.io/issues">Comments</a></p>
 
-<p class="date">Date: 2020-07-14 (<a href=https://gitlab.com/ody55eus/ody55eus.gitlab.io/commits/master/source/Projects/20210922231130-flower_project.org>Last update: 2021-09-22</a>)</p>
+<p class="date">Date: 2020-07-14 (<a href=https://gitlab.com/ody55eus/ody55eus.gitlab.io/commits/master/source/Projects/flower_project.org>Last update: 2021-10-27</a>)</p>
 <p class="creator">Made with <a href="https://www.gnu.org/software/emacs/">Emacs</a> 26.3 (<a href="https://orgmode.org">Org</a> mode 9.5)</p>
 <p class="license">
   <a rel="license" href="https://www.gnu.org/licenses/gpl-3.0.en.html"><img alt="GNU General Public License" width="64px" style="border-width:0" src="https://www.gnu.org/graphics/gplv3-127x51.png" /></a>
