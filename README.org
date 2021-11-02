@@ -446,7 +446,7 @@ of code, it would be nice if you could set it with =#+attr_html: :collapsed t=.
 It would be nice to also have a corresponding global / session-local way of
 setting this, but I haven't quite been able to get that working (yet).
 
-#+begin_src emacs-lisp :tangle ./publish.el
+#+begin_src emacs-lisp
 (defvar org-html-export-collapsed nil)
 (eval '(cl-pushnew '(:collapsed "COLLAPSED" "collapsed" org-html-export-collapsed t)
                    (org-export-backend-options (org-export-get-backend 'html))))
@@ -458,7 +458,7 @@ side of the src block containing both an anchor referencing the current block,
 and a button to copy the content of the block.
 
 #+name: Src blocks
-#+begin_src emacs-lisp :tangle ./publish.el
+#+begin_src emacs-lisp
 (defun org-html-src-block-collapsable
     (orig-fn src-block contents info)
   "Wrap the usual <pre> block in a <details>"
@@ -586,7 +586,7 @@ and a button to copy the content of the block.
 #+end_src
 
 #+name: Example, fixed width, and property blocks
-#+begin_src emacs-lisp :tangle ./publish.el
+#+begin_src emacs-lisp
 (defun org-html-block-collapsable (orig-fn block contents info)
   "Wrap the usual block in a <details>"
   (if (or (not org-fancy-html-export-mode) (bound-and-true-p org-msg-export-in-progress))
