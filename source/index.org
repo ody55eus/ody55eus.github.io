@@ -5,16 +5,19 @@
 
 Dear visitor,
 
-welcome to my odyssey through science. This little corner of the web lets you follow me on my way as I stumble across numerous phenomena in interdisciplnary fields.
+welcome to my personal odyssey through science. This little corner of the web lets you follow me on my way as I stumble across numerous phenomena in interdisciplinary fields.
 
-This webpage is constantly growing and improving.
+This web-page is constantly growing and improving.
 
 * About Me
-I am Jonathan Pieper, a programmer and researcher in physics, data science, and machine learning. I am always interested in new projects.
+My name is Jonathan Pieper, I am a programmer and researcher in physics, data science, and machine learning. I am always interested in new projects.
 * Projects
 To see all my Projects, take a look at the Menu.
-** [[id:5064b908-04f6-4167-a66c-072073109ef1][Org Roam (Zettelkasten)]] :Flagged:
-During the time after I finished my masters degree, I explored some additional ways to autodidacticaly educate myself. On this journey I discovered [[id:7bd0d14c-b748-4f05-8c70-36fbf0a94745][Emacs]] and the book [[id:f80807b8-91f4-4799-92a3-076d1c1a045a][How to take smart notes]].
+** [[id:c3b47664-b69b-4eb2-a09f-66325d5566fe][Master Thesis]] :Star:
+I just published my master thesis. Please take a look inside to learn more about my recent accomplishments.
+
+** My Computer Configuration
+During the time while I finished my masters degree, I explored some better ways to interact with the computer. This includes how to efficiently synchronize notes, documentation, and code, as well as improving writing and researching skills. Please take a look into my [[id:c44ddac4-82c6-410c-b07b-e703379a3af1][Computer Configuration]] for more information.
 * This Site
 This site is created using [[id:7bd0d14c-b748-4f05-8c70-36fbf0a94745][Emacs]] and [[id:afe3de83-e5b8-4f53-b457-987dd9bd579d][Org Mode]].
-For more information, please consult the [[id:1e0af5aa-7042-47f2-abb0-01c55b13f25b][Readme.org]].
+For more information, please consult the [[file:README.org][Readme.org]].
