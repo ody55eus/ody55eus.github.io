@@ -1,0 +1,3 @@
+[submodule "source"]
+	path = source
+	url = git@gitlab.com:ody5-pub/blog.git
