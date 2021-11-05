@@ -1,6 +1,0 @@
-:PROPERTIES:
-:ID:       47b34235-2518-425f-81ff-da683530dafb
-:END:
-#+title: Literature Notes
-
-- [[id:f80807b8-91f4-4799-92a3-076d1c1a045a][How to take smart notes]]

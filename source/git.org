@@ -1,6 +1,0 @@
-:PROPERTIES:
-:ID:       fc8ee5a9-57d9-4349-9428-5df19fcdf3e5
-:END:
-#+title: Git
-
-This section is still under construction. Please return later for some progress.

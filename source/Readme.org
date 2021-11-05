@@ -1,6 +1,0 @@
-:PROPERTIES:
-:ID:       1e0af5aa-7042-47f2-abb0-01c55b13f25b
-:END:
-#+TITLE: Ody55eus.gitlab.io -
-#+HTML_HEAD: <link rel="stylesheet" type="text/css" href="dark.css">
-#+INCLUDE: ../README.org

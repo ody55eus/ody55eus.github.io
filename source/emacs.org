@@ -1,6 +1,0 @@
-:PROPERTIES:
-:ID:       7bd0d14c-b748-4f05-8c70-36fbf0a94745
-:END:
-#+title: Emacs
-
-Emacs is a great text editor, which also brings [[id:afe3de83-e5b8-4f53-b457-987dd9bd579d][Org Mode]] and [[id:5064b908-04f6-4167-a66c-072073109ef1][Org Roam (Zettelkasten)]].
