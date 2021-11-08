@@ -2,7 +2,7 @@
 set -euo pipefail
 
 commit=$(git rev-parse HEAD)
-git checkout --track origin/gh-pages
+git branch -u origin/gh-pages gh-pages
 cp -Rf public/* .
 rm -rf public
 git commit -a -m "Depolyment of ${commit}"
