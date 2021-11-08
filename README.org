@@ -803,11 +803,11 @@ emacs --quick --script publish.el --funcall=jp/publish-html
 Just commit the newly build page into the branch ~gh-pages~ which is synchronized to the page:
 #+begin_src sh :tangle-mode (identity #o755) :tangle deploy.sh :shebang "#!/usr/bin/env bash\nset -euo pipefail\n"
 commit=$(git rev-parse HEAD)
-git checkout gh-pages
+git checkout --track origin/gh-pages
 cp -Rf public/* .
 rm -rf public
 git commit -a -m "Depolyment of ${commit}"
-git push
+git push origin HEAD
 #+end_src
 
 * License
