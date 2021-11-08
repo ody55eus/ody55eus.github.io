@@ -1,9 +1,9 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-hash = $(git rev-parse HEAD)
+commit=$(git rev-parse HEAD)
 git checkout gh-pages
 cp -Rf public/* .
 rm -rf public
-git commit -a -m "Depolyment of ${hash}"
+git commit -a -m "Depolyment of ${commit}"
 git push
