@@ -172,6 +172,7 @@ pages:
       - public
   only:
     - master
+    - main
 #+end_src
 
 ** GitHub Actions
