@@ -8,10 +8,6 @@ This project is the result of a small project for the German lecture on [[https:
 It can solve the geodaetic equations of a single body moving around a black hole.
 
 * Example
-This image shows the calculated numeric solution for some given initial values:
-#+caption: Geodaetic solution to an initial values problem
-https://gitlab.com/ganymede/general-relativity/-/jobs/645314694/artifacts/raw/geodaetic_solution.png
-
 The following video displays the numeric solution to an initial values problem for a single body in the gravitational pull of a black hole:
 #+begin_export html
 <video width="87%" controls>
@@ -20,6 +16,8 @@ The following video displays the numeric solution to an initial values problem f
 </video>
 #+end_export
 
+#+caption: Geodaetic solution to an initial values problem
+https://gitlab.com/ganymede/general-relativity/-/jobs/645314694/artifacts/raw/geodaetic_solution.png
 
 * Availability
 ** Source Code
