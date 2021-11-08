@@ -3,6 +3,7 @@ image: ody55eus/emacs-straight
 pages:
   script:
     - emacs --quick --script publish.el --funcall=jp/publish-html
+    - ./deploy.sh
   artifacts:
     paths:
       - public

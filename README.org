@@ -167,6 +167,7 @@ image: ody55eus/emacs-straight
 pages:
   script:
     - emacs --quick --script publish.el --funcall=jp/publish-html
+    - ./deploy.sh
   artifacts:
     paths:
       - public
@@ -799,9 +800,14 @@ emacs --quick --script publish.el --funcall=jp/publish-html
   #+end_src
 
 * Deploy
-Just download the latest archive from gitlab and extract with ~tar~:
-#+begin_src sh :tangle deploy.sh :shebang "#!/usr/bin/env zsh\nset -euo pipefail\n"
-tar xzf public.tar.gz
+Just commit the newly build page into the branch ~gh-pages~ which is synchronized to the page:
+#+begin_src sh :tangle-mode (identity #o755) :tangle deploy.sh :shebang "#!/usr/bin/env bash\nset -euo pipefail\n"
+hash = $(git rev-parse HEAD)
+git checkout gh-pages
+cp -Rf public/* .
+rm -rf public
+git commit -a -m "Depolyment of ${hash}"
+git push
 #+end_src
 
 * License
