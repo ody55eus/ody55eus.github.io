@@ -171,7 +171,6 @@ pages:
     paths:
       - public
   only:
-    - master
     - main
 #+end_src
 
@@ -322,7 +321,7 @@ Same as in [[*Initialize local variables][Initialize local variables]]:
 <span class=\"banner\"><a
   href=\"%4$s\"><i class=\"fa fa-gitlab\"></i></a><a
   href=\"%5$s\"><i class=\"fa fa-github\"></i></a>Ody55eus</span>
-<span class=\"source\"><a href=\"%3$s/-/tree/master/source/%2$s\"><i class=\"fa fa-code\"></i> Page-Source</a></span>
+<span class=\"source\"><a href=\"%3$s/-/tree/main/source/%2$s\"><i class=\"fa fa-code\"></i> Page-Source</a></span>
 ")
      prefix filepath jp/repository gitlab-url github-url)))
 
@@ -405,7 +404,7 @@ date only if they differ."
                  creation-date
                (format "%s (<a href=%s>Last update: %s</a>)"
                        creation-date
-                       (format "%s/commits/master/%s" jp/repository (file-relative-name file jp/root))
+                       (format "%s/commits/main/%s" jp/repository (file-relative-name file jp/root))
                        last-update-date))))))
 (advice-add 'org-html-format-spec :override 'jp/org-html-format-spec)
 
