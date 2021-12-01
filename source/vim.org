@@ -1,0 +1,58 @@
+:PROPERTIES:
+:ID:       55274963-7de7-4ddb-ba29-43b04adc1c44
+:END:
+#+title: Vim
+
+Vim (Vi IMproved) is one of the oldest and most powerful keyboard driven text editors.
+Please take a look at my [[id:c44ddac4-82c6-410c-b07b-e703379a3af1][Computer Configuration]] to see, how I am using Vim.
+
+* Vi Movement
+The first hurdle for most new users is to learn the different Vi modes (Normal, Insert, Visual and Command Mode).
+To insert text into a document, the keys ~i~ (insert) or ~a~ (append) can change from normal to insert mode (~ESC~ always returns back to normal mode). The command mode allows entering Vim specific commands which usually start with a colon (~:~).
+To learn the basic Vim keybindings, try the vim-tutor (with the command ~:Tutor~).
+
+When moving through a text file, usually the *normal mode* is used. This mode provides the following keybindings (this list is not complete. For a complete list, consult the Vim help via ~:help~):
+** Words
+| Key | Movement                                           |
+|-----+----------------------------------------------------|
+| ~w~   | Go to the beginning of this or the next *word*       |
+| ~e~   | Go to the *end* of this or the next word.            |
+| ~b~   | Go to the *beginning* of this or the previous word.  |
+| ~*~   | Go to the next occurrence of the current word.     |
+| ~#~   | Go to the previous occurrence of the current word. |
+
+** Line
+| Key     | Movement                                                        |
+|---------+-----------------------------------------------------------------|
+| ~0~       | Beginning of line                                               |
+| ~$~       | End of line                                                     |
+| ~^~       | First non-whitespace occurrence in current line.                |
+| ~+~       | First non-whitespace occurrence in next line.                   |
+| ~o~       | Create new line below and change to *insert mode*                 |
+| ~O~       | Create new line above and change to *insert mode*                 |
+| ~f[char]~ | Find next occurrence of ~[char]~ in current line                  |
+| ~F[char]~ | Find previous occurrence of ~[char]~ in current line              |
+| ~t[char]~ | Go before (until) next occurrence of ~[char]~ in current line     |
+| ~T[char]~ | Go before (until) previous occurrence of ~[char]~ in current line |
+| ~;/,~     | Repeat last ~f/F/t/T~ forward/backwards                           |
+| ~{/}~     | Go to the next / previous paragraph.                            |
+
+** Screen / Document
+| Key     | Movement                       |
+|---------+--------------------------------|
+| ~gg~      | First line of the document.    |
+| ~G~       | Last line of the document.     |
+| ~H~       | First line of current screen.  |
+| ~M~       | Middle line of current screen. |
+| ~L~       | Last line of current screen.   |
+| ~C-d/C-u~ | Down/Up one half screen.       |
+* NeoVim
+I am using the community driven NeoVim. This Vim fork has a very active community and does not rely on a single maintainer.
+
+* References
+- Homepage: [[https://www.vim.org/]]
+- NeoVim: [[https://neovim.io/]]
+  + Git Repository: [[https://github.com/neovim/neovim]]
+- Online Tutorials:
+  + [[https://sodocumentation.net/vim/topic/1117/movement][SO Documentation]]
+  + [[https://www.youtube.com/playlist?list=PL5--8gKSku15tivUyt0D-mERePLEzrWUz][DistroTube - The Vim Lifestyle]]
