@@ -17,7 +17,7 @@ During my bachelor and [[id:c3b47664-b69b-4eb2-a09f-66325d5566fe][master thesis]
 In this process, I focused on statistical data analysis, scrutinizing noisy signals in detail with fluctuation spectroscopy, observing the frequency space of fluctuations using Fourier transformation.
 
 * Projects
-To see all my Projects, take a look at the [[projects.org][Projects Overview]].
+To see all my Projects, take a look at the [[Projects/projects.html][Projects Overview]].
 ** Awesome Text Editors
 During the time after I finished my masters degree, I explored some additional ways to auto-didactically educate myself. On this journey I rediscovered the amazing keyboard focused editors [[id:7bd0d14c-b748-4f05-8c70-36fbf0a94745][Emacs]] and [[id:55274963-7de7-4ddb-ba29-43b04adc1c44][Vim]]. Such tools adapt towards easy and quick use and help concentrate on the tasks at hand rather than how to interact with the computer.
 ** Zettelkasten
