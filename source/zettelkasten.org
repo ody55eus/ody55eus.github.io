@@ -2,4 +2,13 @@
 :ID:       5064b908-04f6-4167-a66c-072073109ef1
 :END:
 #+title: Org Roam (Zettelkasten)
-Org Roam is an extension for [[id:afe3de83-e5b8-4f53-b457-987dd9bd579d][Org Mode]]. It lives in [[id:7bd0d14c-b748-4f05-8c70-36fbf0a94745][Emacs]].
+
+Org Roam is an extension for [[id:afe3de83-e5b8-4f53-b457-987dd9bd579d][Org Mode]].
+Inspired by the Zettelkasten system, which became popular by the German sociologist Niklas Luhman and books like [[id:f80807b8-91f4-4799-92a3-076d1c1a045a][How to take smart notes]], Org Roam provides a simple implementation to manage and link digital notes in plain text format.
+
+* References
+- Homepage: [[https://www.orgroam.com/]]
+- Git Repository: [[https://github.com/org-roam/org-roam]]
+** Additional Packages
+- [[https://github.com/org-roam/org-roam-ui][org-roam-ui]] (interactive webserver to browse notes)
+- [[https://github.com/org-roam/org-roam-bibtex][org-roam-bibtex]] (BibTeX integration)
