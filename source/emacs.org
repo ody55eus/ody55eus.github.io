@@ -3,4 +3,15 @@
 :END:
 #+title: Emacs
 
-Emacs is a great text editor, which also brings [[id:afe3de83-e5b8-4f53-b457-987dd9bd579d][Org Mode]] and [[id:5064b908-04f6-4167-a66c-072073109ef1][Org Roam (Zettelkasten)]].
+Emacs is an awesome productivity tool (with basic text editing functionality).
+Emacs is more keyboard focused and extensible than any other software I have encountered so far.
+Please take a look at my [[id:c44ddac4-82c6-410c-b07b-e703379a3af1][Computer Configuration]] to see, how I am using Emacs.
+
+* Org Mode
+[[id:afe3de83-e5b8-4f53-b457-987dd9bd579d][Org Mode]] is one of the most powerful build-in features of Emacs.
+Together with additional packages, like [[id:5064b908-04f6-4167-a66c-072073109ef1][Org Roam]], this is a perfect note taking system.
+
+* References
+- Homepage: [[http://www.gnu.org/software/emacs/]]
+- Git Repository: [[https://savannah.gnu.org/projects/emacs/]]
+- Wiki: [[https://www.emacswiki.org/emacs/SiteMap]]
