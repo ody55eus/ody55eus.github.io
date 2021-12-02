@@ -4,8 +4,12 @@
 #+title: How to take smart notes
 
 This amazing book inspired me to introduce a note taking system.
+Please take a look at the following online references for further information.
 I am taking full advantage of this system with the [[id:7bd0d14c-b748-4f05-8c70-36fbf0a94745][Emacs]] package [[id:5064b908-04f6-4167-a66c-072073109ef1][Org Roam]].
 
 * References
 - [[https://takesmartnotes.com/][Write... One Note at a Time]]
 - [[https://www.quora.com/What-is-the-best-way-to-take-notes][Quora - What is the best way to take notes?]]
+- [[https://zettelkasten.de/][Zettelkasten.de]]
+- [[https://niklas-luhmann-archiv.de/][Niklas Luhmann Archiv]] (a project to digitalize Luhmann’s Zettelkasten)
+- [[https://luhmann.surge.sh/communicating-with-slip-boxes][Niklas Luhmann - Communicating with Slip Boxes]]

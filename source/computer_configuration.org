@@ -3,16 +3,7 @@
 :END:
 #+title: Computer Configuration
 This chapter begins the journey through some of the many helpful tools that can improve your everyday workflow on the computer.
-* Dotfiles
-My computer configuration is available on GitLab and GitHub:
-- [[https://gitlab.com/ody55eus/dotfiles]]
-- [[https://github.com/ody55eus/dotfiles]]
-* Editing Text Files
-** Version Control
-All files which change over time should be version controlled. The most easy way to do this is with [[id:fc8ee5a9-57d9-4349-9428-5df19fcdf3e5][Git]].
-** Text Editors
-*** Vim
-*** Emacs
-**** Org Mode
-***** [[id:5064b908-04f6-4167-a66c-072073109ef1][Org Roam (Zettelkasten)]]
- The book [[id:f80807b8-91f4-4799-92a3-076d1c1a045a][How to take smart notes]] inspired me to rethink my note taking system. With Org Roam, I found a great way to simply take notes and link them together. This is also the basis for this website.
+
+* Configuration Files
+My computer configuration is available on [[https://gitlab.com/ody55eus/dotfiles][GitLab]] and [[https://github.com/ody55eus/dotfiles][GitHub]].
+
