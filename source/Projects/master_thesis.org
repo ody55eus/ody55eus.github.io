@@ -2,10 +2,14 @@
 :ID:       c3b47664-b69b-4eb2-a09f-66325d5566fe
 :END:
 #+title: Master Thesis
+#+SUBTITLE: Computational Workflow Optimization for Magnetic Fluctuation Measurements of 3D Nano-Tetrapods
 #+DATE: <2021-11-11 Thu>
 
-I am proud to present my newly published master thesis! The thesis and supplemental information are published on a dedicated website:
+
+I am proud to present my master thesis titled “Computational Workflow Optimization for Magnetic Fluctuation Measurements of 3D Nano-Tetrapods”! The thesis and supplemental information are published on a dedicated website:
 - [[https://master.ody5.de/]]
+
+The [[https://gitlab.com/ody55eus/master-thesis/][LaTeX]] and [[https://gitlab.com/ody55eus/lab-book/][Lab Book source code]], as well as the [[https://gitlab.com/ody55eus/ana][Python data analysis framework]] used to analyze and visualize the [[https://gitlab.com/ody55eus/master-data][raw data]], are available as free/libre open source projects.
 
 * Abstract
 The detailed understanding of micro--and nanoscale structures,
