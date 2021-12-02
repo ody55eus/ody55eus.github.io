@@ -275,21 +275,6 @@ See `org-publish-sitemap-default'. "
           "\n"
           (org-list-to-org list)))
 
-(defun jp/org-publish-community-sitemap (title list)
-  "Outputs site map, as a string.
-See `org-publish-sitemap-default'. "
-  ;; Remove index and non articles.
-  (setcdr list (seq-filter
-                (lambda (file)
-                  (string-match "file:[^ ]*References/.*.org" (car file)))
-                (cdr list)))
-  (concat "#+TITLE: " title "\n"
-          "#+HTML_HEAD: <link rel=\"stylesheet\" type=\"text/css\" href=\"dark.css\">"
-          "\n"
-          "#+HTML_HEAD: <link rel=\"icon\" type=\"image/x-icon\" href=\"logo.png\"> "
-          "\n"
-          (org-list-to-org list)))
-
 (defun jp/org-publish-sitemap-entry (entry style project)
   "Custom format for site map ENTRY, as a string.
 See `org-publish-sitemap-default-entry'."
@@ -322,15 +307,7 @@ See `org-publish-sitemap-default-entry'."
              :recursive t
              :publishing-function '(org-html-publish-to-html)
              :publishing-directory "./public/"
-             :sitemap-format-entry #'jp/org-publish-sitemap-entry
-             :auto-sitemap t
-             :sitemap-title "Community"
-             :sitemap-filename "community.org"
-             ;; :sitemap-file-entry-format "%d *%t*"
-             :sitemap-style 'list
-             :sitemap-function #'jp/org-publish-community-sitemap
-             ;; :sitemap-ignore-case t
-             :sitemap-sort-files 'anti-chronologically
+             :auto-sitemap nil
              :html-head-include-default-style nil
              :html-head-include-scripts nil
              :html-head "<link rel=\"stylesheet\" type=\"text/css\" href=\"../dark.css\">
