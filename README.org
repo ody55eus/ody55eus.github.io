@@ -25,7 +25,7 @@ cat ./INFO | grep -i $variable | cut -d "|" -f3
 
 For Example, the version is call_gvar().
 
-** Creating Pages
+** Creating Pages :noexport:
 These code blocks create the header of the [[file:init-page.el][init-page.el]] and [[file:publish.el][publish.el]].
 
 *** Init-pages.el
@@ -76,7 +76,6 @@ These code blocks create the header of the [[file:init-page.el][init-page.el]] a
 ;;
 ;;; Code:
 #+end_src
-***
 
 * Writing
 This code block lets me set the [[id:5064b908-04f6-4167-a66c-072073109ef1][Org Roam (Zettelkasten)]] directory to the [[file:source/][source/]] folder for the current buffer. Additionally the ~org-roam-capture-templates~ and the ~org-roam-db-location~ are updated to create a new ~org-roam.db~ file and update org capture temlates.
@@ -165,6 +164,8 @@ This configuration loads my docker image [[https://hub.docker.com/r/ody55eus/ema
 image: ody55eus/emacs-straight
 
 pages:
+  before_script:
+    - git clone https://gitlab.com/ody55eus/dotfiles.git
   script:
     - emacs --quick --script publish.el --funcall=jp/publish-html
   artifacts:
@@ -192,6 +193,9 @@ jobs:
 
       - name: Install Emacs
         run: sudo apt install emacs-nox --yes
+
+      - name: Clone dotfiles
+        run: git clone https://gitlab.com/ody55eus/dotfiles.git
 
       - name: Build the site
         run: emacs --quick --script publish.el --funcall=jp/publish-html
@@ -315,7 +319,6 @@ Same as in [[*Initialize local variables][Initialize local variables]]:
      "<a href=\"%1$s/index.html\"><i class=\"fa fa-home\"></i> About</a>
 <a href=\"%1$s/Projects/projects.html\"><i class=\"fa fa-folder-open\"></i> Projects</a>
 <a href=\"%1$s/Literature/index.html\"><i class=\"fa fa-book\"></i> Literature</a>
-<a href=\"%1$s/community.html\"><i class=\"fa fa-globe\"></i> Community</a>
 <a href=\"%1$s/sitemap.html\"><i class=\"fa fa-sitemap\"></i> Sitemap</a>
 <img class=\"logo\" src=\"%1$s/logo.png\">
 <span class=\"banner\"><a

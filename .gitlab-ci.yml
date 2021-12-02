@@ -1,6 +1,8 @@
 image: ody55eus/emacs-straight
 
 pages:
+  before_script:
+    - git clone https://gitlab.com/ody55eus/dotfiles.git
   script:
     - emacs --quick --script publish.el --funcall=jp/publish-html
   artifacts:
