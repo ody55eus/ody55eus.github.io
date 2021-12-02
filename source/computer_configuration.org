@@ -6,5 +6,5 @@ This chapter begins the journey through some of the many helpful tools that can 
 
 * Configuration Files
 My computer configuration is available on [[https://gitlab.com/ody55eus/dotfiles][GitLab]] and [[https://github.com/ody55eus/dotfiles][GitHub]].
-* Emacs Configuration
-#+INCLUDE: ../dotfiles/doom/Emacs.org
+As soon as I convert more configuration files into [[id:afe3de83-e5b8-4f53-b457-987dd9bd579d][Org Mode]], they are going to be published here:
+- [[id:76ea5e94-3c51-4137-a400-213bfbe9f636][Emacs Configuration]]

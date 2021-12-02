@@ -1,0 +1,4 @@
+:PROPERTIES:
+:ID:       76ea5e94-3c51-4137-a400-213bfbe9f636
+:END:
+#+INCLUDE: ../dotfiles/doom/Emacs.org
