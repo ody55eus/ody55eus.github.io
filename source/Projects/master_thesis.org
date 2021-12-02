@@ -3,7 +3,7 @@
 :END:
 #+title: Master Thesis
 #+SUBTITLE: Computational Workflow Optimization for Magnetic Fluctuation Measurements of 3D Nano-Tetrapods
-#+DATE: <2021-11-11 Thu>
+#+DATE: <2021-12-11 Sat>
 
 
 I am proud to present my master thesis titled “Computational Workflow Optimization for Magnetic Fluctuation Measurements of 3D Nano-Tetrapods”! The thesis and supplemental information are published on a dedicated website:

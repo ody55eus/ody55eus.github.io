@@ -2,6 +2,7 @@
 :ID:       9394118f-dd21-4fa0-abcc-896485551af1
 :END:
 #+title: Geodaetic solution to an initial values problem
+#+DATE: <2020-08-10 Mon>
 
 This project is the result of a small project for the German lecture on [[https://itp.uni-frankfurt.de/~hanauske/VARTC/][general relativity theory]] by [[https://itp.uni-frankfurt.de/~hanauske/][Dr. Matthias Hanauske]].
 
