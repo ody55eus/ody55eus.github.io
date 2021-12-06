@@ -1,0 +1,41 @@
+:PROPERTIES:
+:ID:       d693202b-7607-4bad-b736-83640fc1b774
+:END:
+#+title: Trajectory Recognition
+#+DATE: <2020-08-16 Sun>
+
+Subtracting the static background of videos is a powerful technique used to isolate moving objects.
+In our case, birds and insects are being filmed passing through the horizon.
+We subtract this static horizon with a carefully designed software that uses background subtraction.
+The software automatically tracks the trajectories of the birds and insects through clustering algorithms and combines these trajectories into a single picture.
+Using these trajectories, the varying flight patterns allow indications for differentiating birds from insects.
+
+* Functional Specifications
+The starting point for the trajectory recognition project is a camera that is positioned on the roof of the physics building in Frankfurt in a fixed and static set up.
+The camera films the roof of the building and the horizon as the scenery.
+There are different objects like birds and insects passing through the scenery.
+The main goal is the separation of the trajectories of the birds and insects from the background.
+The fixed position of the camera formed a sound basis for efficient background subtraction.
+Airplanes, spyder webs, multiple objects flying through the background, reflections of the sun on the roof, and different weather conditions are the main problems for a successful separation.
+Different algorithms have been tested to find the best result.
+
+* Example
+#+begin_export html
+<video width="87%" controls>
+  <source src="https://user-content.gitlab-static.net/7e107cbd4ad66f691fc8efb543f5a399fd7632f7/68747470733a2f2f64726976652e676f6f676c652e636f6d2f75633f69643d314f723155714e49306a3432564c71425a314e4e645f58556c475539655f5f6848266578706f72743d646f776e6c6f6164" type="video/mp4">
+   Your browser does not support this video.
+</video>
+#+end_export
+
+#+caption: Extracted path from video
+[[https://gitlab.com/ganymede/trajectory-recognition/-/wikis/uploads/e1fe58347722eecd18ad2a4e5a2f3ca7/insect.png]]
+
+* Availability
+** Description
+A more detailed description is available in the [[https://gitlab.com/ganymede/trajectory-recognition/-/wikis/home][GitLab project wiki]].
+** Source Code
+The source code is released under the MIT License on GitLab:
+[[https://gitlab.com/ganymede/trajectory-recognition]]
+** Presentation
+The accompanying poster, presented on <2020-07-16 Thu>, is available under CC-BY 4.0 license on GitLab:
+https://gitlab.com/ganymede/trajectory-poster
