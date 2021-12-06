@@ -5,6 +5,7 @@
 #+SUBTITLE: Computational Workflow Optimization for Magnetic Fluctuation Measurements of 3D Nano-Tetrapods
 #+DATE: <2021-12-06 Mon>
 
+[[https://doi.org/10.5281/zenodo.5760261][https://zenodo.org/badge/DOI/10.5281/zenodo.5760261.svg]]
 
 I am proud to present my master thesis titled “Computational Workflow Optimization for Magnetic Fluctuation Measurements of 3D Nano-Tetrapods”! The thesis and supplemental information are published on a dedicated website:
 - [[https://master.ody5.de/]]
