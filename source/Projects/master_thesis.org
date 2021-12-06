@@ -5,10 +5,14 @@
 #+SUBTITLE: Computational Workflow Optimization for Magnetic Fluctuation Measurements of 3D Nano-Tetrapods
 #+DATE: <2021-12-06 Mon>
 
-[[https://doi.org/10.5281/zenodo.5760261][https://zenodo.org/badge/DOI/10.5281/zenodo.5760261.svg]]
+#+begin_export html
+<a href="https://doi.org/10.5281/zenodo.5760261"><img src="https://zenodo.org/badge/DOI/10.5281/zenodo.5760261.svg" /></a>
+<a href="https://gitlab.com/ody55eus/master-thesis/-/jobs/artifacts/master/file/thesis.pdf?job=build"><img alt="https://img.shields.io/badge/Thesis-PDF-EC1C24?style=plastic&amp;logo=adobe-acrobat-reader" src="https://img.shields.io/badge/Thesis-PDF-EC1C24?style=plastic&amp;logo=adobe-acrobat-reader" /></a>
+<a href="https://gitlab.com/ody55eus/master-thesis"><img alt="https://img.shields.io/badge/Thesis-LaTeX-008080?style=plastic&amp;logo=latex" src="https://img.shields.io/badge/Thesis-LaTeX-008080?style=plastic&amp;logo=latex" /></a>
+<a href="https://master.ody5.de"><img src="https://img.shields.io/badge/LabBook-Website-FCA121?style=plastic" /></a>
+#+end_export
 
-I am proud to present my master thesis titled “Computational Workflow Optimization for Magnetic Fluctuation Measurements of 3D Nano-Tetrapods”! The thesis and supplemental information are published on a dedicated website:
-- [[https://master.ody5.de/]]
+I am proud to present my master thesis titled “Computational Workflow Optimization for Magnetic Fluctuation Measurements of 3D Nano-Tetrapods”! The thesis and supplemental information are published on a dedicated website (see LabBook Website button).
 
 The [[https://gitlab.com/ody55eus/master-thesis/][LaTeX]] and [[https://gitlab.com/ody55eus/lab-book/][Lab Book source code]], as well as the [[https://gitlab.com/ody55eus/ana][Python data analysis framework]] used to analyze and visualize the [[https://gitlab.com/ody55eus/master-data][raw data]], are available as free/libre open source projects.
 
