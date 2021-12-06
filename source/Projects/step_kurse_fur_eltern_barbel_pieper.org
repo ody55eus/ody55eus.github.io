@@ -1,0 +1,14 @@
+:PROPERTIES:
+:ID:       025ee3d5-d623-4cce-94f9-c17cb1e04cef
+:END:
+#+title: STEP Kurse für Eltern (Bärbel Pieper)
+#+SUBTITLE: [[https://stepkurs-baerbel.de/]]
+
+* English
+This German website is offering a course for parents. STEP (Systematic Training for Educationalists and Parents) is an efficient training program to help ease of handling in education with kids. It is based on democratic principles and respects the individuality of children.
+Bärbel Pieper is a certified STEP-Trainer to guide parents in selected courses.
+
+* Deutsch / German
+Diese Webseite richtet sich an Eltern und gibt Hilfestellungen für Alltagsprobleme.
+STEP (Systematisches Training für Eltern und Pädagogen) ist ein effizientes, auf demokratischen Prinzipien basierendes, nachhaltig wirksames Trainingsprogramm, welches die Individualität des Kindes in den Vordergrund stellt.
+Bärbel Pieper ist eine zertifizierte STEP-Kursleiterin und hilft Eltern mit ausgewählten Kursen.
