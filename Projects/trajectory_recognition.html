@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- 2021-12-06 -->
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Trajectory Recognition</title>
+<meta name="generator" content="Org Mode" />
+<link rel="stylesheet" type="text/css" href="../dark.css">
+<link rel="icon" type="image/x-icon" href="../logo.png">
+</head>
+<body>
+<div id="preamble" class="status">
+<a href="../index.html"><i class="fa fa-home"></i> About</a>
+<a href="../Projects/projects.html"><i class="fa fa-folder-open"></i> Projects</a>
+<a href="../Literature/index.html"><i class="fa fa-book"></i> Literature</a>
+<a href="../sitemap.html"><i class="fa fa-sitemap"></i> Sitemap</a>
+<img class="logo" src="../logo.png">
+<span class="banner"><a
+  href="https://gitlab.com/ody55eus"><i class="fa fa-gitlab"></i></a><a
+  href="https://github.com/ody55eus"><i class="fa fa-github"></i></a>Ody55eus</span>
+<span class="source"><a href="https://gitlab.com/ody55eus/ody55eus.gitlab.io/-/tree/main/source/Projects/trajectory_recognition.org"><i class="fa fa-code"></i> Page-Source</a></span>
+</div>
+<div id="content" class="content">
+<header>
+<h1 class="title">Trajectory Recognition</h1>
+</header><nav id="table-of-contents" role="doc-toc">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents" role="doc-toc">
+<ul>
+<li><a href="#orgf9113f3">Functional Specifications</a></li>
+<li><a href="#orge375fb6">Example</a></li>
+<li><a href="#org94c0f86">Availability</a>
+<ul>
+<li><a href="#orga286f89">Description</a></li>
+<li><a href="#org73249c8">Source Code</a></li>
+<li><a href="#orga985e27">Presentation</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</nav>
+<p>
+Subtracting the static background of videos is a powerful technique used to isolate moving objects.
+In our case, birds and insects are being filmed passing through the horizon.
+We subtract this static horizon with a carefully designed software that uses background subtraction.
+The software automatically tracks the trajectories of the birds and insects through clustering algorithms and combines these trajectories into a single picture.
+Using these trajectories, the varying flight patterns allow indications for differentiating birds from insects.
+</p>
+
+<section id="outline-container-orgf9113f3" class="outline-2">
+<h2 id="orgf9113f3">Functional Specifications</h2>
+<div class="outline-text-2" id="text-orgf9113f3">
+<p>
+The starting point for the trajectory recognition project is a camera that is positioned on the roof of the physics building in Frankfurt in a fixed and static set up.
+The camera films the roof of the building and the horizon as the scenery.
+There are different objects like birds and insects passing through the scenery.
+The main goal is the separation of the trajectories of the birds and insects from the background.
+The fixed position of the camera formed a sound basis for efficient background subtraction.
+Airplanes, spyder webs, multiple objects flying through the background, reflections of the sun on the roof, and different weather conditions are the main problems for a successful separation.
+Different algorithms have been tested to find the best result.
+</p>
+</div>
+</section>
+
+<section id="outline-container-orge375fb6" class="outline-2">
+<h2 id="orge375fb6">Example</h2>
+<div class="outline-text-2" id="text-orge375fb6">
+<video width="87%" controls>
+  <source src="https://user-content.gitlab-static.net/7e107cbd4ad66f691fc8efb543f5a399fd7632f7/68747470733a2f2f64726976652e676f6f676c652e636f6d2f75633f69643d314f723155714e49306a3432564c71425a314e4e645f58556c475539655f5f6848266578706f72743d646f776e6c6f6164" type="video/mp4">
+   Your browser does not support this video.
+</video>
+
+
+<figure id="org2110f2a">
+<img src="https://gitlab.com/ganymede/trajectory-recognition/-/wikis/uploads/e1fe58347722eecd18ad2a4e5a2f3ca7/insect.png" alt="insect.png">
+
+<figcaption><span class="figure-number">Figure 1: </span>Extracted path from video</figcaption>
+</figure>
+</div>
+</section>
+
+<section id="outline-container-org94c0f86" class="outline-2">
+<h2 id="org94c0f86">Availability</h2>
+<div class="outline-text-2" id="text-org94c0f86">
+</div>
+<div id="outline-container-orga286f89" class="outline-3">
+<h3 id="orga286f89">Description</h3>
+<div class="outline-text-3" id="text-orga286f89">
+<p>
+A more detailed description is available in the <a href="https://gitlab.com/ganymede/trajectory-recognition/-/wikis/home">GitLab project wiki</a>.
+</p>
+</div>
+</div>
+<div id="outline-container-org73249c8" class="outline-3">
+<h3 id="org73249c8">Source Code</h3>
+<div class="outline-text-3" id="text-org73249c8">
+<p>
+The source code is released under the MIT License on GitLab:
+<a href="https://gitlab.com/ganymede/trajectory-recognition">https://gitlab.com/ganymede/trajectory-recognition</a>
+</p>
+</div>
+</div>
+<div id="outline-container-orga985e27" class="outline-3">
+<h3 id="orga985e27">Presentation</h3>
+<div class="outline-text-3" id="text-orga985e27">
+<p>
+The accompanying poster, presented on <span class="timestamp-wrapper"><span class="timestamp">&lt;2020-07-16 Thu&gt;</span></span>, is available under CC-BY 4.0 license on GitLab:
+<a href="https://gitlab.com/ganymede/trajectory-poster">https://gitlab.com/ganymede/trajectory-poster</a>
+</p>
+</div>
+</div>
+</section>
+</div>
+<div id="postamble" class="status">
+<p class="comments"><a href="https://gitlab.com/ody55eus/ody55eus.gitlab.io/issues">Comments</a></p>
+
+<p class="date">Date: 2020-08-16 (<a href=https://gitlab.com/ody55eus/ody55eus.gitlab.io/commits/main/source/Projects/trajectory_recognition.org>Last update: 2021-12-06</a>)</p>
+<p class="creator">Made with <a href="https://www.gnu.org/software/emacs/">Emacs</a> 26.3 (<a href="https://orgmode.org">Org</a> mode 9.5.1)</p>
+<p class="license">
+  <a rel="license" href="https://www.gnu.org/licenses/gpl-3.0.en.html"><img alt="GNU General Public License" width="64px" style="border-width:0" src="https://www.gnu.org/graphics/gplv3-127x51.png" /></a>
+  <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/"><img alt="Creative Commons License" width="64px" style="border-width:0" src="https://mirrors.creativecommons.org/presskit/buttons/88x31/png/by-sa.png" /></a>
+</p>
+</div>
+</body>
+</html>

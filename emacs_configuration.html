@@ -28,169 +28,169 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#org6e32fe0">About this Configuration</a></li>
-<li><a href="#org772a520">About Me</a></li>
-<li><a href="#org6b79e85">Initialization (init.el)</a>
+<li><a href="#org8186304">About this Configuration</a></li>
+<li><a href="#orgf1048cd">About Me</a></li>
+<li><a href="#org96a84b3">Initialization (init.el)</a>
 <ul>
-<li><a href="#org6ac7210">Docstring</a></li>
-<li><a href="#org432447b">Enable Features</a></li>
+<li><a href="#org63fbad2">Docstring</a></li>
+<li><a href="#orgf0ddf00">Enable Features</a></li>
 </ul>
 </li>
-<li><a href="#org7e45846">Package Installation (packages.el)</a>
+<li><a href="#orgfeba478">Package Installation (packages.el)</a>
 <ul>
-<li><a href="#org63fd18e">Docstring</a></li>
-<li><a href="#org2e2df93">Load Packages</a></li>
+<li><a href="#org3376ef4">Docstring</a></li>
+<li><a href="#org0261eab">Load Packages</a></li>
 </ul>
 </li>
-<li><a href="#orgb55359a">Emacs Startup</a>
+<li><a href="#orgd6bd150">Emacs Startup</a>
 <ul>
-<li><a href="#org09e5cd3">Improve Startup Performance</a></li>
-<li><a href="#org22bf9be">Start Emacs as Server!</a></li>
-<li><a href="#orgf08465f">Default Variables</a></li>
+<li><a href="#org760953c">Improve Startup Performance</a></li>
+<li><a href="#orgaa78308">Start Emacs as Server!</a></li>
+<li><a href="#org13728c7">Default Variables</a></li>
 </ul>
 </li>
-<li><a href="#orgbb46c3f">UI Configuration</a>
+<li><a href="#org9e4f1c1">UI Configuration</a>
 <ul>
-<li><a href="#org3c5663c">Keybindings (<code>:leader</code> <code>SPC-&lt;Key&gt;</code>)</a>
+<li><a href="#org00aa043">Keybindings (<code>:leader</code> <code>SPC-&lt;Key&gt;</code>)</a>
 <ul>
-<li><a href="#org0ed55e6">Basic Keybindings</a></li>
-<li><a href="#org7716266">Evaluate Elisp Expressions (<code>SPC-e</code>)</a></li>
-<li><a href="#orga6b7dfe"><span class="todo TODO">TODO</span> Lookup (<code>SPC-l</code>)</a></li>
-<li><a href="#org3be9516"><span class="todo TODO">TODO</span> Jump (<code>SPC-j</code>)</a></li>
-<li><a href="#org38ff579">Keybindings (<code>CTRL</code> <code>C-w</code> Window)</a></li>
-<li><a href="#org9d4710f">Doom Dashboard</a></li>
+<li><a href="#org8874f08">Basic Keybindings</a></li>
+<li><a href="#org4b0b273">Evaluate Elisp Expressions (<code>SPC-e</code>)</a></li>
+<li><a href="#orge2e7dab"><span class="todo TODO">TODO</span> Lookup (<code>SPC-l</code>)</a></li>
+<li><a href="#org253e139"><span class="todo TODO">TODO</span> Jump (<code>SPC-j</code>)</a></li>
+<li><a href="#org48993b9">Keybindings (<code>CTRL</code> <code>C-w</code> Window)</a></li>
+<li><a href="#orgb1998d2">Doom Dashboard</a></li>
 </ul>
 </li>
-<li><a href="#org53d9162">Color Theme</a></li>
-<li><a href="#orgd63d0b0">Font Face Configuration</a>
+<li><a href="#orgd569cf3">Color Theme</a></li>
+<li><a href="#org7c995a9">Font Face Configuration</a>
 <ul>
-<li><a href="#orgbacc070">New Configuration</a></li>
-<li><a href="#orgdc67009">Old System Dependent</a></li>
+<li><a href="#org08e55e3">New Configuration</a></li>
+<li><a href="#orgce6599a">Old System Dependent</a></li>
 </ul>
 </li>
-<li><a href="#org8e5fd6b">Basic Emacs UI Enhancements</a>
+<li><a href="#org4a06269">Basic Emacs UI Enhancements</a>
 <ul>
-<li><a href="#orgdbc51e2">Line Numbers</a></li>
-<li><a href="#org57e1a83">White Spaces</a></li>
-<li><a href="#org61d45e7">Visible Bell</a></li>
-<li><a href="#org68159ad">Enable Menu Bar</a></li>
-<li><a href="#org38fc680">Enable Mouse (Backward, Forward) Buttons</a></li>
-<li><a href="#orgf720484">Resize Startup Window</a></li>
+<li><a href="#org523107b">Line Numbers</a></li>
+<li><a href="#org02d42a7">White Spaces</a></li>
+<li><a href="#orgbfbe372">Visible Bell</a></li>
+<li><a href="#org7f7dc02">Enable Menu Bar</a></li>
+<li><a href="#orgb896f55">Enable Mouse (Backward, Forward) Buttons</a></li>
+<li><a href="#orgbfa3224">Resize Startup Window</a></li>
 </ul>
 </li>
-<li><a href="#org48091f2">Doom Emacs Customization</a>
+<li><a href="#org45cbdad">Doom Emacs Customization</a>
 <ul>
-<li><a href="#org4611802">Confirm Leaving Emacs</a></li>
-<li><a href="#orge1b0c03">Doom Evil Mode</a></li>
-<li><a href="#org9c0669d">Doom Modeline</a></li>
-<li><a href="#orgd0bd76c">Doom Dashboard</a></li>
+<li><a href="#org001c2e6">Confirm Leaving Emacs</a></li>
+<li><a href="#org0101bb7">Doom Evil Mode</a></li>
+<li><a href="#org6915735">Doom Modeline</a></li>
+<li><a href="#orgf64c3b6">Doom Dashboard</a></li>
 </ul>
 </li>
-<li><a href="#org4eff675">Open Bufferlist when splitting windows</a></li>
-<li><a href="#org154717a">Additional Packages</a>
+<li><a href="#org807e069">Open Bufferlist when splitting windows</a></li>
+<li><a href="#org0f667da">Additional Packages</a>
 <ul>
-<li><a href="#orgdcf2356">Highlight Todos</a></li>
-<li><a href="#org0925b4e">PDF Tools</a></li>
-<li><a href="#org896a6cf">nov.el (EPUB)</a></li>
-<li><a href="#orgf504512">WAIT SVG Tag Mode</a></li>
-<li><a href="#org962b00a">Keycast Mode</a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li><a href="#orgdaa8317">Org Mode</a>
-<ul>
-<li><a href="#orgb47eb76">Visual Enhancements</a>
-<ul>
-<li><a href="#orgba9dffb">Pretty Text</a></li>
-<li><a href="#org5a96550">Priorities</a></li>
-<li><a href="#orga443198">Tasks</a></li>
-<li><a href="#orgc89a49c">Default minor modes</a></li>
-<li><a href="#org3558604">Font Configuration</a></li>
-<li><a href="#org6cada2b">Directories and Files</a></li>
-</ul>
-</li>
-<li><a href="#org8f05eab">Self-written functions</a>
-<ul>
-<li><a href="#org4a045b7">Select Org Roam Notes</a></li>
-<li><a href="#orgaad9954">Reading  a File from Template</a></li>
-<li><a href="#orgca0d053">Regular Reviews</a></li>
-<li><a href="#org7632313">Project Management</a></li>
-</ul>
-</li>
-<li><a href="#org59872c4">UI Configuration</a></li>
-<li><a href="#orgaf0901a">Workflow Configuration</a>
-<ul>
-<li><a href="#orgbee9ea5">Task Keywords</a></li>
-<li><a href="#org7db3d3c"><span class="todo TODO">TODO</span> Capture Templates</a></li>
-<li><a href="#orgc6da2b4"><span class="todo TODO">TODO</span> Custom Agenda View</a></li>
-<li><a href="#org92b34fc">Task Tags</a></li>
-<li><a href="#org7631d2f">Task Priorities</a></li>
-<li><a href="#orgf118dc8">Refile Targets</a></li>
-<li><a href="#org0dc4a26">Archive Location</a></li>
-<li><a href="#org3c74de3">Enable Auto-Save after Refile</a></li>
-<li><a href="#org4073165">Enable Org Habits</a></li>
-</ul>
-</li>
-<li><a href="#orga6bedca">Org Publish (Exporting org files)</a>
-<ul>
-<li><a href="#org96518c8">LaTeX</a></li>
-<li><a href="#org7f89e00">HTML</a></li>
-<li><a href="#org254616e">PlantUML</a></li>
-</ul>
-</li>
-<li><a href="#orgdd0548e">Additional Org Packages</a>
-<ul>
-<li><a href="#org0836119">Org Alert</a></li>
-<li><a href="#orgd58daa0">Org Msg</a></li>
-<li><a href="#orgc1f6dec">Org Tempo</a></li>
-<li><a href="#org057534f"><span class="todo TODO">TODO</span> Org Special Block Extras</a></li>
-<li><a href="#orgea239c7">Org Tree Slide (Presentations)</a></li>
-<li><a href="#org74f4d6e">Babel (Programming Languages in Org)</a></li>
-<li><a href="#org1332ac7"><span class="todo TODO">TODO</span> BibTeX (Literature Management)</a></li>
-</ul>
-</li>
-<li><a href="#orgbeeefb7">Org-Roam (Zettelkasten)</a>
-<ul>
-<li><a href="#org7053eca">Files and Basic Variables</a></li>
-<li><a href="#org25d5437">Org-Roam Buffer (Side-Window)</a></li>
-<li><a href="#org7dadd9a">Org-Roam UI</a></li>
+<li><a href="#orga1cf180">Highlight Todos</a></li>
+<li><a href="#orgd5ee39e">PDF Tools</a></li>
+<li><a href="#org0c2fbd7">nov.el (EPUB)</a></li>
+<li><a href="#orgbabfa09">WAIT SVG Tag Mode</a></li>
+<li><a href="#org33f9957">Keycast Mode</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li><a href="#org3ffd73a"><span class="todo TODO">TODO</span> Additional Packages</a>
+<li><a href="#orgb49d3b3">Org Mode</a>
 <ul>
-<li><a href="#orgdf720e7">Dired (File Manager)</a>
+<li><a href="#org57dd01d">Visual Enhancements</a>
 <ul>
-<li><a href="#org21533e3">Dired Configuration</a></li>
-<li><a href="#org81fcc87">Keybindings for Dired</a></li>
+<li><a href="#org25187d8">Pretty Text</a></li>
+<li><a href="#org71629a2">Priorities</a></li>
+<li><a href="#org9c8b1d6">Tasks</a></li>
+<li><a href="#orgb7fefde">Default minor modes</a></li>
+<li><a href="#orgdbc3ff7">Font Configuration</a></li>
+<li><a href="#orgb37f041">Directories and Files</a></li>
 </ul>
 </li>
-<li><a href="#org148a7ff">Languages (IDE using Language Server)</a>
+<li><a href="#org444763f">Self-written functions</a>
 <ul>
-<li><a href="#org648cfcf">IDE Features with lsp-mode</a></li>
-<li><a href="#org2f06458">Debugging with dap-mode</a></li>
-<li><a href="#orgd4c690f">Python</a></li>
-<li><a href="#orgd840dc8"><span class="todo TODO">TODO</span> TypeScript (deactivated)</a></li>
-<li><a href="#org3549006">Company Mode (Autocompletion)</a></li>
+<li><a href="#orgfbca090">Select Org Roam Notes</a></li>
+<li><a href="#orgf032a26">Reading  a File from Template</a></li>
+<li><a href="#org0024b39">Regular Reviews</a></li>
+<li><a href="#orga8a4338">Project Management</a></li>
 </ul>
 </li>
-<li><a href="#org986cbd3">Projectile</a></li>
-<li><a href="#org228bea9">Eshell</a></li>
-<li><a href="#org4120e67">HOLD Magit</a></li>
-<li><a href="#org28e31f1">Mail in Emacs with mu4e</a></li>
-<li><a href="#orgb72a683">Password Save</a></li>
-<li><a href="#orgba31abb">Deft</a></li>
+<li><a href="#orgb2bd1d0">UI Configuration</a></li>
+<li><a href="#org2b68ae8">Workflow Configuration</a>
+<ul>
+<li><a href="#orgdea994c">Task Keywords</a></li>
+<li><a href="#orgcc2d366"><span class="todo TODO">TODO</span> Capture Templates</a></li>
+<li><a href="#orgcd407e9"><span class="todo TODO">TODO</span> Custom Agenda View</a></li>
+<li><a href="#org73aae5e">Task Tags</a></li>
+<li><a href="#org2c1a619">Task Priorities</a></li>
+<li><a href="#org3a4c3cd">Refile Targets</a></li>
+<li><a href="#org5bfe66d">Archive Location</a></li>
+<li><a href="#org53483b0">Enable Auto-Save after Refile</a></li>
+<li><a href="#orgcd69b9b">Enable Org Habits</a></li>
+</ul>
+</li>
+<li><a href="#org2dea5f3">Org Publish (Exporting org files)</a>
+<ul>
+<li><a href="#org2592467">LaTeX</a></li>
+<li><a href="#org8df84f0">HTML</a></li>
+<li><a href="#orga4093cc">PlantUML</a></li>
+</ul>
+</li>
+<li><a href="#org43aa47e">Additional Org Packages</a>
+<ul>
+<li><a href="#orgab39127">Org Alert</a></li>
+<li><a href="#org71be709">Org Msg</a></li>
+<li><a href="#orgd773192">Org Tempo</a></li>
+<li><a href="#orge396dba"><span class="todo TODO">TODO</span> Org Special Block Extras</a></li>
+<li><a href="#org031099f">Org Tree Slide (Presentations)</a></li>
+<li><a href="#orgf2de38f">Babel (Programming Languages in Org)</a></li>
+<li><a href="#orge7c3646"><span class="todo TODO">TODO</span> BibTeX (Literature Management)</a></li>
+</ul>
+</li>
+<li><a href="#orgc2c35fe">Org-Roam (Zettelkasten)</a>
+<ul>
+<li><a href="#org5313039">Files and Basic Variables</a></li>
+<li><a href="#org7d3e397">Org-Roam Buffer (Side-Window)</a></li>
+<li><a href="#orge7dc05c">Org-Roam UI</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#org58f29d4"><span class="todo TODO">TODO</span> Additional Packages</a>
+<ul>
+<li><a href="#orga90b5db">Dired (File Manager)</a>
+<ul>
+<li><a href="#orgdd74835">Dired Configuration</a></li>
+<li><a href="#org838992a">Keybindings for Dired</a></li>
+</ul>
+</li>
+<li><a href="#orgeb0a5e2">Languages (IDE using Language Server)</a>
+<ul>
+<li><a href="#org10e742b">IDE Features with lsp-mode</a></li>
+<li><a href="#org0fd2c14">Debugging with dap-mode</a></li>
+<li><a href="#orga71a118">Python</a></li>
+<li><a href="#org89cd5e0"><span class="todo TODO">TODO</span> TypeScript (deactivated)</a></li>
+<li><a href="#org61b1ccb">Company Mode (Autocompletion)</a></li>
+</ul>
+</li>
+<li><a href="#orgda8ffba">Projectile</a></li>
+<li><a href="#org9cf5a85">Eshell</a></li>
+<li><a href="#org2b478ad">HOLD Magit</a></li>
+<li><a href="#org88a2d14">Mail in Emacs with mu4e</a></li>
+<li><a href="#org454f9a5">Password Save</a></li>
+<li><a href="#org9649174">Deft</a></li>
 </ul>
 </li>
 </ul>
 </div>
 </nav>
 
-<section id="outline-container-org6e32fe0" class="outline-2">
-<h2 id="org6e32fe0">About this Configuration</h2>
-<div class="outline-text-2" id="text-org6e32fe0">
+<section id="outline-container-org8186304" class="outline-2">
+<h2 id="org8186304">About this Configuration</h2>
+<div class="outline-text-2" id="text-org8186304">
 <p>
 Make this file run (slightly) faster with lexical binding (see <a href="https://nullprogram.com/blog/2016/12/22/">this blog post</a> for more info).
 </p>
@@ -204,9 +204,9 @@ Make this file run (slightly) faster with lexical binding (see <a href="https://
 </div>
 </section>
 
-<section id="outline-container-org772a520" class="outline-2">
-<h2 id="org772a520">About Me</h2>
-<div class="outline-text-2" id="text-org772a520">
+<section id="outline-container-orgf1048cd" class="outline-2">
+<h2 id="orgf1048cd">About Me</h2>
+<div class="outline-text-2" id="text-orgf1048cd">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp">
 (<span class="org-keyword">setq</span> user-full-name <span class="org-string">"Jonathan Pieper"</span>
@@ -219,13 +219,13 @@ Make this file run (slightly) faster with lexical binding (see <a href="https://
 </div>
 </section>
 
-<section id="outline-container-org6b79e85" class="outline-2">
-<h2 id="org6b79e85">Initialization (init.el)</h2>
-<div class="outline-text-2" id="text-org6b79e85">
+<section id="outline-container-org96a84b3" class="outline-2">
+<h2 id="org96a84b3">Initialization (init.el)</h2>
+<div class="outline-text-2" id="text-org96a84b3">
 </div>
-<div id="outline-container-org6ac7210" class="outline-3">
-<h3 id="org6ac7210">Docstring</h3>
-<div class="outline-text-3" id="text-org6ac7210">
+<div id="outline-container-org63fbad2" class="outline-3">
+<h3 id="org63fbad2">Docstring</h3>
+<div class="outline-text-3" id="text-org63fbad2">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp"><span class="org-comment-delimiter">;;; </span><span class="org-comment">init.el -*- lexical-binding: t; -*-</span>
 
@@ -247,9 +247,9 @@ Make this file run (slightly) faster with lexical binding (see <a href="https://
 </div>
 </div>
 
-<div id="outline-container-org432447b" class="outline-3">
-<h3 id="org432447b">Enable Features</h3>
-<div class="outline-text-3" id="text-org432447b">
+<div id="outline-container-orgf0ddf00" class="outline-3">
+<h3 id="orgf0ddf00">Enable Features</h3>
+<div class="outline-text-3" id="text-orgf0ddf00">
 <p>
 Just comment/uncomment some lines to disable/enable features.
 </p>
@@ -461,13 +461,13 @@ Just comment/uncomment some lines to disable/enable features.
 </div>
 </section>
 
-<section id="outline-container-org7e45846" class="outline-2">
-<h2 id="org7e45846">Package Installation (packages.el)</h2>
-<div class="outline-text-2" id="text-org7e45846">
+<section id="outline-container-orgfeba478" class="outline-2">
+<h2 id="orgfeba478">Package Installation (packages.el)</h2>
+<div class="outline-text-2" id="text-orgfeba478">
 </div>
-<div id="outline-container-org63fd18e" class="outline-3">
-<h3 id="org63fd18e">Docstring</h3>
-<div class="outline-text-3" id="text-org63fd18e">
+<div id="outline-container-org3376ef4" class="outline-3">
+<h3 id="org3376ef4">Docstring</h3>
+<div class="outline-text-3" id="text-org3376ef4">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp"><span class="org-comment-delimiter">;; </span><span class="org-comment">-*- no-byte-compile: t; -*-</span>
 <span class="org-comment-delimiter">;;; </span><span class="org-comment">$DOOMDIR/packages.el</span>
@@ -524,9 +524,9 @@ Just comment/uncomment some lines to disable/enable features.
 </div>
 </div>
 
-<div id="outline-container-org2e2df93" class="outline-3">
-<h3 id="org2e2df93">Load Packages</h3>
-<div class="outline-text-3" id="text-org2e2df93">
+<div id="outline-container-org0261eab" class="outline-3">
+<h3 id="org0261eab">Load Packages</h3>
+<div class="outline-text-3" id="text-org0261eab">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp">
 (package! evil-tutor)           <span class="org-comment-delimiter">; </span><span class="org-comment">Tutor to get familiar with doom emacs (and evil vi keybindings).</span>
@@ -625,13 +625,13 @@ Just comment/uncomment some lines to disable/enable features.
 </div>
 </section>
 
-<section id="outline-container-orgb55359a" class="outline-2">
-<h2 id="orgb55359a">Emacs Startup</h2>
-<div class="outline-text-2" id="text-orgb55359a">
+<section id="outline-container-orgd6bd150" class="outline-2">
+<h2 id="orgd6bd150">Emacs Startup</h2>
+<div class="outline-text-2" id="text-orgd6bd150">
 </div>
-<div id="outline-container-org09e5cd3" class="outline-3">
-<h3 id="org09e5cd3">Improve Startup Performance</h3>
-<div class="outline-text-3" id="text-org09e5cd3">
+<div id="outline-container-org760953c" class="outline-3">
+<h3 id="org760953c">Improve Startup Performance</h3>
+<div class="outline-text-3" id="text-org760953c">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp">
 <span class="org-comment-delimiter">;; </span><span class="org-comment">The default is 800 kilobytes.  Measured in bytes.</span>
@@ -651,9 +651,9 @@ Just comment/uncomment some lines to disable/enable features.
 </div>
 </div>
 
-<div id="outline-container-org22bf9be" class="outline-3">
-<h3 id="org22bf9be">Start Emacs as Server!</h3>
-<div class="outline-text-3" id="text-org22bf9be">
+<div id="outline-container-orgaa78308" class="outline-3">
+<h3 id="orgaa78308">Start Emacs as Server!</h3>
+<div class="outline-text-3" id="text-orgaa78308">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp">
 (server-start)  <span class="org-comment-delimiter">; </span><span class="org-comment">Start Emacs as Server!</span>
@@ -663,9 +663,9 @@ Just comment/uncomment some lines to disable/enable features.
 </div>
 </div>
 
-<div id="outline-container-orgf08465f" class="outline-3">
-<h3 id="orgf08465f">Default Variables</h3>
-<div class="outline-text-3" id="text-orgf08465f">
+<div id="outline-container-org13728c7" class="outline-3">
+<h3 id="org13728c7">Default Variables</h3>
+<div class="outline-text-3" id="text-org13728c7">
 <p>
 Inspired by <a href="https://tecosaur.github.io/emacs-config/config.html#simple-settings">tecosaur</a> and <a href="https://github.com/angrybacon/dotemacs/blob/master/dotemacs.org">angrybacon/dotemacs.org</a>.
 </p>
@@ -684,17 +684,17 @@ Inspired by <a href="https://tecosaur.github.io/emacs-config/config.html#simple-
 </div>
 </section>
 
-<section id="outline-container-orgbb46c3f" class="outline-2">
-<h2 id="orgbb46c3f">UI Configuration</h2>
-<div class="outline-text-2" id="text-orgbb46c3f">
+<section id="outline-container-org9e4f1c1" class="outline-2">
+<h2 id="org9e4f1c1">UI Configuration</h2>
+<div class="outline-text-2" id="text-org9e4f1c1">
 </div>
-<div id="outline-container-org3c5663c" class="outline-3">
-<h3 id="org3c5663c">Keybindings (<code>:leader</code> <code>SPC-&lt;Key&gt;</code>)</h3>
-<div class="outline-text-3" id="text-org3c5663c">
+<div id="outline-container-org00aa043" class="outline-3">
+<h3 id="org00aa043">Keybindings (<code>:leader</code> <code>SPC-&lt;Key&gt;</code>)</h3>
+<div class="outline-text-3" id="text-org00aa043">
 </div>
-<div id="outline-container-org0ed55e6" class="outline-4">
-<h4 id="org0ed55e6">Basic Keybindings</h4>
-<div class="outline-text-4" id="text-org0ed55e6">
+<div id="outline-container-org8874f08" class="outline-4">
+<h4 id="org8874f08">Basic Keybindings</h4>
+<div class="outline-text-4" id="text-org8874f08">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp">
 (map! <span class="org-builtin">:leader</span>
@@ -785,9 +785,9 @@ Inspired by <a href="https://tecosaur.github.io/emacs-config/config.html#simple-
 </div>
 </div>
 
-<div id="outline-container-org7716266" class="outline-4">
-<h4 id="org7716266">Evaluate Elisp Expressions (<code>SPC-e</code>)</h4>
-<div class="outline-text-4" id="text-org7716266">
+<div id="outline-container-org4b0b273" class="outline-4">
+<h4 id="org4b0b273">Evaluate Elisp Expressions (<code>SPC-e</code>)</h4>
+<div class="outline-text-4" id="text-org4b0b273">
 <p>
 Original by <a href="https://www.distrotube.com/">Derek Taylor</a> (see <a href="https://gitlab.com/dwt1/dotfiles">dwt1/dotfiles</a>)
 </p>
@@ -861,9 +861,9 @@ Changing some keybindings from their defaults to better fit with Doom Emacs, and
 </div>
 </div>
 
-<div id="outline-container-orga6b7dfe" class="outline-4">
-<h4 id="orga6b7dfe"><span class="todo TODO">TODO</span> Lookup (<code>SPC-l</code>)</h4>
-<div class="outline-text-4" id="text-orga6b7dfe">
+<div id="outline-container-orge2e7dab" class="outline-4">
+<h4 id="orge2e7dab"><span class="todo TODO">TODO</span> Lookup (<code>SPC-l</code>)</h4>
+<div class="outline-text-4" id="text-orge2e7dab">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp">
 (map! <span class="org-builtin">:leader</span>
@@ -886,9 +886,9 @@ Changing some keybindings from their defaults to better fit with Doom Emacs, and
 </div>
 </div>
 
-<div id="outline-container-org3be9516" class="outline-4">
-<h4 id="org3be9516"><span class="todo TODO">TODO</span> Jump (<code>SPC-j</code>)</h4>
-<div class="outline-text-4" id="text-org3be9516">
+<div id="outline-container-org253e139" class="outline-4">
+<h4 id="org253e139"><span class="todo TODO">TODO</span> Jump (<code>SPC-j</code>)</h4>
+<div class="outline-text-4" id="text-org253e139">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp">
 (map! <span class="org-builtin">:leader</span>
@@ -907,9 +907,9 @@ Changing some keybindings from their defaults to better fit with Doom Emacs, and
 </div>
 </div>
 
-<div id="outline-container-org38ff579" class="outline-4">
-<h4 id="org38ff579">Keybindings (<code>CTRL</code> <code>C-w</code> Window)</h4>
-<div class="outline-text-4" id="text-org38ff579">
+<div id="outline-container-org48993b9" class="outline-4">
+<h4 id="org48993b9">Keybindings (<code>CTRL</code> <code>C-w</code> Window)</h4>
+<div class="outline-text-4" id="text-org48993b9">
 <p>
 Inspired by <a href="https://tecosaur.github.io/emacs-config/config.html#windows">Tecosaur</a>.
 </p>
@@ -933,9 +933,9 @@ Inspired by <a href="https://tecosaur.github.io/emacs-config/config.html#windows
 </div>
 </div>
 
-<div id="outline-container-org9d4710f" class="outline-4">
-<h4 id="org9d4710f">Doom Dashboard</h4>
-<div class="outline-text-4" id="text-org9d4710f">
+<div id="outline-container-orgb1998d2" class="outline-4">
+<h4 id="orgb1998d2">Doom Dashboard</h4>
+<div class="outline-text-4" id="text-orgb1998d2">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp">(map! <span class="org-builtin">:map</span> +doom-dashboard-mode-map
       <span class="org-builtin">:ne</span> <span class="org-string">"f"</span> #'find-file
@@ -952,9 +952,9 @@ Inspired by <a href="https://tecosaur.github.io/emacs-config/config.html#windows
 </div>
 </div>
 
-<div id="outline-container-org53d9162" class="outline-3">
-<h3 id="org53d9162">Color Theme</h3>
-<div class="outline-text-3" id="text-org53d9162">
+<div id="outline-container-orgd569cf3" class="outline-3">
+<h3 id="orgd569cf3">Color Theme</h3>
+<div class="outline-text-3" id="text-orgd569cf3">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp">
 (<span class="org-keyword">setq</span> doom-theme 'doom-vibrant)
@@ -966,13 +966,13 @@ Inspired by <a href="https://tecosaur.github.io/emacs-config/config.html#windows
 </div>
 </div>
 
-<div id="outline-container-orgd63d0b0" class="outline-3">
-<h3 id="orgd63d0b0">Font Face Configuration</h3>
-<div class="outline-text-3" id="text-orgd63d0b0">
+<div id="outline-container-org7c995a9" class="outline-3">
+<h3 id="org7c995a9">Font Face Configuration</h3>
+<div class="outline-text-3" id="text-org7c995a9">
 </div>
-<div id="outline-container-orgbacc070" class="outline-4">
-<h4 id="orgbacc070">New Configuration</h4>
-<div class="outline-text-4" id="text-orgbacc070">
+<div id="outline-container-org08e55e3" class="outline-4">
+<h4 id="org08e55e3">New Configuration</h4>
+<div class="outline-text-4" id="text-org08e55e3">
 <p>
 Inspired by <a href="https://tecosaur.github.io/emacs-config/config.html">Tecosaur</a>.
 </p>
@@ -987,9 +987,9 @@ Inspired by <a href="https://tecosaur.github.io/emacs-config/config.html">Tecosa
 </div>
 </div>
 
-<div id="outline-container-orgdc67009" class="outline-4">
-<h4 id="orgdc67009">Old System Dependent</h4>
-<div class="outline-text-4" id="text-orgdc67009">
+<div id="outline-container-orgce6599a" class="outline-4">
+<h4 id="orgce6599a">Old System Dependent</h4>
+<div class="outline-text-4" id="text-orgce6599a">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp">
 
@@ -1035,13 +1035,13 @@ Inspired by <a href="https://tecosaur.github.io/emacs-config/config.html">Tecosa
 </div>
 </div>
 
-<div id="outline-container-org8e5fd6b" class="outline-3">
-<h3 id="org8e5fd6b">Basic Emacs UI Enhancements</h3>
-<div class="outline-text-3" id="text-org8e5fd6b">
+<div id="outline-container-org4a06269" class="outline-3">
+<h3 id="org4a06269">Basic Emacs UI Enhancements</h3>
+<div class="outline-text-3" id="text-org4a06269">
 </div>
-<div id="outline-container-orgdbc51e2" class="outline-4">
-<h4 id="orgdbc51e2">Line Numbers</h4>
-<div class="outline-text-4" id="text-orgdbc51e2">
+<div id="outline-container-org523107b" class="outline-4">
+<h4 id="org523107b">Line Numbers</h4>
+<div class="outline-text-4" id="text-org523107b">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp">
 (<span class="org-keyword">setq</span> display-line-numbers-type 'relative)
@@ -1058,9 +1058,9 @@ Inspired by <a href="https://tecosaur.github.io/emacs-config/config.html">Tecosa
 </div>
 </div>
 
-<div id="outline-container-org57e1a83" class="outline-4">
-<h4 id="org57e1a83">White Spaces</h4>
-<div class="outline-text-4" id="text-org57e1a83">
+<div id="outline-container-org02d42a7" class="outline-4">
+<h4 id="org02d42a7">White Spaces</h4>
+<div class="outline-text-4" id="text-org02d42a7">
 <p>
 Inspired by <a href="http://ergoemacs.org/emacs/whitespace-mode.html">Xah</a>.
 </p>
@@ -1190,9 +1190,9 @@ Other useful codes:
 </div>
 </div>
 
-<div id="outline-container-org61d45e7" class="outline-4">
-<h4 id="org61d45e7">Visible Bell</h4>
-<div class="outline-text-4" id="text-org61d45e7">
+<div id="outline-container-orgbfbe372" class="outline-4">
+<h4 id="orgbfbe372">Visible Bell</h4>
+<div class="outline-text-4" id="text-orgbfbe372">
 <p>
 Disable the computer <code>beep</code> and activate a visual feedback instead.
 </p>
@@ -1207,9 +1207,9 @@ Disable the computer <code>beep</code> and activate a visual feedback instead.
 </div>
 </div>
 
-<div id="outline-container-org68159ad" class="outline-4">
-<h4 id="org68159ad">Enable Menu Bar</h4>
-<div class="outline-text-4" id="text-org68159ad">
+<div id="outline-container-org7f7dc02" class="outline-4">
+<h4 id="org7f7dc02">Enable Menu Bar</h4>
+<div class="outline-text-4" id="text-org7f7dc02">
 <p>
 This allows you to see some basic actions (activates dropdown menus File, Edit, Options, etc.)
 </p>
@@ -1223,9 +1223,9 @@ This allows you to see some basic actions (activates dropdown menus File, Edit, 
 </div>
 </div>
 
-<div id="outline-container-org38fc680" class="outline-4">
-<h4 id="org38fc680">Enable Mouse (Backward, Forward) Buttons</h4>
-<div class="outline-text-4" id="text-org38fc680">
+<div id="outline-container-orgb896f55" class="outline-4">
+<h4 id="orgb896f55">Enable Mouse (Backward, Forward) Buttons</h4>
+<div class="outline-text-4" id="text-orgb896f55">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp">(map! <span class="org-builtin">:n</span> [mouse-8] #'better-jumper-jump-backward
       <span class="org-builtin">:n</span> [mouse-9] #'better-jumper-jump-forward)
@@ -1234,9 +1234,9 @@ This allows you to see some basic actions (activates dropdown menus File, Edit, 
 </div>
 </div>
 
-<div id="outline-container-orgf720484" class="outline-4">
-<h4 id="orgf720484">Resize Startup Window</h4>
-<div class="outline-text-4" id="text-orgf720484">
+<div id="outline-container-orgbfa3224" class="outline-4">
+<h4 id="orgbfa3224">Resize Startup Window</h4>
+<div class="outline-text-4" id="text-orgbfa3224">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp">
 (<span class="org-keyword">defun</span> <span class="org-function-name">jp/set-frame-size-according-to-resolution</span> ()
@@ -1265,13 +1265,13 @@ This allows you to see some basic actions (activates dropdown menus File, Edit, 
 </div>
 </div>
 
-<div id="outline-container-org48091f2" class="outline-3">
-<h3 id="org48091f2">Doom Emacs Customization</h3>
-<div class="outline-text-3" id="text-org48091f2">
+<div id="outline-container-org45cbdad" class="outline-3">
+<h3 id="org45cbdad">Doom Emacs Customization</h3>
+<div class="outline-text-3" id="text-org45cbdad">
 </div>
-<div id="outline-container-org4611802" class="outline-4">
-<h4 id="org4611802">Confirm Leaving Emacs</h4>
-<div class="outline-text-4" id="text-org4611802">
+<div id="outline-container-org001c2e6" class="outline-4">
+<h4 id="org001c2e6">Confirm Leaving Emacs</h4>
+<div class="outline-text-4" id="text-org001c2e6">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp">(<span class="org-keyword">setq</span> confirm-kill-emacs nil)           <span class="org-comment-delimiter">;; </span><span class="org-comment">Don't confirm every kill</span>
 </pre>
@@ -1279,9 +1279,9 @@ This allows you to see some basic actions (activates dropdown menus File, Edit, 
 </div>
 </div>
 
-<div id="outline-container-orge1b0c03" class="outline-4">
-<h4 id="orge1b0c03">Doom Evil Mode</h4>
-<div class="outline-text-4" id="text-orge1b0c03">
+<div id="outline-container-org0101bb7" class="outline-4">
+<h4 id="org0101bb7">Doom Evil Mode</h4>
+<div class="outline-text-4" id="text-org0101bb7">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp">(<span class="org-keyword">setq</span>
  evil-want-fine-undo t                  <span class="org-comment-delimiter">;; </span><span class="org-comment">Undo Emacs Style</span>
@@ -1292,13 +1292,13 @@ This allows you to see some basic actions (activates dropdown menus File, Edit, 
 </div>
 </div>
 
-<div id="outline-container-org9c0669d" class="outline-4">
-<h4 id="org9c0669d">Doom Modeline</h4>
-<div class="outline-text-4" id="text-org9c0669d">
+<div id="outline-container-org6915735" class="outline-4">
+<h4 id="org6915735">Doom Modeline</h4>
+<div class="outline-text-4" id="text-org6915735">
 </div>
 <ul class="org-ul">
-<li><a id="org480f936"></a>Basic Configuration<br>
-<div class="outline-text-5" id="text-org480f936">
+<li><a id="org797aad9"></a>Basic Configuration<br>
+<div class="outline-text-5" id="text-org797aad9">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp">(use-package! doom-modeline
   <span class="org-builtin">:custom-face</span>
@@ -1326,8 +1326,8 @@ This allows you to see some basic actions (activates dropdown menus File, Edit, 
 </div>
 </li>
 
-<li><a id="orgd494a72"></a>Display Time in Modeline<br>
-<div class="outline-text-5" id="text-orgd494a72">
+<li><a id="org457d689"></a>Display Time in Modeline<br>
+<div class="outline-text-5" id="text-org457d689">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp">(<span class="org-keyword">setq</span> display-time-24hr-format t                <span class="org-comment-delimiter">;; </span><span class="org-comment">Display 24 Hrs rather than 12</span>
       display-time-default-load-average nil)    <span class="org-comment-delimiter">;; </span><span class="org-comment">Do not display my CPU Load</span>
@@ -1339,9 +1339,9 @@ This allows you to see some basic actions (activates dropdown menus File, Edit, 
 </ul>
 </div>
 
-<div id="outline-container-orgd0bd76c" class="outline-4">
-<h4 id="orgd0bd76c">Doom Dashboard</h4>
-<div class="outline-text-4" id="text-orgd0bd76c">
+<div id="outline-container-orgf64c3b6" class="outline-4">
+<h4 id="orgf64c3b6">Doom Dashboard</h4>
+<div class="outline-text-4" id="text-orgf64c3b6">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp">(<span class="org-keyword">setq</span> +doom-dashboard-menu-sections '((<span class="org-string">"Reload last session"</span> <span class="org-builtin">:icon</span>
                                        (all-the-icons-octicon <span class="org-string">"history"</span> <span class="org-builtin">:face</span> 'doom-dashboard-menu-title)
@@ -1391,9 +1391,9 @@ This allows you to see some basic actions (activates dropdown menus File, Edit, 
 </div>
 </div>
 
-<div id="outline-container-org4eff675" class="outline-3">
-<h3 id="org4eff675">Open Bufferlist when splitting windows</h3>
-<div class="outline-text-3" id="text-org4eff675">
+<div id="outline-container-org807e069" class="outline-3">
+<h3 id="org807e069">Open Bufferlist when splitting windows</h3>
+<div class="outline-text-3" id="text-org807e069">
 <p>
 This command runs <code>counsel-switch-buffer</code> after splitting a window. It automatically shows a preview of the selected buffer during selection.
 </p>
@@ -1406,13 +1406,13 @@ This command runs <code>counsel-switch-buffer</code> after splitting a window. I
 </div>
 </div>
 
-<div id="outline-container-org154717a" class="outline-3">
-<h3 id="org154717a">Additional Packages</h3>
-<div class="outline-text-3" id="text-org154717a">
+<div id="outline-container-org0f667da" class="outline-3">
+<h3 id="org0f667da">Additional Packages</h3>
+<div class="outline-text-3" id="text-org0f667da">
 </div>
-<div id="outline-container-orgdcf2356" class="outline-4">
-<h4 id="orgdcf2356">Highlight Todos</h4>
-<div class="outline-text-4" id="text-orgdcf2356">
+<div id="outline-container-orga1cf180" class="outline-4">
+<h4 id="orga1cf180">Highlight Todos</h4>
+<div class="outline-text-4" id="text-orga1cf180">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp">
 (<span class="org-keyword">setq</span> hl-todo-keyword-faces
@@ -1432,9 +1432,9 @@ This command runs <code>counsel-switch-buffer</code> after splitting a window. I
 </div>
 </div>
 
-<div id="outline-container-org0925b4e" class="outline-4">
-<h4 id="org0925b4e">PDF Tools</h4>
-<div class="outline-text-4" id="text-org0925b4e">
+<div id="outline-container-orgd5ee39e" class="outline-4">
+<h4 id="orgd5ee39e">PDF Tools</h4>
+<div class="outline-text-4" id="text-orgd5ee39e">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp">
 (pdf-tools-install)
@@ -1453,9 +1453,9 @@ This command runs <code>counsel-switch-buffer</code> after splitting a window. I
 </div>
 </div>
 
-<div id="outline-container-org896a6cf" class="outline-4">
-<h4 id="org896a6cf">nov.el (EPUB)</h4>
-<div class="outline-text-4" id="text-org896a6cf">
+<div id="outline-container-org0c2fbd7" class="outline-4">
+<h4 id="org0c2fbd7">nov.el (EPUB)</h4>
+<div class="outline-text-4" id="text-org0c2fbd7">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp">
 <span class="org-comment-delimiter">;; </span><span class="org-comment">Open .epub with nov.el package</span>
@@ -1471,17 +1471,17 @@ This command runs <code>counsel-switch-buffer</code> after splitting a window. I
 </div>
 </div>
 
-<div id="outline-container-orgf504512" class="outline-4">
-<h4 id="orgf504512">WAIT SVG Tag Mode</h4>
-<div class="outline-text-4" id="text-orgf504512">
+<div id="outline-container-orgbabfa09" class="outline-4">
+<h4 id="orgbabfa09">WAIT SVG Tag Mode</h4>
+<div class="outline-text-4" id="text-orgbabfa09">
 <p>
 Not working with Doom Emacs yet. Follow <a href="https://github.com/rougier/svg-tag-mode/issues/10">Issue on Github→</a> for further information.
 </p>
 </div>
 
 <ul class="org-ul">
-<li><a id="org76d9fed"></a>Example 1<br>
-<div class="outline-text-5" id="text-org76d9fed">
+<li><a id="orgdfa561c"></a>Example 1<br>
+<div class="outline-text-5" id="text-orgdfa561c">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp">
 (<span class="org-keyword">require</span> '<span class="org-constant">svg-tag-mode</span>)
@@ -1547,8 +1547,8 @@ Not working with Doom Emacs yet. Follow <a href="https://github.com/rougier/svg-
 </div>
 </li>
 
-<li><a id="orgc43dd92"></a>Example 2<br>
-<div class="outline-text-5" id="text-orgc43dd92">
+<li><a id="org9e28fe1"></a>Example 2<br>
+<div class="outline-text-5" id="text-org9e28fe1">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp"><span class="org-comment-delimiter">;; </span><span class="org-comment">:tangle ./.doom.d/config.el</span>
 
@@ -1674,9 +1674,9 @@ Not working with Doom Emacs yet. Follow <a href="https://github.com/rougier/svg-
 </ul>
 </div>
 
-<div id="outline-container-org962b00a" class="outline-4">
-<h4 id="org962b00a">Keycast Mode</h4>
-<div class="outline-text-4" id="text-org962b00a">
+<div id="outline-container-org33f9957" class="outline-4">
+<h4 id="org33f9957">Keycast Mode</h4>
+<div class="outline-text-4" id="text-org33f9957">
 <p>
 Configuration from <a href="https://github.com/tarsius/keycast/issues/7#issuecomment-627604064">https://github.com/tarsius/keycast/issues/7#issuecomment-627604064</a>
 </p>
@@ -1699,21 +1699,21 @@ Configuration from <a href="https://github.com/tarsius/keycast/issues/7#issuecom
 </div>
 </section>
 
-<section id="outline-container-orgdaa8317" class="outline-2">
-<h2 id="orgdaa8317">Org Mode</h2>
-<div class="outline-text-2" id="text-orgdaa8317">
+<section id="outline-container-orgb49d3b3" class="outline-2">
+<h2 id="orgb49d3b3">Org Mode</h2>
+<div class="outline-text-2" id="text-orgb49d3b3">
 </div>
-<div id="outline-container-orgb47eb76" class="outline-3">
-<h3 id="orgb47eb76">Visual Enhancements</h3>
-<div class="outline-text-3" id="text-orgb47eb76">
+<div id="outline-container-org57dd01d" class="outline-3">
+<h3 id="org57dd01d">Visual Enhancements</h3>
+<div class="outline-text-3" id="text-org57dd01d">
 </div>
-<div id="outline-container-orgba9dffb" class="outline-4">
-<h4 id="orgba9dffb">Pretty Text</h4>
-<div class="outline-text-4" id="text-orgba9dffb">
+<div id="outline-container-org25187d8" class="outline-4">
+<h4 id="org25187d8">Pretty Text</h4>
+<div class="outline-text-4" id="text-org25187d8">
 </div>
 <ul class="org-ul">
-<li><a id="org67172db"></a>Pretty Tables<br>
-<div class="outline-text-5" id="text-org67172db">
+<li><a id="orgc5281d0"></a>Pretty Tables<br>
+<div class="outline-text-5" id="text-orgc5281d0">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp">(after! org
   (+org-pretty-mode)
@@ -1723,8 +1723,8 @@ Configuration from <a href="https://github.com/tarsius/keycast/issues/7#issuecom
 </div>
 </div>
 </li>
-<li><a id="org907318e"></a>Set pretty code symbols<br>
-<div class="outline-text-5" id="text-org907318e">
+<li><a id="orgbecb0b0"></a>Set pretty code symbols<br>
+<div class="outline-text-5" id="text-orgbecb0b0">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp">(after! org
   (appendq! +ligatures-extra-symbols
@@ -1789,8 +1789,8 @@ Configuration from <a href="https://github.com/tarsius/keycast/issues/7#issuecom
 </div>
 </li>
 
-<li><a id="orgd387036"></a>KILL Org Bullets (Deprecated)<br>
-<div class="outline-text-5" id="text-orgd387036">
+<li><a id="org3beb43b"></a>KILL Org Bullets (Deprecated)<br>
+<div class="outline-text-5" id="text-org3beb43b">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp">
 (<span class="org-keyword">require</span> '<span class="org-constant">org-bullets</span>)
@@ -1801,8 +1801,8 @@ Configuration from <a href="https://github.com/tarsius/keycast/issues/7#issuecom
 </div>
 </li>
 
-<li><a id="orgd0d8c9c"></a>Org Superstar<br>
-<div class="outline-text-5" id="text-orgd0d8c9c">
+<li><a id="org61e3961"></a>Org Superstar<br>
+<div class="outline-text-5" id="text-org61e3961">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp">(after! org
   (org-superstar-mode)
@@ -1812,8 +1812,8 @@ Configuration from <a href="https://github.com/tarsius/keycast/issues/7#issuecom
 </div>
 </li>
 
-<li><a id="orga267369"></a>Ellipsis symbol (folding)<br>
-<div class="outline-text-5" id="text-orga267369">
+<li><a id="orgff2db9a"></a>Ellipsis symbol (folding)<br>
+<div class="outline-text-5" id="text-orgff2db9a">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp">
 (<span class="org-keyword">setq</span> org-ellipsis <span class="org-string">" &#9660; "</span>)
@@ -1823,8 +1823,8 @@ Configuration from <a href="https://github.com/tarsius/keycast/issues/7#issuecom
 </div>
 </li>
 
-<li><a id="org02ade6f"></a>Hiding Emphasis Marker<br>
-<div class="outline-text-5" id="text-org02ade6f">
+<li><a id="orga465cd4"></a>Hiding Emphasis Marker<br>
+<div class="outline-text-5" id="text-orga465cd4">
 <p>
 Hiding some emphasis marker (* / = )  when using them to <i>highlight</i> <b>text</b>.
 Set this value to <code>nil</code> to display them again.
@@ -1841,9 +1841,9 @@ Set this value to <code>nil</code> to display them again.
 </ul>
 </div>
 
-<div id="outline-container-org5a96550" class="outline-4">
-<h4 id="org5a96550">Priorities</h4>
-<div class="outline-text-4" id="text-org5a96550">
+<div id="outline-container-org71629a2" class="outline-4">
+<h4 id="org71629a2">Priorities</h4>
+<div class="outline-text-4" id="text-org71629a2">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp">(after! org
   (<span class="org-keyword">setq</span> org-priority-highest ?A
@@ -1859,13 +1859,13 @@ Set this value to <code>nil</code> to display them again.
 </div>
 </div>
 
-<div id="outline-container-orga443198" class="outline-4">
-<h4 id="orga443198">Tasks</h4>
-<div class="outline-text-4" id="text-orga443198">
+<div id="outline-container-org9c8b1d6" class="outline-4">
+<h4 id="org9c8b1d6">Tasks</h4>
+<div class="outline-text-4" id="text-org9c8b1d6">
 </div>
 <ul class="org-ul">
-<li><a id="org8c0f9ed"></a>Color and weight of keywords<br>
-<div class="outline-text-5" id="text-org8c0f9ed">
+<li><a id="org0944e06"></a>Color and weight of keywords<br>
+<div class="outline-text-5" id="text-org0944e06">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp">(<span class="org-keyword">setq</span> org-todo-keyword-faces '(
                                (<span class="org-string">"PROJ"</span> . <span class="org-string">"DarkGreen"</span>)
@@ -1889,13 +1889,13 @@ Set this value to <code>nil</code> to display them again.
 </ul>
 </div>
 
-<div id="outline-container-orgc89a49c" class="outline-4">
-<h4 id="orgc89a49c">Default minor modes</h4>
-<div class="outline-text-4" id="text-orgc89a49c">
+<div id="outline-container-orgb7fefde" class="outline-4">
+<h4 id="orgb7fefde">Default minor modes</h4>
+<div class="outline-text-4" id="text-orgb7fefde">
 </div>
 <ul class="org-ul">
-<li><a id="orgf48804d"></a>Fonts and Colors<br>
-<div class="outline-text-5" id="text-orgf48804d">
+<li><a id="org6a976db"></a>Fonts and Colors<br>
+<div class="outline-text-5" id="text-org6a976db">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp">(<span class="org-keyword">defun</span> <span class="org-function-name">jp/org-mode-setup</span> ()
   (org-indent-mode 1)  <span class="org-comment-delimiter">; </span><span class="org-comment">Indent text following current headline</span>
@@ -1910,8 +1910,8 @@ Set this value to <code>nil</code> to display them again.
 </div>
 </li>
 
-<li><a id="org8868509"></a>Visual Fill Column (add spaces and center text)<br>
-<div class="outline-text-5" id="text-org8868509">
+<li><a id="org8adb174"></a>Visual Fill Column (add spaces and center text)<br>
+<div class="outline-text-5" id="text-org8adb174">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp">
 (<span class="org-keyword">defun</span> <span class="org-function-name">jp/org-visual-fill-column</span> ()
@@ -1930,13 +1930,13 @@ Set this value to <code>nil</code> to display them again.
 </ul>
 </div>
 
-<div id="outline-container-org3558604" class="outline-4">
-<h4 id="org3558604">Font Configuration</h4>
-<div class="outline-text-4" id="text-org3558604">
+<div id="outline-container-orgdbc3ff7" class="outline-4">
+<h4 id="orgdbc3ff7">Font Configuration</h4>
+<div class="outline-text-4" id="text-orgdbc3ff7">
 </div>
 <ul class="org-ul">
-<li><a id="org5e631bd"></a>Text Size Org Headlines<br>
-<div class="outline-text-5" id="text-org5e631bd">
+<li><a id="org7f7973d"></a>Text Size Org Headlines<br>
+<div class="outline-text-5" id="text-org7f7973d">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp"><span class="org-comment-delimiter">;; </span><span class="org-comment">setting org headlines</span>
 (custom-set-faces!
@@ -1951,8 +1951,8 @@ Set this value to <code>nil</code> to display them again.
 </div>
 </li>
 
-<li><a id="org2f49e06"></a>Setting Text Fonts for Mixed Fixed Pitch<br>
-<div class="outline-text-5" id="text-org2f49e06">
+<li><a id="org108b1a9"></a>Setting Text Fonts for Mixed Fixed Pitch<br>
+<div class="outline-text-5" id="text-org108b1a9">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp">
 <span class="org-comment-delimiter">;; </span><span class="org-comment">Make sure org-indent face is available</span>
@@ -1979,9 +1979,9 @@ Set this value to <code>nil</code> to display them again.
 </ul>
 </div>
 
-<div id="outline-container-org6cada2b" class="outline-4">
-<h4 id="org6cada2b">Directories and Files</h4>
-<div class="outline-text-4" id="text-org6cada2b">
+<div id="outline-container-orgb37f041" class="outline-4">
+<h4 id="orgb37f041">Directories and Files</h4>
+<div class="outline-text-4" id="text-orgb37f041">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp">
 (<span class="org-keyword">setq</span> org-roam-v2-ack t)<span class="org-comment-delimiter">; </span><span class="org-comment">Disable Warning for org-roam v2</span>
@@ -2002,17 +2002,17 @@ Set this value to <code>nil</code> to display them again.
 </div>
 </div>
 
-<div id="outline-container-org8f05eab" class="outline-3">
-<h3 id="org8f05eab">Self-written functions</h3>
-<div class="outline-text-3" id="text-org8f05eab">
+<div id="outline-container-org444763f" class="outline-3">
+<h3 id="org444763f">Self-written functions</h3>
+<div class="outline-text-3" id="text-org444763f">
 </div>
-<div id="outline-container-org4a045b7" class="outline-4">
-<h4 id="org4a045b7">Select Org Roam Notes</h4>
-<div class="outline-text-4" id="text-org4a045b7">
+<div id="outline-container-orgfbca090" class="outline-4">
+<h4 id="orgfbca090">Select Org Roam Notes</h4>
+<div class="outline-text-4" id="text-orgfbca090">
 </div>
 <ul class="org-ul">
-<li><a id="org71e9e59"></a>Select by Folder Prefix<br>
-<div class="outline-text-5" id="text-org71e9e59">
+<li><a id="org5071449"></a>Select by Folder Prefix<br>
+<div class="outline-text-5" id="text-org5071449">
 <p>
 These extra functions are inspired by the System Crafters live stream of September 3rd 2021:
 <a href="https://systemcrafters.net/live-streams/september-03-2021/">https://systemcrafters.net/live-streams/september-03-2021/</a>
@@ -2074,8 +2074,8 @@ These extra functions are inspired by the System Crafters live stream of Septemb
 </div>
 </li>
 
-<li><a id="org6c60ef4"></a>Select by Assigned Tags<br>
-<div class="outline-text-5" id="text-org6c60ef4">
+<li><a id="orge5aee6c"></a>Select by Assigned Tags<br>
+<div class="outline-text-5" id="text-orge5aee6c">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp">(<span class="org-keyword">defun</span> <span class="org-function-name">jp/org-roam-get-tagged</span> (<span class="org-type">&amp;optional</span> tag)
   (mapcar
@@ -2096,9 +2096,9 @@ These extra functions are inspired by the System Crafters live stream of Septemb
 </ul>
 </div>
 
-<div id="outline-container-orgaad9954" class="outline-4">
-<h4 id="orgaad9954">Reading  a File from Template</h4>
-<div class="outline-text-4" id="text-orgaad9954">
+<div id="outline-container-orgf032a26" class="outline-4">
+<h4 id="orgf032a26">Reading  a File from Template</h4>
+<div class="outline-text-4" id="text-orgf032a26">
 <p>
 Inspired from <a href="https://github.com/benoitj/dotfiles">benoitj/dotfiles</a> (see <a href="https://github.com/benoitj/dotfiles/tree/main/dot_config/emacs.local/templates">dot<sub>config</sub>/emacs.local/templates</a> and <a href="https://github.com/benoitj/dotfiles/blob/main/dot_config/doom/%2Borg.el#L28">dot<sub>config</sub>/doom/+org.el (Lines 28ff)</a>).
 </p>
@@ -2127,9 +2127,9 @@ Inspired from <a href="https://github.com/benoitj/dotfiles">benoitj/dotfiles</a>
 </div>
 </div>
 
-<div id="outline-container-orgca0d053" class="outline-4">
-<h4 id="orgca0d053">Regular Reviews</h4>
-<div class="outline-text-4" id="text-orgca0d053">
+<div id="outline-container-org0024b39" class="outline-4">
+<h4 id="org0024b39">Regular Reviews</h4>
+<div class="outline-text-4" id="text-org0024b39">
 <p>
 Inspired from <a href="https://github.com/benoitj/dotfiles">benoitj/dotfiles</a>.
 </p>
@@ -2172,9 +2172,9 @@ Inspired from <a href="https://github.com/benoitj/dotfiles">benoitj/dotfiles</a>
 </div>
 </div>
 
-<div id="outline-container-org7632313" class="outline-4">
-<h4 id="org7632313">Project Management</h4>
-<div class="outline-text-4" id="text-org7632313">
+<div id="outline-container-orga8a4338" class="outline-4">
+<h4 id="orga8a4338">Project Management</h4>
+<div class="outline-text-4" id="text-orga8a4338">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp">(<span class="org-keyword">defun</span> <span class="org-function-name">jp/go-to-projects</span> (<span class="org-type">&amp;optional</span> name head)
   <span class="org-doc">""</span>
@@ -2193,16 +2193,16 @@ Inspired from <a href="https://github.com/benoitj/dotfiles">benoitj/dotfiles</a>
 </div>
 </div>
 
-<div id="outline-container-org59872c4" class="outline-3">
-<h3 id="org59872c4">UI Configuration</h3>
+<div id="outline-container-orgb2bd1d0" class="outline-3">
+<h3 id="orgb2bd1d0">UI Configuration</h3>
 </div>
-<div id="outline-container-orgaf0901a" class="outline-3">
-<h3 id="orgaf0901a">Workflow Configuration</h3>
-<div class="outline-text-3" id="text-orgaf0901a">
+<div id="outline-container-org2b68ae8" class="outline-3">
+<h3 id="org2b68ae8">Workflow Configuration</h3>
+<div class="outline-text-3" id="text-org2b68ae8">
 </div>
-<div id="outline-container-orgbee9ea5" class="outline-4">
-<h4 id="orgbee9ea5">Task Keywords</h4>
-<div class="outline-text-4" id="text-orgbee9ea5">
+<div id="outline-container-orgdea994c" class="outline-4">
+<h4 id="orgdea994c">Task Keywords</h4>
+<div class="outline-text-4" id="text-orgdea994c">
 <p>
 The Task Keywords are noted with their keybindings in parentheses.
 </p>
@@ -2357,9 +2357,9 @@ The Task Keywords are noted with their keybindings in parentheses.
 </div>
 </div>
 
-<div id="outline-container-org7db3d3c" class="outline-4">
-<h4 id="org7db3d3c"><span class="todo TODO">TODO</span> Capture Templates</h4>
-<div class="outline-text-4" id="text-org7db3d3c">
+<div id="outline-container-orgcc2d366" class="outline-4">
+<h4 id="orgcc2d366"><span class="todo TODO">TODO</span> Capture Templates</h4>
+<div class="outline-text-4" id="text-orgcc2d366">
 <ul class="org-ul">
 <li><a href="https://orgmode.org/manual/Template-elements.html#Template-elements">Org-Mode Template Elements→</a></li>
 <li><a href="https://www.orgroam.com/manual.html#The-Templating-System">Org-Roam Templating System→</a></li>
@@ -2367,8 +2367,8 @@ The Task Keywords are noted with their keybindings in parentheses.
 </div>
 
 <ul class="org-ul">
-<li><a id="orgaf8e009"></a><span class="todo TODO">TODO</span> Org Capture Templates<br>
-<div class="outline-text-5" id="text-orgaf8e009">
+<li><a id="orgea8e753"></a><span class="todo TODO">TODO</span> Org Capture Templates<br>
+<div class="outline-text-5" id="text-orgea8e753">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp">
 (<span class="org-keyword">setq</span> org-capture-templates '(
@@ -2421,8 +2421,8 @@ The Task Keywords are noted with their keybindings in parentheses.
 </div>
 </li>
 
-<li><a id="org5564d65"></a><span class="todo TODO">TODO</span> Org Roam Capture Templates<br>
-<div class="outline-text-5" id="text-org5564d65">
+<li><a id="orgb517a6f"></a><span class="todo TODO">TODO</span> Org Roam Capture Templates<br>
+<div class="outline-text-5" id="text-orgb517a6f">
 <ul class="org-ul">
 <li>Add some custom permanent notes templates.</li>
 </ul>
@@ -2481,8 +2481,8 @@ The Task Keywords are noted with their keybindings in parentheses.
 </div>
 </li>
 
-<li><a id="orgdb8b960"></a>Org Roam Capture Ref Templates (Capture Websites)<br>
-<div class="outline-text-5" id="text-orgdb8b960">
+<li><a id="orgf1ee072"></a>Org Roam Capture Ref Templates (Capture Websites)<br>
+<div class="outline-text-5" id="text-orgf1ee072">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp">(<span class="org-keyword">setq</span> org-roam-capture-ref-templates '(
                                        (<span class="org-string">"r"</span> <span class="org-string">"Reference"</span> plain
@@ -2512,8 +2512,8 @@ The Task Keywords are noted with their keybindings in parentheses.
 </div>
 </li>
 
-<li><a id="org596196f"></a><span class="todo TODO">TODO</span> Org Roam Dailies Capture Templates<br>
-<div class="outline-text-5" id="text-org596196f">
+<li><a id="orgb87a252"></a><span class="todo TODO">TODO</span> Org Roam Dailies Capture Templates<br>
+<div class="outline-text-5" id="text-orgb87a252">
 <ul class="org-ul">
 <li>Add some custom floating notes templates.</li>
 <li>Add org protocol templates</li>
@@ -2574,9 +2574,9 @@ The daily / monthly review templates are inspired by <a href="https://github.com
 </ul>
 </div>
 
-<div id="outline-container-orgc6da2b4" class="outline-4">
-<h4 id="orgc6da2b4"><span class="todo TODO">TODO</span> Custom Agenda View</h4>
-<div class="outline-text-4" id="text-orgc6da2b4">
+<div id="outline-container-orgcd407e9" class="outline-4">
+<h4 id="orgcd407e9"><span class="todo TODO">TODO</span> Custom Agenda View</h4>
+<div class="outline-text-4" id="text-orgcd407e9">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp">
 (<span class="org-keyword">setq</span> org-agenda-custom-commands
@@ -2641,9 +2641,9 @@ The daily / monthly review templates are inspired by <a href="https://github.com
 </div>
 </div>
 
-<div id="outline-container-org92b34fc" class="outline-4">
-<h4 id="org92b34fc">Task Tags</h4>
-<div class="outline-text-4" id="text-org92b34fc">
+<div id="outline-container-org73aae5e" class="outline-4">
+<h4 id="org73aae5e">Task Tags</h4>
+<div class="outline-text-4" id="text-org73aae5e">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp">
 (<span class="org-keyword">setq</span> org-tag-alist
@@ -2664,9 +2664,9 @@ The daily / monthly review templates are inspired by <a href="https://github.com
 </div>
 </div>
 
-<div id="outline-container-org7631d2f" class="outline-4">
-<h4 id="org7631d2f">Task Priorities</h4>
-<div class="outline-text-4" id="text-org7631d2f">
+<div id="outline-container-org2c1a619" class="outline-4">
+<h4 id="org2c1a619">Task Priorities</h4>
+<div class="outline-text-4" id="text-org2c1a619">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp">
 (<span class="org-keyword">setq</span> org-lowest-priority ?E) <span class="org-comment-delimiter">;; </span><span class="org-comment">Priorities A to E</span>
@@ -2676,9 +2676,9 @@ The daily / monthly review templates are inspired by <a href="https://github.com
 </div>
 </div>
 
-<div id="outline-container-orgf118dc8" class="outline-4">
-<h4 id="orgf118dc8">Refile Targets</h4>
-<div class="outline-text-4" id="text-orgf118dc8">
+<div id="outline-container-org3a4c3cd" class="outline-4">
+<h4 id="org3a4c3cd">Refile Targets</h4>
+<div class="outline-text-4" id="text-org3a4c3cd">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp">
 (<span class="org-keyword">setq</span> org-refile-targets
@@ -2690,9 +2690,9 @@ The daily / monthly review templates are inspired by <a href="https://github.com
 </div>
 </div>
 
-<div id="outline-container-org0dc4a26" class="outline-4">
-<h4 id="org0dc4a26">Archive Location</h4>
-<div class="outline-text-4" id="text-org0dc4a26">
+<div id="outline-container-org5bfe66d" class="outline-4">
+<h4 id="org5bfe66d">Archive Location</h4>
+<div class="outline-text-4" id="text-org5bfe66d">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp">
 (<span class="org-keyword">setq</span> org-archive-location <span class="org-string">".archive/%s::"</span>)
@@ -2702,9 +2702,9 @@ The daily / monthly review templates are inspired by <a href="https://github.com
 </div>
 </div>
 
-<div id="outline-container-org3c74de3" class="outline-4">
-<h4 id="org3c74de3">Enable Auto-Save after Refile</h4>
-<div class="outline-text-4" id="text-org3c74de3">
+<div id="outline-container-org53483b0" class="outline-4">
+<h4 id="org53483b0">Enable Auto-Save after Refile</h4>
+<div class="outline-text-4" id="text-org53483b0">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp">
 <span class="org-comment-delimiter">;; </span><span class="org-comment">Save Org buffers after refiling!</span>
@@ -2715,9 +2715,9 @@ The daily / monthly review templates are inspired by <a href="https://github.com
 </div>
 </div>
 
-<div id="outline-container-org4073165" class="outline-4">
-<h4 id="org4073165">Enable Org Habits</h4>
-<div class="outline-text-4" id="text-org4073165">
+<div id="outline-container-orgcd69b9b" class="outline-4">
+<h4 id="orgcd69b9b">Enable Org Habits</h4>
+<div class="outline-text-4" id="text-orgcd69b9b">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp">
 (add-to-list 'org-modules 'org-habit)
@@ -2728,13 +2728,13 @@ The daily / monthly review templates are inspired by <a href="https://github.com
 </div>
 </div>
 
-<div id="outline-container-orga6bedca" class="outline-3">
-<h3 id="orga6bedca">Org Publish (Exporting org files)</h3>
-<div class="outline-text-3" id="text-orga6bedca">
+<div id="outline-container-org2dea5f3" class="outline-3">
+<h3 id="org2dea5f3">Org Publish (Exporting org files)</h3>
+<div class="outline-text-3" id="text-org2dea5f3">
 </div>
-<div id="outline-container-org96518c8" class="outline-4">
-<h4 id="org96518c8">LaTeX</h4>
-<div class="outline-text-4" id="text-org96518c8">
+<div id="outline-container-org2592467" class="outline-4">
+<h4 id="org2592467">LaTeX</h4>
+<div class="outline-text-4" id="text-org2592467">
 <p>
 See also <a href="https://orgmode.org/worg/org-tutorials/org-latex-export.html">Online Documentation</a> for LaTeX Export for Org Mode.
 </p>
@@ -2830,9 +2830,9 @@ See also <a href="https://orgmode.org/worg/org-tutorials/org-latex-export.html">
 </div>
 </div>
 
-<div id="outline-container-org7f89e00" class="outline-4">
-<h4 id="org7f89e00">HTML</h4>
-<div class="outline-text-4" id="text-org7f89e00">
+<div id="outline-container-org8df84f0" class="outline-4">
+<h4 id="org8df84f0">HTML</h4>
+<div class="outline-text-4" id="text-org8df84f0">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp">(add-to-list 'org-link-abbrev-alist '(<span class="org-string">"ody5"</span> . <span class="org-string">"https://gitlab.ody5.de/"</span>))
 (add-to-list 'org-link-abbrev-alist '(<span class="org-string">"gitlab"</span> . <span class="org-string">"https://gitlab.com/"</span>))
@@ -2841,9 +2841,9 @@ See also <a href="https://orgmode.org/worg/org-tutorials/org-latex-export.html">
 </div>
 </div>
 
-<div id="outline-container-org254616e" class="outline-4">
-<h4 id="org254616e">PlantUML</h4>
-<div class="outline-text-4" id="text-org254616e">
+<div id="outline-container-orga4093cc" class="outline-4">
+<h4 id="orga4093cc">PlantUML</h4>
+<div class="outline-text-4" id="text-orga4093cc">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp">(<span class="org-keyword">setq</span> plantuml-default-exec-mode 'jar)
 </pre>
@@ -2852,13 +2852,13 @@ See also <a href="https://orgmode.org/worg/org-tutorials/org-latex-export.html">
 </div>
 </div>
 
-<div id="outline-container-orgdd0548e" class="outline-3">
-<h3 id="orgdd0548e">Additional Org Packages</h3>
-<div class="outline-text-3" id="text-orgdd0548e">
+<div id="outline-container-org43aa47e" class="outline-3">
+<h3 id="org43aa47e">Additional Org Packages</h3>
+<div class="outline-text-3" id="text-org43aa47e">
 </div>
-<div id="outline-container-org0836119" class="outline-4">
-<h4 id="org0836119">Org Alert</h4>
-<div class="outline-text-4" id="text-org0836119">
+<div id="outline-container-orgab39127" class="outline-4">
+<h4 id="orgab39127">Org Alert</h4>
+<div class="outline-text-4" id="text-orgab39127">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp">(<span class="org-keyword">require</span> '<span class="org-constant">org-alert</span>)
 </pre>
@@ -2866,9 +2866,9 @@ See also <a href="https://orgmode.org/worg/org-tutorials/org-latex-export.html">
 </div>
 </div>
 
-<div id="outline-container-orgd58daa0" class="outline-4">
-<h4 id="orgd58daa0">Org Msg</h4>
-<div class="outline-text-4" id="text-orgd58daa0">
+<div id="outline-container-org71be709" class="outline-4">
+<h4 id="org71be709">Org Msg</h4>
+<div class="outline-text-4" id="text-org71be709">
 <p>
 Doom does a fantastic stuff with the defaults with this, so we only make a few minor tweaks.
 </p>
@@ -2884,9 +2884,9 @@ Doom does a fantastic stuff with the defaults with this, so we only make a few m
 </div>
 </div>
 
-<div id="outline-container-orgc1f6dec" class="outline-4">
-<h4 id="orgc1f6dec">Org Tempo</h4>
-<div class="outline-text-4" id="text-orgc1f6dec">
+<div id="outline-container-orgd773192" class="outline-4">
+<h4 id="orgd773192">Org Tempo</h4>
+<div class="outline-text-4" id="text-orgd773192">
 <p>
 Description by <a href="https://www.distrotube.com/">Derek Taylor</a> (see <a href="https://gitlab.com/dwt1/dotfiles">dwt1/dotfiles</a>)
 </p>
@@ -2987,9 +2987,9 @@ Org-tempo is a package that allows for &rsquo;&lt;s&rsquo; followed by TAB to ex
 </div>
 </div>
 
-<div id="outline-container-org057534f" class="outline-4">
-<h4 id="org057534f"><span class="todo TODO">TODO</span> Org Special Block Extras</h4>
-<div class="outline-text-4" id="text-org057534f">
+<div id="outline-container-orge396dba" class="outline-4">
+<h4 id="orge396dba"><span class="todo TODO">TODO</span> Org Special Block Extras</h4>
+<div class="outline-text-4" id="text-orge396dba">
 <p>
 Templating System to export org documents into LaTeX, HTML, etc. with individual templates.
 See <a href="https://github.com/alhassy/org-special-block-extras">Maintainer (upstream)</a> for further information.
@@ -3007,9 +3007,9 @@ See <a href="https://github.com/alhassy/org-special-block-extras">Maintainer (up
 </div>
 </div>
 
-<div id="outline-container-orgea239c7" class="outline-4">
-<h4 id="orgea239c7">Org Tree Slide (Presentations)</h4>
-<div class="outline-text-4" id="text-orgea239c7">
+<div id="outline-container-org031099f" class="outline-4">
+<h4 id="org031099f">Org Tree Slide (Presentations)</h4>
+<div class="outline-text-4" id="text-org031099f">
 <p>
 Make sure the package <code>org-tree-slide</code> is loaded (put this into your <code>packages.el</code>):
 </p>
@@ -3046,13 +3046,13 @@ This Configuration runs on start end finish of presentations:
 </div>
 </div>
 
-<div id="outline-container-org74f4d6e" class="outline-4">
-<h4 id="org74f4d6e">Babel (Programming Languages in Org)</h4>
-<div class="outline-text-4" id="text-org74f4d6e">
+<div id="outline-container-orgf2de38f" class="outline-4">
+<h4 id="orgf2de38f">Babel (Programming Languages in Org)</h4>
+<div class="outline-text-4" id="text-orgf2de38f">
 </div>
 <ul class="org-ul">
-<li><a id="org7cab827"></a>PlantUML<br>
-<div class="outline-text-5" id="text-org7cab827">
+<li><a id="org470b147"></a>PlantUML<br>
+<div class="outline-text-5" id="text-org470b147">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp"><span class="org-comment-delimiter">;; </span><span class="org-comment">Enable PlantUML Diagrams</span>
 (add-to-list 'org-src-lang-modes '(<span class="org-string">"plantuml"</span> . plantuml))
@@ -3064,8 +3064,8 @@ This Configuration runs on start end finish of presentations:
 </div>
 </div>
 </li>
-<li><a id="org05eb04e"></a>OrgBabel Languages<br>
-<div class="outline-text-5" id="text-org05eb04e">
+<li><a id="org4240335"></a>OrgBabel Languages<br>
+<div class="outline-text-5" id="text-org4240335">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp">(org-babel-do-load-languages
  'org-babel-load-languages
@@ -3078,8 +3078,8 @@ This Configuration runs on start end finish of presentations:
 </div>
 </div>
 </li>
-<li><a id="org1c39d05"></a>Turn Tangle Comments off<br>
-<div class="outline-text-5" id="text-org1c39d05">
+<li><a id="org40562c6"></a>Turn Tangle Comments off<br>
+<div class="outline-text-5" id="text-org40562c6">
 <p>
 Since Emacs 28 OrgBabel tangle creates comments like <code>"[[%link][%source-name]]"</code> to indicate the source of tangled code. The following lines deactivate this behavior:
 </p>
@@ -3093,9 +3093,9 @@ Since Emacs 28 OrgBabel tangle creates comments like <code>"[[%link][%source-nam
 </ul>
 </div>
 
-<div id="outline-container-org1332ac7" class="outline-4">
-<h4 id="org1332ac7"><span class="todo TODO">TODO</span> BibTeX (Literature Management)</h4>
-<div class="outline-text-4" id="text-org1332ac7">
+<div id="outline-container-orge7c3646" class="outline-4">
+<h4 id="orge7c3646"><span class="todo TODO">TODO</span> BibTeX (Literature Management)</h4>
+<div class="outline-text-4" id="text-orge7c3646">
 <p>
 My BibTeX configuration is based on <a href="https://github.com/org-roam/org-roam-bibtex/blob/master/README.md#doom-emacs">Org Roam BibTeX README</a>.
 The <a href="https://github.com/org-roam/org-roam-bibtex/blob/master/doc/orb-manual.org">manual</a> provides some additional information.
@@ -3131,13 +3131,13 @@ The <a href="https://github.com/org-roam/org-roam-bibtex/blob/master/doc/orb-man
 </div>
 </div>
 
-<div id="outline-container-orgbeeefb7" class="outline-3">
-<h3 id="orgbeeefb7">Org-Roam (Zettelkasten)</h3>
-<div class="outline-text-3" id="text-orgbeeefb7">
+<div id="outline-container-orgc2c35fe" class="outline-3">
+<h3 id="orgc2c35fe">Org-Roam (Zettelkasten)</h3>
+<div class="outline-text-3" id="text-orgc2c35fe">
 </div>
-<div id="outline-container-org7053eca" class="outline-4">
-<h4 id="org7053eca">Files and Basic Variables</h4>
-<div class="outline-text-4" id="text-org7053eca">
+<div id="outline-container-org5313039" class="outline-4">
+<h4 id="org5313039">Files and Basic Variables</h4>
+<div class="outline-text-4" id="text-org5313039">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp">
 (<span class="org-keyword">require</span> '<span class="org-constant">org-protocol</span>)    <span class="org-comment-delimiter">; </span><span class="org-comment">Enable org protocol for links (org-roam://...)</span>
@@ -3158,9 +3158,9 @@ The <a href="https://github.com/org-roam/org-roam-bibtex/blob/master/doc/orb-man
 </div>
 </div>
 
-<div id="outline-container-org25d5437" class="outline-4">
-<h4 id="org25d5437">Org-Roam Buffer (Side-Window)</h4>
-<div class="outline-text-4" id="text-org25d5437">
+<div id="outline-container-org7d3e397" class="outline-4">
+<h4 id="org7d3e397">Org-Roam Buffer (Side-Window)</h4>
+<div class="outline-text-4" id="text-org7d3e397">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp">(<span class="org-keyword">setq</span> org-roam-mode-section-functions
       (list #'org-roam-backlinks-section
@@ -3172,9 +3172,9 @@ The <a href="https://github.com/org-roam/org-roam-bibtex/blob/master/doc/orb-man
 </div>
 </div>
 
-<div id="outline-container-org7dadd9a" class="outline-4">
-<h4 id="org7dadd9a">Org-Roam UI</h4>
-<div class="outline-text-4" id="text-org7dadd9a">
+<div id="outline-container-orge7dc05c" class="outline-4">
+<h4 id="orge7dc05c">Org-Roam UI</h4>
+<div class="outline-text-4" id="text-orge7dc05c">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp">
 (use-package! websocket
@@ -3197,8 +3197,8 @@ The <a href="https://github.com/org-roam/org-roam-bibtex/blob/master/doc/orb-man
 </div>
 
 <ul class="org-ul">
-<li><a id="org0cc0940"></a>Resize Document Title<br>
-<div class="outline-text-6" id="text-org0cc0940">
+<li><a id="org1d3c1c6"></a>Resize Document Title<br>
+<div class="outline-text-6" id="text-org1d3c1c6">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp">(after! org
   (custom-set-faces!
@@ -3212,21 +3212,21 @@ The <a href="https://github.com/org-roam/org-roam-bibtex/blob/master/doc/orb-man
 </div>
 </section>
 
-<section id="outline-container-org3ffd73a" class="outline-2">
-<h2 id="org3ffd73a"><span class="todo TODO">TODO</span> Additional Packages</h2>
-<div class="outline-text-2" id="text-org3ffd73a">
+<section id="outline-container-org58f29d4" class="outline-2">
+<h2 id="org58f29d4"><span class="todo TODO">TODO</span> Additional Packages</h2>
+<div class="outline-text-2" id="text-org58f29d4">
 </div>
-<div id="outline-container-orgdf720e7" class="outline-3">
-<h3 id="orgdf720e7">Dired (File Manager)</h3>
-<div class="outline-text-3" id="text-orgdf720e7">
+<div id="outline-container-orga90b5db" class="outline-3">
+<h3 id="orga90b5db">Dired (File Manager)</h3>
+<div class="outline-text-3" id="text-orga90b5db">
 <p>
 Original by <a href="https://www.distrotube.com/">Derek Taylor</a> (see <a href="https://gitlab.com/dwt1/dotfiles">dwt1/dotfiles</a>)
 </p>
 </div>
 
-<div id="outline-container-org21533e3" class="outline-4">
-<h4 id="org21533e3">Dired Configuration</h4>
-<div class="outline-text-4" id="text-org21533e3">
+<div id="outline-container-orgdd74835" class="outline-4">
+<h4 id="orgdd74835">Dired Configuration</h4>
+<div class="outline-text-4" id="text-orgdd74835">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp">
 (add-hook 'peep-dired-hook 'evil-normalize-keymaps)
@@ -3247,13 +3247,13 @@ Original by <a href="https://www.distrotube.com/">Derek Taylor</a> (see <a href=
 </div>
 </div>
 
-<div id="outline-container-org81fcc87" class="outline-4">
-<h4 id="org81fcc87">Keybindings for Dired</h4>
-<div class="outline-text-4" id="text-org81fcc87">
+<div id="outline-container-org838992a" class="outline-4">
+<h4 id="org838992a">Keybindings for Dired</h4>
+<div class="outline-text-4" id="text-org838992a">
 </div>
 <ul class="org-ul">
-<li><a id="orge323c81"></a>Keybindings To Open Dired (Description)<br>
-<div class="outline-text-5" id="text-orge323c81">
+<li><a id="org187756b"></a>Keybindings To Open Dired (Description)<br>
+<div class="outline-text-5" id="text-org187756b">
 <table>
 
 
@@ -3288,8 +3288,8 @@ Original by <a href="https://www.distrotube.com/">Derek Taylor</a> (see <a href=
 </div>
 </li>
 
-<li><a id="org43cfb68"></a>Keybinding Configuration (<code>SPC-&lt;Key&gt;</code>)<br>
-<div class="outline-text-5" id="text-org43cfb68">
+<li><a id="orgca4d71d"></a>Keybinding Configuration (<code>SPC-&lt;Key&gt;</code>)<br>
+<div class="outline-text-5" id="text-orgca4d71d">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp">
 (map! <span class="org-builtin">:leader</span>
@@ -3306,8 +3306,8 @@ Original by <a href="https://www.distrotube.com/">Derek Taylor</a> (see <a href=
 </div>
 </li>
 
-<li><a id="orgdf4d9c7"></a>Keybindings Within Dired (Description)<br>
-<div class="outline-text-5" id="text-orgdf4d9c7">
+<li><a id="orgc186b42"></a>Keybindings Within Dired (Description)<br>
+<div class="outline-text-5" id="text-orgc186b42">
 <table>
 
 
@@ -3372,8 +3372,8 @@ Original by <a href="https://www.distrotube.com/">Derek Taylor</a> (see <a href=
 </div>
 </li>
 
-<li><a id="org8a838a4"></a>Dired-Mode-Mapping<br>
-<div class="outline-text-5" id="text-org8a838a4">
+<li><a id="org99814bc"></a>Dired-Mode-Mapping<br>
+<div class="outline-text-5" id="text-org99814bc">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp">
 (<span class="org-keyword">defun</span> <span class="org-function-name">jp/dired-hide-dotfiles</span>()
@@ -3423,21 +3423,21 @@ Original by <a href="https://www.distrotube.com/">Derek Taylor</a> (see <a href=
 </div>
 </div>
 
-<div id="outline-container-org148a7ff" class="outline-3">
-<h3 id="org148a7ff">Languages (IDE using Language Server)</h3>
-<div class="outline-text-3" id="text-org148a7ff">
+<div id="outline-container-orgeb0a5e2" class="outline-3">
+<h3 id="orgeb0a5e2">Languages (IDE using Language Server)</h3>
+<div class="outline-text-3" id="text-orgeb0a5e2">
 <p>
 Adapted from <a href="https://github.com/daviwil/emacs-from-scratch.git">daviwil/emacs-from-scratch</a>.
 </p>
 </div>
 
-<div id="outline-container-org648cfcf" class="outline-4">
-<h4 id="org648cfcf">IDE Features with lsp-mode</h4>
-<div class="outline-text-4" id="text-org648cfcf">
+<div id="outline-container-org10e742b" class="outline-4">
+<h4 id="org10e742b">IDE Features with lsp-mode</h4>
+<div class="outline-text-4" id="text-org10e742b">
 </div>
 <ul class="org-ul">
-<li><a id="org5639cdb"></a>lsp-mode<br>
-<div class="outline-text-5" id="text-org5639cdb">
+<li><a id="org0b069a8"></a>lsp-mode<br>
+<div class="outline-text-5" id="text-org0b069a8">
 <p>
 <a href="https://emacs-lsp.github.io/lsp-mode/">lsp-mode</a> enables IDE-like functionality for many different programming languages via &ldquo;language servers&rdquo; that speak the <a href="https://microsoft.github.io/language-server-protocol/">Language Server Protocol</a>.  Before trying to set up <code>lsp-mode</code> for a particular language, check out the <a href="https://emacs-lsp.github.io/lsp-mode/page/languages/">documentation for your language</a> so that you can learn which language servers are available and how to install them.
 </p>
@@ -3469,8 +3469,8 @@ The <code>which-key</code> integration adds helpful descriptions of the various 
 </div>
 </li>
 
-<li><a id="orga92546b"></a>lsp-ui<br>
-<div class="outline-text-5" id="text-orga92546b">
+<li><a id="org0067672"></a>lsp-ui<br>
+<div class="outline-text-5" id="text-org0067672">
 <p>
 <a href="https://emacs-lsp.github.io/lsp-ui/">lsp-ui</a> is a set of UI enhancements built on top of <code>lsp-mode</code> which make Emacs feel even more like an IDE.  Check out the screenshots on the <code>lsp-ui</code> homepage (linked at the beginning of this paragraph) to see examples of what it can do.
 </p>
@@ -3487,8 +3487,8 @@ The <code>which-key</code> integration adds helpful descriptions of the various 
 </div>
 </li>
 
-<li><a id="org1330b5f"></a>lsp-treemacs<br>
-<div class="outline-text-5" id="text-org1330b5f">
+<li><a id="org49baafe"></a>lsp-treemacs<br>
+<div class="outline-text-5" id="text-org49baafe">
 <p>
 <a href="https://github.com/emacs-lsp/lsp-treemacs">lsp-treemacs</a> provides nice tree views for different aspects of your code like symbols in a file, references of a symbol, or diagnostic messages (errors and warnings) that are found in your code.
 </p>
@@ -3517,8 +3517,8 @@ This package is built on the <a href="https://github.com/Alexander-Miller/treema
 </div>
 </li>
 
-<li><a id="orge843e1b"></a>lsp-ivy<br>
-<div class="outline-text-5" id="text-orge843e1b">
+<li><a id="orgd515217"></a>lsp-ivy<br>
+<div class="outline-text-5" id="text-orgd515217">
 <p>
 <a href="https://github.com/emacs-lsp/lsp-ivy">lsp-ivy</a> integrates Ivy with <code>lsp-mode</code> to make it easy to search for things by name in your code.  When you run these commands, a prompt will appear in the minibuffer allowing you to type part of the name of a symbol in your code.  Results will be populated in the minibuffer so that you can find what you&rsquo;re looking for and jump to that location in the code upon selecting the result.
 </p>
@@ -3544,9 +3544,9 @@ Try these commands with <code>M-x</code>:
 </ul>
 </div>
 
-<div id="outline-container-org2f06458" class="outline-4">
-<h4 id="org2f06458">Debugging with dap-mode</h4>
-<div class="outline-text-4" id="text-org2f06458">
+<div id="outline-container-org0fd2c14" class="outline-4">
+<h4 id="org0fd2c14">Debugging with dap-mode</h4>
+<div class="outline-text-4" id="text-org0fd2c14">
 <p>
 <a href="https://emacs-lsp.github.io/dap-mode/">dap-mode</a> is an excellent package for bringing rich debugging capabilities to Emacs via the <a href="https://microsoft.github.io/debug-adapter-protocol/">Debug Adapter Protocol</a>.  You should check out the <a href="https://emacs-lsp.github.io/dap-mode/page/configuration/">configuration docs</a> to learn how to configure the debugger for your language.  Also make sure to check out the documentation for the debug adapter to see what configuration parameters are available to use for your debug templates!
 </p>
@@ -3576,9 +3576,9 @@ Try these commands with <code>M-x</code>:
 </div>
 </div>
 
-<div id="outline-container-orgd4c690f" class="outline-4">
-<h4 id="orgd4c690f">Python</h4>
-<div class="outline-text-4" id="text-orgd4c690f">
+<div id="outline-container-orga71a118" class="outline-4">
+<h4 id="orga71a118">Python</h4>
+<div class="outline-text-4" id="text-orga71a118">
 <p>
 We use <code>lsp-mode</code> and <code>dap-mode</code> to provide a more complete development environment for Python in Emacs.  Check out the <a href="https://emacs-lsp.github.io/lsp-pyright">documentation of <code>lsp-pyright</code> </a>in the <code>lsp-mode</code> documentation for more details.
 </p>
@@ -3625,9 +3625,9 @@ You can use the pyvenv package to use <code>virtualenv</code> environments in Em
 </div>
 </div>
 
-<div id="outline-container-orgd840dc8" class="outline-4">
-<h4 id="orgd840dc8"><span class="todo TODO">TODO</span> TypeScript (deactivated)</h4>
-<div class="outline-text-4" id="text-orgd840dc8">
+<div id="outline-container-org89cd5e0" class="outline-4">
+<h4 id="org89cd5e0"><span class="todo TODO">TODO</span> TypeScript (deactivated)</h4>
+<div class="outline-text-4" id="text-org89cd5e0">
 <p>
 This is a basic configuration for the TypeScript language so that <code>.ts</code> files activate <code>typescript-mode</code> when opened.  We&rsquo;re also adding a hook to <code>typescript-mode-hook</code> to call <code>lsp-deferred</code> so that we activate <code>lsp-mode</code> to get LSP features every time we edit TypeScript code.
 </p>
@@ -3660,9 +3660,9 @@ This will install the <a href="https://github.com/theia-ide/typescript-language-
 </div>
 </div>
 
-<div id="outline-container-org3549006" class="outline-4">
-<h4 id="org3549006">Company Mode (Autocompletion)</h4>
-<div class="outline-text-4" id="text-org3549006">
+<div id="outline-container-org61b1ccb" class="outline-4">
+<h4 id="org61b1ccb">Company Mode (Autocompletion)</h4>
+<div class="outline-text-4" id="text-org61b1ccb">
 <p>
 <a href="http://company-mode.github.io/">Company Mode</a> provides a nicer in-buffer completion interface than <code>completion-at-point</code> which is more reminiscent of what you would expect from an IDE.  We add a simple configuration to make the keybindings a little more useful (<code>TAB</code> now completes the selection and initiates completion at the current location if needed).
 </p>
@@ -3693,9 +3693,9 @@ We also use <a href="https://github.com/sebastiencs/company-box">company-box</a>
 </div>
 </div>
 
-<div id="outline-container-org986cbd3" class="outline-3">
-<h3 id="org986cbd3">Projectile</h3>
-<div class="outline-text-3" id="text-org986cbd3">
+<div id="outline-container-orgda8ffba" class="outline-3">
+<h3 id="orgda8ffba">Projectile</h3>
+<div class="outline-text-3" id="text-orgda8ffba">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp">
 <span class="org-comment-delimiter">;; </span><span class="org-comment">NOTE: Set this to the folder where you keep your Git repos!</span>
@@ -3710,9 +3710,9 @@ We also use <a href="https://github.com/sebastiencs/company-box">company-box</a>
 </div>
 </div>
 
-<div id="outline-container-org228bea9" class="outline-3">
-<h3 id="org228bea9">Eshell</h3>
-<div class="outline-text-3" id="text-org228bea9">
+<div id="outline-container-org9cf5a85" class="outline-3">
+<h3 id="org9cf5a85">Eshell</h3>
+<div class="outline-text-3" id="text-org9cf5a85">
 <p>
 Adapted from <a href="https://github.com/daviwil/emacs-from-scratch.git">daviwil/emacs-from-scratch</a>.
 </p>
@@ -3786,9 +3786,9 @@ For more thoughts on Eshell, check out these articles by Pierre Neidhardt:
 </div>
 </div>
 
-<div id="outline-container-org4120e67" class="outline-3">
-<h3 id="org4120e67">HOLD Magit</h3>
-<div class="outline-text-3" id="text-org4120e67">
+<div id="outline-container-org2b478ad" class="outline-3">
+<h3 id="org2b478ad">HOLD Magit</h3>
+<div class="outline-text-3" id="text-org2b478ad">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp">
 <span class="org-comment-delimiter">;; </span><span class="org-comment">Optional Magit Configuration</span>
@@ -3798,9 +3798,9 @@ For more thoughts on Eshell, check out these articles by Pierre Neidhardt:
 </div>
 </div>
 
-<div id="outline-container-org28e31f1" class="outline-3">
-<h3 id="org28e31f1">Mail in Emacs with mu4e</h3>
-<div class="outline-text-3" id="text-org28e31f1">
+<div id="outline-container-org88a2d14" class="outline-3">
+<h3 id="org88a2d14">Mail in Emacs with mu4e</h3>
+<div class="outline-text-3" id="text-org88a2d14">
 <p>
 Adapted from <a href="https://github.com/daviwil/dotfiles.git">daviwil/dotfiles</a>.
 </p>
@@ -3986,9 +3986,9 @@ Useful mu4e manual pages:
 </div>
 </div>
 
-<div id="outline-container-orgb72a683" class="outline-3">
-<h3 id="orgb72a683">Password Save</h3>
-<div class="outline-text-3" id="text-orgb72a683">
+<div id="outline-container-org454f9a5" class="outline-3">
+<h3 id="org454f9a5">Password Save</h3>
+<div class="outline-text-3" id="text-org454f9a5">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp">
 (<span class="org-keyword">setq</span> auth-sources '(<span class="org-string">"~/.authinfo.gpg"</span>)
@@ -4017,9 +4017,9 @@ Useful mu4e manual pages:
 </div>
 </div>
 
-<div id="outline-container-orgba31abb" class="outline-3">
-<h3 id="orgba31abb">Deft</h3>
-<div class="outline-text-3" id="text-orgba31abb">
+<div id="outline-container-org9649174" class="outline-3">
+<h3 id="org9649174">Deft</h3>
+<div class="outline-text-3" id="text-org9649174">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp">(<span class="org-keyword">setq</span> deft-directory <span class="org-string">"~/org"</span>)
 </pre>
