@@ -29,39 +29,39 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#org2bf82f6">Org Babel Tangle</a></li>
-<li><a href="#orga00a876">Writing</a>
+<li><a href="#org7155e31">Org Babel Tangle</a></li>
+<li><a href="#orgbfc2d01">Writing</a>
 <ul>
-<li><a href="#org0931c86">Init.el</a>
+<li><a href="#org0e7014b">Init.el</a>
 <ul>
-<li><a href="#org3725a66">Requires <code>find-lisp</code></a></li>
-<li><a href="#org5bc3cd9">Initialize local variables</a></li>
+<li><a href="#org2c67bbf">Requires <code>find-lisp</code></a></li>
+<li><a href="#orgbd2e0bd">Initialize local variables</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li><a href="#orgee5264c">Publish</a>
+<li><a href="#org4202009">Publish</a>
 <ul>
-<li><a href="#orgaab0411">Gitlab CI</a></li>
-<li><a href="#org01e56bd">GitHub Actions</a></li>
-<li><a href="#orgda36417">Makefile</a></li>
-<li><a href="#org64a68ee">Publish.el</a>
+<li><a href="#org50ac185">Gitlab CI</a></li>
+<li><a href="#org31e5ec0">GitHub Actions</a></li>
+<li><a href="#orgc348bb2">Makefile</a></li>
+<li><a href="#org22f7140">Publish.el</a>
 <ul>
-<li><a href="#org8e41250">Install <code>org-roam</code> and <code>htmlize</code></a></li>
-<li><a href="#orge49f410">Define <code>jp/init-webpage</code></a></li>
-<li><a href="#org416daca">Set important export variables</a></li>
-<li><a href="#orge7ffd25">Define some helper functions</a></li>
-<li><a href="#org84374ec">Sitemap</a></li>
-<li><a href="#org486fa97">Setting <code>org-publish-project-alist</code></a></li>
-<li><a href="#org479d6cc">Define <code>jp/publish-html</code></a></li>
-<li><a href="#orgef3930a">End of File (EOF)</a></li>
+<li><a href="#orge9ca7e7">Install <code>org-roam</code> and <code>htmlize</code></a></li>
+<li><a href="#org22b1472">Define <code>jp/init-webpage</code></a></li>
+<li><a href="#org7625359">Set important export variables</a></li>
+<li><a href="#org772fd3f">Define some helper functions</a></li>
+<li><a href="#org999c4e0">Sitemap</a></li>
+<li><a href="#org23735cc">Setting <code>org-publish-project-alist</code></a></li>
+<li><a href="#org5233d67">Define <code>jp/publish-html</code></a></li>
+<li><a href="#org6104104">End of File (EOF)</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li><a href="#orgda2367b">Build</a></li>
-<li><a href="#org1868804">Deploy</a></li>
-<li><a href="#org4563967">License</a></li>
+<li><a href="#org31f78cd">Build</a></li>
+<li><a href="#orgded4362">Deploy</a></li>
+<li><a href="#org0740514">License</a></li>
 </ul>
 </div>
 </nav>
@@ -73,9 +73,9 @@ This code generates my webpage.
 I created this page using Emacs OrgMode. To learn more about <a href="https://orgmode.org/">OrgMode</a> and <a href="https://orgmode.org/manual/Publishing.html#Publishing">publishing org files</a>, see respective links to the original documentation.
 </p>
 
-<section id="outline-container-org2bf82f6" class="outline-2">
-<h2 id="org2bf82f6">Org Babel Tangle</h2>
-<div class="outline-text-2" id="text-org2bf82f6">
+<section id="outline-container-org7155e31" class="outline-2">
+<h2 id="org7155e31">Org Babel Tangle</h2>
+<div class="outline-text-2" id="text-org7155e31">
 <p>
 This Readme contains the entire configuration needed to export the <a href="zettelkasten.html#ID-5064b908-04f6-4167-a66c-072073109ef1">Org Roam (Zettelkasten)</a> directory located in <a href="./">source/</a>.
 </p>
@@ -125,7 +125,7 @@ The default variables are stored in the <a href="../INFO">INFO</a> file:
 To read these variables, Emacs executes the following line in shell whenever <code>gvar(variable)</code> gets called in this org file:
 </p>
 <div class="org-src-container">
-<pre class="src src-sh" id="orgeeddc15">cat ./INFO | grep -i $<span class="org-variable-name">variable</span> | cut -d <span class="org-string">"|"</span> -f3
+<pre class="src src-sh" id="org72cec06">cat ./INFO | grep -i $<span class="org-variable-name">variable</span> | cut -d <span class="org-string">"|"</span> -f3
 </pre>
 </div>
 
@@ -140,18 +140,18 @@ For Example, the version is .
 </div>
 </section>
 
-<section id="outline-container-orga00a876" class="outline-2">
-<h2 id="orga00a876">Writing</h2>
-<div class="outline-text-2" id="text-orga00a876">
+<section id="outline-container-orgbfc2d01" class="outline-2">
+<h2 id="orgbfc2d01">Writing</h2>
+<div class="outline-text-2" id="text-orgbfc2d01">
 <p>
 This code block lets me set the <a href="zettelkasten.html#ID-5064b908-04f6-4167-a66c-072073109ef1">Org Roam (Zettelkasten)</a> directory to the <a href="./">source/</a> folder for the current buffer. Additionally the <code>org-roam-capture-templates</code> and the <code>org-roam-db-location</code> are updated to create a new <code>org-roam.db</code> file and update org capture temlates.
 </p>
 </div>
 
-<div id="outline-container-org0931c86" class="outline-3">
-<h3 id="org0931c86">Init.el</h3>
-<div class="outline-text-3" id="text-org0931c86">
-<div class="warning" id="org54283c8">
+<div id="outline-container-org0e7014b" class="outline-3">
+<h3 id="org0e7014b">Init.el</h3>
+<div class="outline-text-3" id="text-org0e7014b">
+<div class="warning" id="orgc6826c3">
 <p>
 Be careful, when using this code. Changing your OrgMode directories can break some configurations. When using <code>(jp/init-webpage)</code> the old Org Roam files are no longer available. <b>There should be a better way to do this (maybe something like <a href="https://github.com/benoitj/dotfiles/blob/main/dot_emacs-profiles.el">this emacs-profiles.el from benoitj</a> or <a href="https://github.com/benoitj/dotfiles/blob/main/dot_config/doom/config.el#L6">config-local-file</a>).</b>
 </p>
@@ -159,9 +159,9 @@ Be careful, when using this code. Changing your OrgMode directories can break so
 </div>
 </div>
 
-<div id="outline-container-org3725a66" class="outline-4">
-<h4 id="org3725a66">Requires <code>find-lisp</code></h4>
-<div class="outline-text-4" id="text-org3725a66">
+<div id="outline-container-org2c67bbf" class="outline-4">
+<h4 id="org2c67bbf">Requires <code>find-lisp</code></h4>
+<div class="outline-text-4" id="text-org2c67bbf">
 <p>
 You need the package find-lisp installed in your local Emacs config.
 </p>
@@ -172,11 +172,11 @@ You need the package find-lisp installed in your local Emacs config.
 </div>
 </div>
 
-<div id="outline-container-org5bc3cd9" class="outline-4">
-<h4 id="org5bc3cd9">Initialize local variables</h4>
-<div class="outline-text-4" id="text-org5bc3cd9">
+<div id="outline-container-orgbd2e0bd" class="outline-4">
+<h4 id="orgbd2e0bd">Initialize local variables</h4>
+<div class="outline-text-4" id="text-orgbd2e0bd">
 <div class="org-src-container">
-<pre class="src src-emacs-lisp" id="orgba5a7ec">(<span class="org-keyword">defun</span> <span class="org-function-name">jp/init-webpage</span> ()
+<pre class="src src-emacs-lisp" id="orgc4d78dc">(<span class="org-keyword">defun</span> <span class="org-function-name">jp/init-webpage</span> ()
   (<span class="org-keyword">defvar</span> <span class="org-variable-name">jp/url</span> <span class="org-string">"https://ody5.de"</span>)
   (<span class="org-keyword">defvar</span> <span class="org-variable-name">jp/gl-url</span> <span class="org-string">"https://gitlab.ody5.de"</span>)
   (<span class="org-keyword">defvar</span> <span class="org-variable-name">jp/repository</span> <span class="org-string">"https://gitlab.com/ody55eus/ody55eus.gitlab.io"</span>)
@@ -238,15 +238,15 @@ You need the package find-lisp installed in your local Emacs config.
 </div>
 </section>
 
-<section id="outline-container-orgee5264c" class="outline-2">
-<h2 id="orgee5264c">Publish</h2>
-<div class="outline-text-2" id="text-orgee5264c">
+<section id="outline-container-org4202009" class="outline-2">
+<h2 id="org4202009">Publish</h2>
+<div class="outline-text-2" id="text-org4202009">
 </div>
-<div id="outline-container-orgaab0411" class="outline-3">
-<h3 id="orgaab0411">Gitlab CI</h3>
-<div class="outline-text-3" id="text-orgaab0411">
+<div id="outline-container-org50ac185" class="outline-3">
+<h3 id="org50ac185">Gitlab CI</h3>
+<div class="outline-text-3" id="text-org50ac185">
 <p>
-This configuration loads my docker image <a href="https://hub.docker.com/r/ody55eus/emacs-straight">ody55eus/emacs-straight</a> and executes the <a href="#org64a68ee">Publish.el</a>.
+This configuration loads my docker image <a href="https://hub.docker.com/r/ody55eus/emacs-straight">ody55eus/emacs-straight</a> and executes the <a href="#org22f7140">Publish.el</a>.
 </p>
 <div class="org-src-container">
 <pre class="src src-yaml">image: ody55eus/emacs-straight
@@ -266,9 +266,9 @@ pages:
 </div>
 </div>
 
-<div id="outline-container-org01e56bd" class="outline-3">
-<h3 id="org01e56bd">GitHub Actions</h3>
-<div class="outline-text-3" id="text-org01e56bd">
+<div id="outline-container-org31e5ec0" class="outline-3">
+<h3 id="org31e5ec0">GitHub Actions</h3>
+<div class="outline-text-3" id="text-org31e5ec0">
 <div class="org-src-container">
 <pre class="src src-yaml">name: Publish to GitHub Pages
 
@@ -304,9 +304,9 @@ jobs:
 </div>
 </div>
 
-<div id="outline-container-orgda36417" class="outline-3">
-<h3 id="orgda36417">Makefile</h3>
-<div class="outline-text-3" id="text-orgda36417">
+<div id="outline-container-orgc348bb2" class="outline-3">
+<h3 id="orgc348bb2">Makefile</h3>
+<div class="outline-text-3" id="text-orgc348bb2">
 <div class="org-src-container">
 <pre class="src src-makefile"><span class="org-comment-delimiter">##</span>
 <span class="org-comment-delimiter"># </span><span class="org-comment">Ody55eus.gitlab.io</span>
@@ -333,17 +333,17 @@ jobs:
 </div>
 </div>
 
-<div id="outline-container-org64a68ee" class="outline-3">
-<h3 id="org64a68ee">Publish.el</h3>
-<div class="outline-text-3" id="text-org64a68ee">
+<div id="outline-container-org22f7140" class="outline-3">
+<h3 id="org22f7140">Publish.el</h3>
+<div class="outline-text-3" id="text-org22f7140">
 <p>
 Inspired from <a href="https://gitlab.com/ambrevar/ambrevar.gitlab.io">ambrevar</a> and <a href="https://gitlab.com/ngm/commonplace">commonplace</a>.
 </p>
 </div>
 
-<div id="outline-container-org8e41250" class="outline-4">
-<h4 id="org8e41250">Install <code>org-roam</code> and <code>htmlize</code></h4>
-<div class="outline-text-4" id="text-org8e41250">
+<div id="outline-container-orge9ca7e7" class="outline-4">
+<h4 id="orge9ca7e7">Install <code>org-roam</code> and <code>htmlize</code></h4>
+<div class="outline-text-4" id="text-orge9ca7e7">
 <p>
 Unfortunately the <a href="https://github.com/org-roam/org-roam">org-roam</a> package is needed to translate the page. We install this with straight:
 </p>
@@ -373,11 +373,11 @@ Unfortunately the <a href="https://github.com/org-roam/org-roam">org-roam</a> pa
 </div>
 </div>
 
-<div id="outline-container-orge49f410" class="outline-4">
-<h4 id="orge49f410">Define <code>jp/init-webpage</code></h4>
-<div class="outline-text-4" id="text-orge49f410">
+<div id="outline-container-org22b1472" class="outline-4">
+<h4 id="org22b1472">Define <code>jp/init-webpage</code></h4>
+<div class="outline-text-4" id="text-org22b1472">
 <p>
-Same as in <a href="#org5bc3cd9">Initialize local variables</a>:
+Same as in <a href="#orgbd2e0bd">Initialize local variables</a>:
 </p>
 <div class="org-src-container">
 <pre class="src src-emacs-lisp">(<span class="org-keyword">defun</span> <span class="org-function-name">jp/init-webpage</span> ()
@@ -440,13 +440,13 @@ Same as in <a href="#org5bc3cd9">Initialize local variables</a>:
 </div>
 </div>
 
-<div id="outline-container-org416daca" class="outline-4">
-<h4 id="org416daca">Set important export variables</h4>
-<div class="outline-text-4" id="text-org416daca">
+<div id="outline-container-org7625359" class="outline-4">
+<h4 id="org7625359">Set important export variables</h4>
+<div class="outline-text-4" id="text-org7625359">
 </div>
 <ul class="org-ul">
-<li><a id="orgba2e006"></a>Org Export Settings<br>
-<div class="outline-text-5" id="text-orgba2e006">
+<li><a id="org11f1f8c"></a>Org Export Settings<br>
+<div class="outline-text-5" id="text-org11f1f8c">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp">(jp/init-webpage)
 
@@ -478,8 +478,8 @@ Same as in <a href="#org5bc3cd9">Initialize local variables</a>:
 </div>
 </li>
 
-<li><a id="org84a5061"></a>Preamble<br>
-<div class="outline-text-5" id="text-org84a5061">
+<li><a id="orgf46631b"></a>Preamble<br>
+<div class="outline-text-5" id="text-orgf46631b">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp">(<span class="org-keyword">defun</span> <span class="org-function-name">jp/preamble</span> (info)
   <span class="org-doc">"Return preamble as a string."</span>
@@ -514,8 +514,8 @@ Same as in <a href="#org5bc3cd9">Initialize local variables</a>:
 </div>
 </li>
 
-<li><a id="orgae8e6da"></a>Postamble<br>
-<div class="outline-text-5" id="text-orgae8e6da">
+<li><a id="orge649c90"></a>Postamble<br>
+<div class="outline-text-5" id="text-orge649c90">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp">(<span class="org-keyword">setq</span> <span class="org-comment-delimiter">;; </span><span class="org-comment">org-html-divs '((preamble "header" "top")</span>
  <span class="org-comment-delimiter">;;                 </span><span class="org-comment">(content "main" "content")</span>
@@ -537,8 +537,8 @@ Same as in <a href="#org5bc3cd9">Initialize local variables</a>:
 </div>
 </div>
 </li>
-<li><a id="orgb973408"></a>Htmlize<br>
-<div class="outline-text-5" id="text-orgb973408">
+<li><a id="orgcaf2e7f"></a>Htmlize<br>
+<div class="outline-text-5" id="text-orgcaf2e7f">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp">(<span class="org-keyword">setq</span> org-html-style-plain org-html-style-default
       org-html-htmlize-output-type 'css)
@@ -548,13 +548,13 @@ Same as in <a href="#org5bc3cd9">Initialize local variables</a>:
 </li>
 </ul>
 </div>
-<div id="outline-container-orge7ffd25" class="outline-4">
-<h4 id="orge7ffd25">Define some helper functions</h4>
-<div class="outline-text-4" id="text-orge7ffd25">
+<div id="outline-container-org772fd3f" class="outline-4">
+<h4 id="org772fd3f">Define some helper functions</h4>
+<div class="outline-text-4" id="text-org772fd3f">
 </div>
 <ul class="org-ul">
-<li><a id="orgc8d4564"></a>Git Helper<br>
-<div class="outline-text-5" id="text-orgc8d4564">
+<li><a id="org3b2fe49"></a>Git Helper<br>
+<div class="outline-text-5" id="text-org3b2fe49">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp"><span class="org-comment-delimiter">;; </span><span class="org-comment">Some help functions</span>
 (<span class="org-keyword">defun</span> <span class="org-function-name">jp/git-creation-date</span> (file)
@@ -615,8 +615,8 @@ Same as in <a href="#org5bc3cd9">Initialize local variables</a>:
 </div>
 </li>
 
-<li><a id="org5a68ba5"></a>Find Date<br>
-<div class="outline-text-5" id="text-org5a68ba5">
+<li><a id="orgdb9dc1d"></a>Find Date<br>
+<div class="outline-text-5" id="text-orgdb9dc1d">
 <p>
 <code>jp/org-publish-find-date</code> is just like <code>org-publish-find-date</code> just uses git instead and does not fall back on file
 system timestamp and returns nil instead.
@@ -643,8 +643,8 @@ system timestamp and returns nil instead.
 </div>
 </div>
 </li>
-<li><a id="org544a900"></a>Collapsable src and example blocks<br>
-<div class="outline-text-5" id="text-org544a900">
+<li><a id="orgb0c1044"></a>Collapsable src and example blocks<br>
+<div class="outline-text-5" id="text-orgb0c1044">
 <p>
 From <a href="https://tecosaur.github.io/emacs-config/config.html">Tecosaur/Emacs-config</a>.
 </p>
@@ -679,7 +679,7 @@ and a button to copy the content of the block.
 </p>
 
 <div class="org-src-container">
-<pre class="src src-emacs-lisp" id="orgf6356f8">(<span class="org-keyword">defun</span> <span class="org-function-name">org-html-src-block-collapsable</span>
+<pre class="src src-emacs-lisp" id="org5e33422">(<span class="org-keyword">defun</span> <span class="org-function-name">org-html-src-block-collapsable</span>
     (orig-fn src-block contents info)
   <span class="org-doc">"Wrap the usual &lt;pre&gt; block in a &lt;details&gt;"</span>
   (<span class="org-keyword">if</span>
@@ -807,7 +807,7 @@ and a button to copy the content of the block.
 </div>
 
 <div class="org-src-container">
-<pre class="src src-emacs-lisp" id="org1a078df">(<span class="org-keyword">defun</span> <span class="org-function-name">org-html-block-collapsable</span> (orig-fn block contents info)
+<pre class="src src-emacs-lisp" id="orgc38d19c">(<span class="org-keyword">defun</span> <span class="org-function-name">org-html-block-collapsable</span> (orig-fn block contents info)
   <span class="org-doc">"Wrap the usual block in a &lt;details&gt;"</span>
   (<span class="org-keyword">if</span> (<span class="org-keyword">or</span> (not org-fancy-html-export-mode) (<span class="org-keyword">bound-and-true-p</span> org-msg-export-in-progress))
       (funcall orig-fn block contents info)
@@ -847,13 +847,13 @@ and a button to copy the content of the block.
 </ul>
 </div>
 
-<div id="outline-container-org84374ec" class="outline-4">
-<h4 id="org84374ec">Sitemap</h4>
-<div class="outline-text-4" id="text-org84374ec">
+<div id="outline-container-org999c4e0" class="outline-4">
+<h4 id="org999c4e0">Sitemap</h4>
+<div class="outline-text-4" id="text-org999c4e0">
 </div>
 <ul class="org-ul">
-<li><a id="orge1fd5f3"></a>Define <code>jp/org-publish-sitemap</code><br>
-<div class="outline-text-5" id="text-orge1fd5f3">
+<li><a id="org4ed2b4d"></a>Define <code>jp/org-publish-sitemap</code><br>
+<div class="outline-text-5" id="text-org4ed2b4d">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp">(<span class="org-keyword">defun</span> <span class="org-function-name">jp/org-publish-sitemap</span> (title list)
   <span class="org-doc">"Outputs site map, as a string.</span>
@@ -875,8 +875,8 @@ and a button to copy the content of the block.
 </div>
 </li>
 
-<li><a id="org7f0bf25"></a>Define <code>jp/org-publish-main-sitemap</code><br>
-<div class="outline-text-5" id="text-org7f0bf25">
+<li><a id="orgabf1cc9"></a>Define <code>jp/org-publish-main-sitemap</code><br>
+<div class="outline-text-5" id="text-orgabf1cc9">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp">(<span class="org-keyword">defun</span> <span class="org-function-name">jp/org-publish-main-sitemap</span> (title list)
   <span class="org-doc">"Outputs site map, as a string.</span>
@@ -897,8 +897,8 @@ and a button to copy the content of the block.
 </div>
 </li>
 
-<li><a id="orgb9d36ef"></a>Define <code>jp/org-publish-sitemap-entry</code><br>
-<div class="outline-text-5" id="text-orgb9d36ef">
+<li><a id="org96b1a4e"></a>Define <code>jp/org-publish-sitemap-entry</code><br>
+<div class="outline-text-5" id="text-org96b1a4e">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp">(<span class="org-keyword">defun</span> <span class="org-function-name">jp/org-publish-sitemap-entry</span> (entry style project)
   <span class="org-doc">"Custom format for site map ENTRY, as a string.</span>
@@ -931,9 +931,9 @@ and a button to copy the content of the block.
 </ul>
 </div>
 
-<div id="outline-container-org486fa97" class="outline-4">
-<h4 id="org486fa97">Setting <code>org-publish-project-alist</code></h4>
-<div class="outline-text-4" id="text-org486fa97">
+<div id="outline-container-org23735cc" class="outline-4">
+<h4 id="org23735cc">Setting <code>org-publish-project-alist</code></h4>
+<div class="outline-text-4" id="text-org23735cc">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp">(<span class="org-keyword">setq</span> org-publish-project-alist
       (list
@@ -996,9 +996,9 @@ and a button to copy the content of the block.
 </div>
 </div>
 
-<div id="outline-container-org479d6cc" class="outline-4">
-<h4 id="org479d6cc">Define <code>jp/publish-html</code></h4>
-<div class="outline-text-4" id="text-org479d6cc">
+<div id="outline-container-org5233d67" class="outline-4">
+<h4 id="org5233d67">Define <code>jp/publish-html</code></h4>
+<div class="outline-text-4" id="text-org5233d67">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp">(<span class="org-keyword">defun</span> <span class="org-function-name">jp/publish-html</span> ()
   (org-roam-setup)
@@ -1010,9 +1010,9 @@ and a button to copy the content of the block.
 </div>
 </div>
 
-<div id="outline-container-orgef3930a" class="outline-4">
-<h4 id="orgef3930a">End of File (EOF)</h4>
-<div class="outline-text-4" id="text-orgef3930a">
+<div id="outline-container-org6104104" class="outline-4">
+<h4 id="org6104104">End of File (EOF)</h4>
+<div class="outline-text-4" id="text-org6104104">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp">(<span class="org-keyword">provide</span> '<span class="org-constant">publish</span>)
 <span class="org-comment-delimiter">;;; </span><span class="org-comment">publish.el ends here</span>
@@ -1023,9 +1023,9 @@ and a button to copy the content of the block.
 </div>
 </section>
 
-<section id="outline-container-orgda2367b" class="outline-2">
-<h2 id="orgda2367b">Build</h2>
-<div class="outline-text-2" id="text-orgda2367b">
+<section id="outline-container-org31f78cd" class="outline-2">
+<h2 id="org31f78cd">Build</h2>
+<div class="outline-text-2" id="text-org31f78cd">
 <ul class="org-ul">
 <li>Install Requirements:
 <ul class="org-ul">
@@ -1042,9 +1042,9 @@ Just run the following command, to deploy all:
 </div>
 </section>
 
-<section id="outline-container-org1868804" class="outline-2">
-<h2 id="org1868804">Deploy</h2>
-<div class="outline-text-2" id="text-org1868804">
+<section id="outline-container-orgded4362" class="outline-2">
+<h2 id="orgded4362">Deploy</h2>
+<div class="outline-text-2" id="text-orgded4362">
 <p>
 Just commit the newly build page into the branch <code>gh-pages</code> which is synchronized to the page:
 </p>
@@ -1063,9 +1063,9 @@ git push origin HEAD
 </div>
 </section>
 
-<section id="outline-container-org4563967" class="outline-2">
-<h2 id="org4563967">License</h2>
-<div class="outline-text-2" id="text-org4563967">
+<section id="outline-container-org0740514" class="outline-2">
+<h2 id="org0740514">License</h2>
+<div class="outline-text-2" id="text-org0740514">
 <p>
 This content is licensed under the Creative Commons Attribution-ShareAlike 4.0
 International License. To view a copy of this license, visit
