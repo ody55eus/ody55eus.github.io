@@ -141,8 +141,6 @@
      (concat
      "<a href=\"%1$s/index.html\"><i class=\"fa fa-home\"></i> About</a>
 <a href=\"%1$s/Projects/projects.html\"><i class=\"fa fa-folder-open\"></i> Projects</a>
-<a href=\"%1$s/Literature/index.html\"><i class=\"fa fa-book\"></i> Literature</a>
-<a href=\"%1$s/sitemap.html\"><i class=\"fa fa-sitemap\"></i> Sitemap</a>
 <img class=\"logo\" src=\"%1$s/logo.png\">
 <span class=\"banner\"><a
   href=\"%4$s\"><i class=\"fa fa-gitlab\"></i></a><a
