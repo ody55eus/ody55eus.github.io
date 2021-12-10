@@ -340,6 +340,7 @@ Same as in [[*Initialize local variables][Initialize local variables]]:
 <p class=\"date\">Date: %u</p>
 <p class=\"creator\">Made with %c</p>
 <p class=\"license\">
+  &copy; 2021 Jonathan Pieper
   <a rel=\"license\" href=\"https://www.gnu.org/licenses/gpl-3.0.en.html\"><img alt=\"GNU General Public License\" width=\"64px\" style=\"border-width:0\" src=\"https://www.gnu.org/graphics/gplv3-127x51.png\" /></a>
   <a rel=\"license\" href=\"http://creativecommons.org/licenses/by-sa/4.0/\"><img alt=\"Creative Commons License\" width=\"64px\" style=\"border-width:0\" src=\"https://mirrors.creativecommons.org/presskit/buttons/88x31/png/by-sa.png\" /></a>
 </p>")))
