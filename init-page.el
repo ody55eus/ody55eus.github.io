@@ -46,12 +46,11 @@
                                                "${slug}.org"
                                                "#+title: ${title}\n")
                                       :unnarrowed t)
-                                     ("j" "Projects" plain
+                                     ("b" "Blog Entry" plain
                                       "%?"
                                       :if-new (file+head
-                                               "Projects/${slug}.org"
-                                               "#+title: ${title}\n")
-                                      :clock-in :clock-resume
+                                               "Blog/${slug}.org"
+                                               "#+title: ${title}\n#+date: %U")
                                       :unnarrowed t
                                       )
                                      ("l" "Literature")
@@ -69,11 +68,11 @@
                                                "#+title: ${title}\n")
                                       :unnarrowed t
                                       )
-                                     ("c" "Code" plain
-                                      "%?\n\nSee also %a.\n"
+                                     ("p" "Projects" plain
+                                      "%?"
                                       :if-new (file+head
-                                               "Code/${slug}.org"
-                                               "#+title: ${title}\n#+date: %U")
+                                               "Projects/${slug}.org"
+                                               "#+title: ${title}\n")
                                       :unnarrowed t
                                       )
                                      )))
