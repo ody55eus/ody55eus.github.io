@@ -23,6 +23,6 @@ https://gitlab.com/ganymede/general-relativity/-/jobs/645314694/artifacts/raw/ge
 * Availability
 ** Source Code
 The source code for the general relativity project is available under the MIT License in the following GitLab repository:
-https://gitlab.com/ganymede/general-relativity
+https://gitlab.com/ody55eus/general-relativity
 
 Additionally, a second Jupyter Notebook on [[https://colab.research.google.com/drive/19BvTnX9fhGz-4bMiZbrcp_2FJB-Ncxak?usp=sharing][Google Colab]] tries to use a [[https://arxiv.org/abs/1912.01412][novel machine learning technique by Facebook]] to find analytic solutions (not working).

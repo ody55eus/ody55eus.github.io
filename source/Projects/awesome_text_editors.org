@@ -1,0 +1,6 @@
+:PROPERTIES:
+:ID:       c97bfbdb-2536-4b2c-9256-857951edf7bd
+:END:
+#+title: Awesome Text Editors
+
+During the time after I finished my masters degree, I explored some additional ways to auto-didactically educate myself. On this journey I rediscovered the amazing keyboard focused editors [[id:7bd0d14c-b748-4f05-8c70-36fbf0a94745][Emacs]] and [[id:55274963-7de7-4ddb-ba29-43b04adc1c44][Vim]]. Such tools adapt towards easy and quick use and help concentrate on the tasks at hand rather than how to interact with the computer.

@@ -3,8 +3,8 @@
 :END:
 #+title: Org Roam (Zettelkasten)
 
-Org Roam is an extension for [[id:afe3de83-e5b8-4f53-b457-987dd9bd579d][Org Mode]].
-Inspired by the Zettelkasten system, which became popular by the German sociologist Niklas Luhman and books like [[id:f80807b8-91f4-4799-92a3-076d1c1a045a][How to take smart notes]].
+ The book [[id:f80807b8-91f4-4799-92a3-076d1c1a045a][How to take smart notes]] inspired me to overthink my (non-existent) note taking system. The Emacs package [[id:5064b908-04f6-4167-a66c-072073109ef1][Org Roam]] (an extension for [[id:afe3de83-e5b8-4f53-b457-987dd9bd579d][Org Mode]]), which just released the new major version 2.0 at that moment, is the tool of choice for me to implement the Zettelkasten system on my computer.
+The Zettelkasten system became popular by the German sociologist Niklas Luhman and books like [[id:f80807b8-91f4-4799-92a3-076d1c1a045a][How to take smart notes]].
 Org Roam provides a simple digital implementation of this principle to manage and link digital notes in plain text format.
 
 * References
