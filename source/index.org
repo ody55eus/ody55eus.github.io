@@ -20,5 +20,5 @@ In this process, I focused on statistical data analysis, scrutinizing noisy sign
 This site is created using [[id:7bd0d14c-b748-4f05-8c70-36fbf0a94745][Emacs]] and [[id:afe3de83-e5b8-4f53-b457-987dd9bd579d][Org Mode]].
 For more information, please consult the [[id:1e0af5aa-7042-47f2-abb0-01c55b13f25b][Readme.org]].
 ** License
-All content on this page is licensed under [[http://creativecommons.org/licenses/by-sa/4.0/][CC BY-SA]]. You can use, copy and share all texts freely if you use a compatible license.
-The source code creating this page is published on [[https://gitlab.com/ody55eus/ody55eus.gitlab.io][GitLab]] under the [[https://www.gnu.org/licenses/gpl-3.0.en.html][GNU GPL]] license. This license also grants everyone the in-vocable rights to use, modify and share the code under the given requirements.
+Except where noted otherwise, all content on this page is licensed under [[http://creativecommons.org/licenses/by-sa/4.0/][CC BY-SA]]. You can use, copy and share all texts freely if you use a compatible license.
+The source code creating this page is published on [[https://gitlab.com/ody55eus/ody55eus.gitlab.io][GitLab]] and [[https://github.com/ody55eus/ody55eus.github.io][GitHub]] under the [[https://www.gnu.org/licenses/gpl-3.0.en.html][GNU GPL]] license. This license also grants everyone the in-vocable rights to use, modify and share the code under the given requirements.
