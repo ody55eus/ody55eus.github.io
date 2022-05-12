@@ -172,6 +172,7 @@ pages:
       - public
   only:
     - main
+    - feature/*
 #+end_src
 
 ** GitHub Actions
@@ -182,6 +183,7 @@ on:
   push:
     branches:
       - main
+      - feature/*
 
 jobs:
   publish:
