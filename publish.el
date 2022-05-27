@@ -95,7 +95,6 @@
                                       :unnarrowed t
                                       )
                                      )))
-
 (jp/init-webpage)
 
 ;; Timestamps can be used to avoid rebuilding everything.
@@ -307,21 +306,8 @@ See `org-publish-sitemap-default-entry'."
              :auto-sitemap nil
              :html-head-include-default-style nil
              :html-head-include-scripts nil
-             :html-head "<link rel=\"stylesheet\" type=\"text/css\" href=\"http://www.pirilampo.org/styles/darksun/css/htmlize.css\"/>"
-             :html-head "<link rel=\"stylesheet\" type=\"text/css\" href=\"http://www.pirilampo.org/styles/darksun/css/darksun.css\"/>"
-             :html-head "<link rel=\"stylesheet\" type=\"text/css\" href=\"http://www.pirilampo.org/styles/darksun/css/hideshow.css\"/>"
-
-             :html-head "<script type=\"text/javascript\" src=\"http://www.pirilampo.org/styles/darksun/js/jquery-1.11.0.min.js\"></script>"
-             :html-head "<script type=\"text/javascript\" src=\"http://www.pirilampo.org/styles/darksun/js/jquery-ui-1.10.2.min.js\"></script>"
-
-             :html-head "<script type=\"text/javascript\" src=\"http://www.pirilampo.org/styles/darksun/js/jquery.localscroll-min.js\"></script>"
-             :html-head "<script type=\"text/javascript\" src=\"http://www.pirilampo.org/styles/darksun/js/jquery.scrollTo-1.4.3.1-min.js\"></script>"
-             :html-head "<script type=\"text/javascript\" src=\"http://www.pirilampo.org/styles/darksun/js/jquery.zclip.min.js\"></script>"
-             :html-head "<script type=\"text/javascript\" src=\"http://www.pirilampo.org/styles/darksun/js/darksun.js\"></script>"
-             :html-head "<script type=\"text/javascript\" src=\"http://www.pirilampo.org/styles/darksun/js/hideshow.js\"></script>"
-             :html-head "<script type=\"text/javascript\" src=\"http://www.pirilampo.org/styles/lib/js/jquery.stickytableheaders.min.js\"></script>"
-
-             :html-head "<link rel=\"icon\" type=\"image/x-icon\" href=\"../logo.png\">")
+             :html-head "<link rel=\"icon\" type=\"image/x-icon\" href=\"logo.png\">
+<link rel=\"stylesheet\" type=\"text/css\" href=\"dark.css\" />")
        (list "main-site-org"
              :base-directory "./source/"
              :recursive nil
@@ -338,20 +324,8 @@ See `org-publish-sitemap-default-entry'."
              :sitemap-sort-files 'anti-chronologically
              :html-head-include-default-style nil
              :html-head-include-scripts nil
-             :html-head "<link rel=\"stylesheet\" type=\"text/css\" href=\"http://www.pirilampo.org/styles/darksun/css/htmlize.css\"/>"
-             :html-head "<link rel=\"stylesheet\" type=\"text/css\" href=\"http://www.pirilampo.org/styles/darksun/css/darksun.css\"/>"
-             :html-head "<link rel=\"stylesheet\" type=\"text/css\" href=\"http://www.pirilampo.org/styles/darksun/css/hideshow.css\"/>"
-
-             :html-head "<script type=\"text/javascript\" src=\"http://www.pirilampo.org/styles/darksun/js/jquery-1.11.0.min.js\"></script>"
-             :html-head "<script type=\"text/javascript\" src=\"http://www.pirilampo.org/styles/darksun/js/jquery-ui-1.10.2.min.js\"></script>"
-
-             :html-head "<script type=\"text/javascript\" src=\"http://www.pirilampo.org/styles/darksun/js/jquery.localscroll-min.js\"></script>"
-             :html-head "<script type=\"text/javascript\" src=\"http://www.pirilampo.org/styles/darksun/js/jquery.scrollTo-1.4.3.1-min.js\"></script>"
-             :html-head "<script type=\"text/javascript\" src=\"http://www.pirilampo.org/styles/darksun/js/jquery.zclip.min.js\"></script>"
-             :html-head "<script type=\"text/javascript\" src=\"http://www.pirilampo.org/styles/darksun/js/darksun.js\"></script>"
-             :html-head "<script type=\"text/javascript\" src=\"http://www.pirilampo.org/styles/darksun/js/hideshow.js\"></script>"
-             :html-head "<script type=\"text/javascript\" src=\"http://www.pirilampo.org/styles/lib/js/jquery.stickytableheaders.min.js\"></script>"
-             :html-head "<link rel=\"icon\" type=\"image/x-icon\" href=\"logo.png\">")
+             :html-head "<link rel=\"icon\" type=\"image/x-icon\" href=\"logo.png\">
+<link rel=\"stylesheet\" type=\"text/css\" href=\"dark.css\" />")
        (list "site-projects-org"
              :base-directory "./source/Projects"
              :recursive t
@@ -368,20 +342,18 @@ See `org-publish-sitemap-default-entry'."
              :sitemap-sort-files 'anti-chronologically
              :html-head-include-default-style nil
              :html-head-include-scripts nil
-             :html-head "<link rel=\"stylesheet\" type=\"text/css\" href=\"http://www.pirilampo.org/styles/darksun/css/htmlize.css\"/>"
-             :html-head "<link rel=\"stylesheet\" type=\"text/css\" href=\"http://www.pirilampo.org/styles/darksun/css/darksun.css\"/>"
-             :html-head "<link rel=\"stylesheet\" type=\"text/css\" href=\"http://www.pirilampo.org/styles/darksun/css/hideshow.css\"/>"
-
-             :html-head "<script type=\"text/javascript\" src=\"http://www.pirilampo.org/styles/darksun/js/jquery-1.11.0.min.js\"></script>"
-             :html-head "<script type=\"text/javascript\" src=\"http://www.pirilampo.org/styles/darksun/js/jquery-ui-1.10.2.min.js\"></script>"
-
-             :html-head "<script type=\"text/javascript\" src=\"http://www.pirilampo.org/styles/darksun/js/jquery.localscroll-min.js\"></script>"
-             :html-head "<script type=\"text/javascript\" src=\"http://www.pirilampo.org/styles/darksun/js/jquery.scrollTo-1.4.3.1-min.js\"></script>"
-             :html-head "<script type=\"text/javascript\" src=\"http://www.pirilampo.org/styles/darksun/js/jquery.zclip.min.js\"></script>"
-             :html-head "<script type=\"text/javascript\" src=\"http://www.pirilampo.org/styles/darksun/js/darksun.js\"></script>"
-             :html-head "<script type=\"text/javascript\" src=\"http://www.pirilampo.org/styles/darksun/js/hideshow.js\"></script>"
-             :html-head "<script type=\"text/javascript\" src=\"http://www.pirilampo.org/styles/lib/js/jquery.stickytableheaders.min.js\"></script>"
-             :html-head "<link rel=\"icon\" type=\"image/x-icon\" href=\"../logo.png\">")
+             :html-head "<link rel=\"icon\" type=\"image/x-icon\" href=\"../logo.png\">
+<link rel=\"stylesheet\" type=\"text/css\" href=\"../dark.css\" />")
+       (list "site-literature-org"
+             :base-directory "./source/Literature"
+             :recursive nil
+             :publishing-function '(org-html-publish-to-html)
+             :publishing-directory "./public/Literature"
+             :auto-sitemap nil
+             :html-head-include-default-style nil
+             :html-head-include-scripts nil
+             :html-head "<link rel=\"icon\" type=\"image/x-icon\" href=\"../logo.png\">
+<link rel=\"stylesheet\" type=\"text/css\" href=\"../dark.css\" />")
        (list "site-static"
              :base-directory "static/"
              :exclude "\\.org\\'"
@@ -389,9 +361,10 @@ See `org-publish-sitemap-default-entry'."
              :publishing-directory "./public"
              :publishing-function 'org-publish-attachment
              :recursive t)
-       (list "site" :components '("main-site-org" "site-projects-org" "site-static"))))
+       (list "site" :components '("main-site-org" "site-projects-org" "site-literature-org" "site-static"))))
 
 (defun jp/publish-html ()
+  (jp/init-webpage)
   (org-roam-setup)
   (org-id-update-id-locations)
   (org-publish-all)

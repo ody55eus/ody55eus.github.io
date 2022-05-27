@@ -17,4 +17,6 @@ diag:
 html:
 	emacs --quick --script publish.el --funcall=jp/publish-html
 
+clean:
+	rm -f *.cache && rm -rf public && rm -f diag/*.png
 # end
